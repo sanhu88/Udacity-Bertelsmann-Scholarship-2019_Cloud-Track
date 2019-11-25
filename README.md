@@ -50,3 +50,40 @@ exercise  2
 鼠标无法在终端里移动光标。
 
  Unfortunately, most default terminals don't allow you to use the mouse to move the cursor position. 
+
+## 3. Variables
+
+等号赋值
+
+~~~bash
+x=100
+x = 100
+~~~
+
+第二行会报错  -bash: x: command not found 
+
+**在BASH 中空格有严格意义 **
+
+
+
+~~~bash
+x=100
+echo $x
+100
+~~~
+
+打印时，需要加美元符
+
+~~~bash
+x=42
+echo 'The answer is' $x'.'
+~~~
+
+打印变量和字符串，直接拼接，连句点都没有
+
+~~~bahs
+echo $COLUMNS x $LINES
+80 x 24
+
+~~~
+
