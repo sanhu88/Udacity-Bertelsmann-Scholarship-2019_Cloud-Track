@@ -3,7 +3,7 @@ Bertelsmann Tech Scholarship Challenge Course - Cloud Track on Udacity.com
 
 > Total 24 lessons about 35 hours 1-1 Git/ 12-24 Cloud
 
-## 1.Shell Workshop
+## 1. Shell Workshop
 
 -  **operating system** 操作系统—like Windows, macOS, or Linux 
 -  **shell** *is simply the outermost layer of an operating system. It's designed to provide a way for you to interact with the tools and services that your operating system provides.*  shell只是操作系统的最外层。它的目的是为您提供一种与操作系统提供的工具和服务进行交互的方式。 
@@ -18,3 +18,35 @@ Bertelsmann Tech Scholarship Challenge Course - Cloud Track on Udacity.com
 --It will open the door to other tools.
 
 --learn Python
+
+
+
+## 2. echo
+
+~~~BASH
+echo Hi KK!
+~~~
+
+结果是Hi KK!
+
+~~~bash
+echo Hi KK!!
+~~~
+
+得出结果并不是 Hi KK！！
+
+ When we entered the `!!`, it replaced it with our last command .再次运行上次命令
+
+如果想要只出，则需要加单引号
+
+~~~bash
+echo 'Hi KK!!'
+~~~
+
+
+
+exercise  2
+
+鼠标无法在终端里移动光标。
+
+ Unfortunately, most default terminals don't allow you to use the mouse to move the cursor position. 
