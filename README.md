@@ -15,3 +15,6 @@ Bertelsmann Tech Scholarship Challenge Course - Cloud Track on Udacity.com
 
 --It will make you a more powerful programmer. In other words, if you want to be a powerful developer (or even just a powerful user), it's essential to at least learn the basics of using a text shell and CLI. 
 
+--It will open the door to other tools.
+
+--learn Python
