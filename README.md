@@ -87,3 +87,55 @@ echo $COLUMNS x $LINES
 
 ~~~
 
+## 4. Navigating directories
+
+~~~bash
+ls
+~~~
+
+### ls 
+
+list的缩写，还有ll
+
+~~~bash
+cd
+~~~
+
+### cd 
+
+ Change Directory 更改目录，默认是当前目录互动
+
+- 不在cd 后加/ 代表是当前目录下的文件夹名字 Download/
+- 在cd 后加 / 代表是 绝对路径
+- cd .. 上一句目录
+- ； 分号可以一行写两个命令
+
+  BASH is a **case sensitive** language ，大小写敏感的语言
+
+### pwd 
+
+当前目录路径
+
+..代表上一级
+
+. 代表当前 ls . 等同于 ls
+
+### ~
+
+主目录 home directory，
+
+### Absolute vs. relative path
+
+~~~bash
+cd /home/workspace
+~~~
+
+上方就是绝对路径跳转，不关乎当前在哪里。 This will work no matter where you are currently located. 
+
+~~~bash
+cd ~ #是一个绝对路径
+~~~
+
+
+
+相对目录，不以/打头，只能往下(内部)，除了 cd ..
