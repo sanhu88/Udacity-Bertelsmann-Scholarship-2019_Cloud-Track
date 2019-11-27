@@ -9,7 +9,7 @@ Notice：
 
 
 
-## 1. Shell Workshop
+## Shell Workshop
 
 -  **operating system** 操作系统—like Windows, macOS, or Linux 
 -  **shell** *is simply the outermost layer of an operating system. It's designed to provide a way for you to interact with the tools and services that your operating system provides.*  shell只是操作系统的最外层。它的目的是为您提供一种与操作系统提供的工具和服务进行交互的方式。 
@@ -27,7 +27,7 @@ Notice：
 
 
 
-## 2. echo
+## echo
 
 ~~~BASH
 echo Hi KK!
@@ -57,7 +57,7 @@ exercise  2
 
  Unfortunately, most default terminals don't allow you to use the mouse to move the cursor position. 
 
-## 3. Variables
+## 变量Variables
 
 等号赋值
 
@@ -93,7 +93,7 @@ echo $COLUMNS x $LINES
 
 ~~~
 
-## 4. Navigating directories
+## Navigating directories
 
 ~~~bash
 ls
@@ -148,7 +148,7 @@ cd ~ #是一个绝对路径
 
 相对目录，不以/打头，只能往下(内部)，除了 cd ..
 
-## Options
+## 选项Options
 
 ~~~bash
 ls -l
@@ -195,4 +195,44 @@ mv 需要移动的文件 目标文件夹
 ~~~bash
 mv Document/*epub Document/Books
 ~~~
+
+## 下载 curl
+
+Curl =  see URL
+
+如果是是网页地址，看到的是网页源代码
+
+~~~BASH
+curl -L 'https://baidu.com'
+~~~
+
+-L 代表遵循重定向
+
+~~~bash
+curl -o qq.html -L 'https://news.qq.com'
+~~~
+
+-o 保存到文件，后面加文件名
+
+留意，url中包含特殊字符，比如&%,是BASH有特殊含义的。
+
+练习：
+
+~~~bash
+$ curl 'baiud.com'
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   184  100   184    0     0    326      0 --:--:-- --:--:-- --:--:--   326<html>
+<head><title>301 Moved Permanently</title></head>
+<body bgcolor="white">
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.4.2</center>
+</body>
+</html>
+
+~~~
+
+ 不加-L，不跳转，错误的域名就会有6行
+
+This should only output a relatively short block of HTML (about six lines). 
 
