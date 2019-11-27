@@ -172,3 +172,27 @@ ls -l Documents/*.pdf
 ls *poem*
 ~~~
 
+## 创建和移动文件
+
+### mkdir
+
+mkdir  = make directory 创建目录
+
+~~~bash
+mkdir Document/Books
+~~~
+
+
+
+### mv
+
+mv = move
+
+mv 需要移动的文件 目标文件夹
+
+如果目标文件夹后面跟了具体的文件名和文件格式，转移过去的，会被重命名和格式
+
+~~~bash
+mv Document/*epub Document/Books
+~~~
+
