@@ -1,7 +1,13 @@
 # Udacity-Bertelsmann-Scholarship-2019_Cloud-Track
 Bertelsmann Tech Scholarship Challenge Course - Cloud Track on Udacity.com
 
-> Total 24 lessons about 35 hours 1-1 Git/ 12-24 Cloud
+> Total 24 lessons about 35 hours 1-12 git/ 12-17  cloud-fundamental /18-24  infrastructure-as-code 
+
+Notice：
+
+1.此篇笔记，代码在前，文字解释在代码区块下方。
+
+
 
 ## 1. Shell Workshop
 
@@ -108,11 +114,13 @@ cd
 - 不在cd 后加/ 代表是当前目录下的文件夹名字 Download/
 - 在cd 后加 / 代表是 绝对路径
 - cd .. 上一句目录
-- ； 分号可以一行写两个命令
+- **； 分号可以一行写两个命令**
 
   BASH is a **case sensitive** language ，大小写敏感的语言
 
 ### pwd 
+
+pwd = print working directory
 
 当前目录路径
 
@@ -139,3 +147,28 @@ cd ~ #是一个绝对路径
 
 
 相对目录，不以/打头，只能往下(内部)，除了 cd ..
+
+## Options
+
+~~~bash
+ls -l
+~~~
+
+l 代表long 长目录，打印更多细节：最后修改日期；文件体积
+
+ the `-l` option will give you the date that each file was last modified, as well as the size of the file (in bytes) 
+
+
+
+~~~bash
+ls -l Documents/*.pdf
+~~~
+
+列出所有Document 文件夹下的pdf文件
+
+习题：
+
+~~~bash
+ls *poem*
+~~~
+
