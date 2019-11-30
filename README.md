@@ -246,3 +246,27 @@ less 查看文件的一部分内容，只会显示占满一屏幕的内容，
 * B用来返回
 * / 用来搜索
 * Q用来退出
+
+## 移动文件 rm ， rmdir
+
+rm = remove
+
+rm 添加提示选项 -i (interactive 交互)
+
+rmdir 只会删除非空文件夹  when using the `rmdir` command, it will only delete a directory that is *empty* 
+
+两者都是permanently delete 永久删除
+
+删除多个可以直接以空格隔开
+
+~~~bash
+rmdir example1 example2 example3
+~~~
+
+如果文件夹包含空格，给文件夹加上引号
+
+~~~bash
+rmdir 'example 1'  'example 2'  'example 3'
+~~~
+
+删除也可以使用通配符 *
