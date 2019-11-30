@@ -236,3 +236,13 @@ $ curl 'baiud.com'
 
 This should only output a relatively short block of HTML (about six lines). 
 
+## 查看文件 cat， less
+
+cat = catenate / concatenate 连接多个事物
+
+less 查看文件的一部分内容，只会显示占满一屏幕的内容，
+
+* 空格键或箭头键下滚。
+* B用来返回
+* / 用来搜索
+* Q用来退出
