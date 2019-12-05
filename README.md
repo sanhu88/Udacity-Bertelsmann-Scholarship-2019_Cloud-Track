@@ -361,3 +361,32 @@ git config --global core.editor "'C:/Program Files/Sublime Text 2/sublime_text.e
 git config --global core.editor "code --wait"
 ~~~
 
+## Git Init
+
+The `init` subcommand is short for "initialize" , which is helpful because it's the command that will do all of the initial setup of a repository.
+
+初始化仓库
+
+创建实验课目录
+
+~~~bash
+mkdir -p udacity-git-course/new-git-project && cd $_
+~~~
+
+.git文件夹探索
+
+* config file 比如邮件/姓名等全局设置
+
+* description file ：only used by the GitWeb program, so we can ignore it，与我们无关，可以忽略
+
+* hooks directory 这是我们可以放置客户端或服务器端脚本的地方，我们可以使用它们来连接到Git的不同生命周期事件
+
+* info directory ：contains the global excludes file包含全局排除文件
+
+* objects directory 存储所有的提交
+
+* refs directory  存储指针，比如分支和标签
+
+  
+
+ 
