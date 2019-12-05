@@ -270,3 +270,94 @@ rmdir 'example 1'  'example 2'  'example 3'
 ~~~
 
 删除也可以使用通配符 *
+
+## What is Version Control 
+
+(此部分是Udacity的free课程里有)
+
+游戏进度保存来引入版本管理的概念。
+
+目前流行的版本管理：Git / Subversion / Mercurial
+
+## 术语
+
+官方给的学习材料 [ud123-git-keyterms.pdf](./ud123-git-keyterms.pdf)
+
+### version control system / Source Code Manager
+
+版本控制系统，源代码管理器
+
+version control system (abbreviated as **VCS**）source code manager (abbreviated as **SCM**) 
+
+Git is an SCM (and therefore a VCS)
+
+### Commit
+
+提交
+
+save the state of your project in Git
+
+a commit is *the* fundamental unit in Git/基本单元
+
+### Repository / repo
+
+仓库
+
+A **repository** is a directory which contains your project work
+
+A repository is made up of commits
+
+### Working Directory
+
+工作目录
+
+The **Working Directory** is the files that you see in your computer's file system
+
+### Checkout
+
+签出/切换出
+
+A **checkout** is when content in the repository has been copied to the Working Directory.
+
+### Staging Area / Staging Index / Index
+
+暂存区域/指针/索引
+
+the **staging area** as a prep table where Git will take the next commit
+
+### SHA
+
+编码id
+
+A **SHA** is basically an ID number for each commit. Here's what a commit's SHA might look like: `e2adf8ae3e2e4ed40add75cc44cf9d0a869afeb6`.
+
+It is a 40-character string
+
+### Branch
+
+分支
+
+A **branch** is when a new line of development is created that diverges from the main line of development
+
+Git 跟踪的是变化为核心
+
+## IDE与Git的设置
+
+### Atom 
+
+~~~
+git config --global core.editor "atom --wait" 
+~~~
+
+### Sublime Text
+
+~~~
+git config --global core.editor "'C:/Program Files/Sublime Text 2/sublime_text.exe' -n -w"
+~~~
+
+### VSCode 
+
+~~~
+git config --global core.editor "code --wait"
+~~~
+
