@@ -382,6 +382,10 @@ mkdir -p udacity-git-course/new-git-project && cd $_
 * objects directory 存储所有的提交
 * refs directory  存储指针，比如分支和标签
 
+## repo
 
+git log 和 git show
 
- 
+git log 是提交的细节
+
+git show 是修改内容 ，可以提供具体的ID来查看q退出
