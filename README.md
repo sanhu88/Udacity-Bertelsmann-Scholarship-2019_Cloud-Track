@@ -386,6 +386,55 @@ mkdir -p udacity-git-course/new-git-project && cd $_
 
 git log 和 git show
 
-git log 是提交的细节
+git log 是提交的细节，
+
+k键向上，u是半页向上，b是全页向上，Page Up键
+
+j键向下滚动，d是半页向下，f是全页向下，空格键或Page Down键
+
+冒号变成（end）是文末，q退出
 
 git show 是修改内容 ，可以提供具体的ID来查看q退出
+
+
+
+### --oneline
+
+```bash
+git log --oneline
+```
+
+拼写很重要，online不会现实
+
+This command:
+
+- lists one commit per line
+- shows the first 7 characters of the commit's SHA
+- shows the commit's message
+
+
+
+### --stat
+
+会包含修改文件。
+
+```bash
+$ git log --stat
+```
+
+~~~
+Author: Richard Kalehoff <richardkalehoff@gmail.com>
+Date:   Mon Dec 5 16:34:15 2016 -0500
+
+    Center content on page
+
+ css/app.css | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+~~~
+
+This command:
+
+- displays the file(s) that have been modified
+- displays the number of lines that have been added/removed
+- displays a summary line with the total number of modified files and lines that have been added/removed
