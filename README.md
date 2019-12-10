@@ -551,3 +551,44 @@ git show只会展示指定的，无法前后查看
 当只给出提交信息时，查找修改了多少文件：
 
 Fantastic job! I first used `git log --oneline` to find the SHA of the commit, then I used `git log --stat` with the SHA to find the right info.
+
+## git commit
+
+回顾：
+
+* git init 创建
+* git clone 下载
+* git log 日志
+* git status 状态
+
+会学到
+
+1. git add 	把文件从工作区添加到暂存区
+2. git commit  把文件从暂存区保存到仓库
+3. git diff  比较两个版本的差异，和git log -p的结果一致
+
+
+
+当文件夹内有新的仓库时，add .会报错如下
+
+~~~bash
+$ git add .
+warning: adding embedded git repository: course-git-blog-project/course-git-blog-project
+hint: You've added another git repository inside your current repository.
+hint: Clones of the outer repository will not contain the contents of
+hint: the embedded repository and will not know how to obtain it.
+hint: If you meant to add a submodule, use:
+hint:
+hint:   git submodule add <url> course-git-blog-project/course-git-blog-project
+hint:
+hint: If you added this path by mistake, you can remove it from the
+hint: index with:
+hint:
+hint:   git rm --cached course-git-blog-project/course-git-blog-project
+hint:
+hint: See "git help submodule" for more information.
+
+~~~
+
+
+
