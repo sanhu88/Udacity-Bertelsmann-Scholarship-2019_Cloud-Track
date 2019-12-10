@@ -382,7 +382,7 @@ mkdir -p udacity-git-course/new-git-project && cd $_
 * objects directory 存储所有的提交
 * refs directory  存储指针，比如分支和标签
 
-## repo
+## repo ： git log
 
 git log 和 git show
 
@@ -406,11 +406,13 @@ git log --oneline
 
 拼写很重要，online不会现实
 
+git log --oneline 总结：
+
 This command:
 
-- lists one commit per line
-- shows the first 7 characters of the commit's SHA
-- shows the commit's message
+- lists one commit per line 每行一条
+- shows the first 7 characters of the commit's SHA  7位数ID
+- shows the commit's message  提交信息
 
 
 
@@ -433,8 +435,119 @@ Date:   Mon Dec 5 16:34:15 2016 -0500
 
 ~~~
 
+git log --stat 总结：
+
 This command:
 
-- displays the file(s) that have been modified
-- displays the number of lines that have been added/removed
-- displays a summary line with the total number of modified files and lines that have been added/removed
+- displays the file(s) that have been modified 哪些文件
+- displays the number of lines that have been added/removed 哪些行数
+- displays a summary line with the total number of modified files and lines that have been added/removed 合计变动数量
+
+### --patch  /-p
+
+用来查看文件修改
+
+~~~bash
+diff --git a/css/app.css b/css/app.css
+index 78cef20..07c36fa 100644
+--- a/css/app.css
++++ b/css/app.css
+
+~~~
+
+diff也就是path的意思，a代表之前的，b代表修改后的
+
+index 之后是修改前的Hash和修改之后Hash
+
+下面的减减加加和第一行一样的意思
+
+~~~bash
+@@ -38,6 +38,11 @@ p {
+     line-height: 1.5;
+ }
+
++.container {
++    margin: auto;
++    max-width: 1300px;
++}
++
+
+ /*** Header Styling ***/
+ .page-header {
+
+~~~
+
+@@后面代表，之前版本是从第38行，显示有6行代码，现在变成从38行起，变成了11行，多了五行，也就是++显示的部分。
+
+删除的提交时减号开头红色部分显示，增加的时绿色，加号开头
+
+git 跟踪代码是，以行为基本单位的，如下图所示
+
+![The Terminal application showing the output of the `git log -p` command.](https://video.udacity-data.com/topher/2017/February/58a37f65_ud123-l3-git-log-p-lines-removed-annotated/ud123-l3-git-log-p-lines-removed-annotated.png)
+
+- 🔵 - the file that is being displayed
+- 🔶 - the hash of the first version of the file and the hash of the second version of the file
+  - not usually important, so it's safe to ignore
+- ❤️ - the old version and current version of the file
+- 🔍 - the lines where the file is added and how many lines there are
+  - `-15,83` indicates that the old version (represented by the `-`) started at line 15 and that the file had 83 lines
+  - `+15,85` indicates that the current version (represented by the `+`) starts at line 15 and that there are now 85 lines...these 85 lines are shown in the patch below
+- ✏️ - the actual changes made in the commit
+  - lines that are red and start with a minus (`-`) were in the original version of the file but have been removed by the commit
+  - lines that are green and start with a plus (`+`) are new lines that have been added in the commit
+
+~~~bash
+git log --stat -p
+~~~
+
+show the stats info above the patch info，先显示stats也就是具体那些文件修改了，然后再显示path也就是具体修改的内容
+
+~~~bash
+git log -p -w
+~~~
+
+-w，全程是**--ignore-all-space**参数会忽略空格键带来的代码改变
+
+
+
+git log -p 总结：
+
+This command adds the following to the default output:
+
+- displays the files that have been modified 哪些文件
+- displays the location of the lines that have been added/removed 哪些行数
+- displays the actual changes that have been made 实际上的改动
+
+### 定位
+
+~~~bash
+git log -p fdf5493
+~~~
+
+可以加ID会从此ID开始展示
+
+~~~bash
+git show fdf5493
+~~~
+
+git show只会展示指定的，无法前后查看
+
+两者都包含
+
+- the commit  提交的ID
+- the author 作者
+- the date 日期
+- the commit message 提交的信息
+- the patch information 具体修改的信息
+
+当然也可以后带参数
+
+* --stat 多少文件被修改和行数的变动，不显示具体内容
+* -p / --path 具体的修改内容
+* -w 忽略缩进和空格的的变化
+
+练习题
+
+当只给出提交信息时，查找修改了多少文件：
+
+Fantastic job! I first used `git log --oneline` to find the SHA of the commit, then I used `git log --stat` with the SHA to find the right info.
