@@ -552,7 +552,7 @@ git show只会展示指定的，无法前后查看
 
 Fantastic job! I first used `git log --oneline` to find the SHA of the commit, then I used `git log --stat` with the SHA to find the right info.
 
-## git commit
+## git add/commit
 
 回顾：
 
@@ -590,5 +590,69 @@ hint: See "git help submodule" for more information.
 
 ~~~
 
+~~~
+As a side note, git rm --cached is not like the shell's rm command. git rm --cached will not destroy any of your work; it just removes it from the Staging Index.
+~~~
+
+git rm --cached 不是真的删除文件，而是不会放在暂存区里。
 
 
+
+
+
+~~~bash
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+~~~
+
+Period 句号点 .
+
+~~~bash
+git add .
+~~~
+
+添加所有文件和文件夹（好像空文件夹不行）
+
+
+
+~~~bash
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   css/app.css
+        new file:   index.html
+        new file:   js/app.js
+
+~~~
+
+### git commit
+
+~~~bash
+git commit -m "Initial commit"
+~~~
+
+需要先add 再commit
+
+**The goal is that each commit has a single focus.**
+
+每一个commit 只跟踪一件事（一个单元的改变）。比如
+
+- add a new image to the project files
+- alter the HTML
+- add/modify CSS to incorporate the new image
+
+一个commit应该是相关部分的。
+
+The best way that I've found to think about what should be in a commit is to think, "What if all changes introduced in this commit were erased?". If a commit were erased, it should only remove one thing.
+
+如果删除此次提交，应该只包含一件事情
