@@ -697,3 +697,80 @@ Saying that changes have been added is not helpful. A commit can only include ch
 
 
 
+### Udacity's Commit Style Requirements
+
+[https://udacity.github.io/git-styleguide/](https://udacity.github.io/git-styleguide/)
+
+## git diff
+
+用来查看还没有提交的改变
+
+~~~bash
+$ git diff
+diff --git a/index.html b/index.html
+index 8996430..e16c565 100644
+--- a/index.html
++++ b/index.html
+@@ -1,7 +1,7 @@
+ <!doctype html>
+ <html lang="en">
+ <header>
+-    <h1>Expedition</h1>
++    <h1>Adventure</h1>^M
+ </header>
+ <head>
+     <meta charset="utf-8">
+
+~~~
+
+git diff是git log -p 的另外一种形式，git log包含已经有的提交
+
+git diff总结：
+
+- the files that have been modified	改变的文件
+- the location of the lines that have been added/removed 改变的定位行数
+- the actual changes that have been made 实际的改变内容
+
+## Git Ignore Files
+
+~~~bash
+.gitignore
+~~~
+
+~~~bash
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        .gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+~~~
+
+通配符Globbing 
+
+* 空白行可用于间距
+* #代表注释部分，不会起作用
+* 星号\*  代表0个或多个字符
+* ？ 代表一个字符
+* [abc] 代表 匹配 a, b或者c
+* 两个星号\** 代表匹配多重目录，a/**/z 代表
+  * a/z
+  * a/b/z
+  * a/b/c/z
+
+~~~bash
+samples/*.jpg
+~~~
+
+代表sample文件夹下的所有jpg图片
+
+练习题：
+
+1. 通配的部分不区分大小写 
+
+   That's right! Adding `*.png` will cause Git to ignore *all* PNG images.
+
+2. 要和.git目录保持再同一目录
