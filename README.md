@@ -656,3 +656,44 @@ git commit -m "Initial commit"
 The best way that I've found to think about what should be in a commit is to think, "What if all changes introduced in this commit were erased?". If a commit were erased, it should only remove one thing.
 
 如果删除此次提交，应该只包含一件事情
+
+### Commit Messages
+
+如何是一个优秀的commit 信息？
+
+* 保持简洁do keep the message short (less than 60-ish characters)
+* 解释本次提交改动了什么 do explain *what* the commit does (not *how* or *why*!)
+
+不需要的再信息里的：
+
+1. 解释为什么会有代码改变
+2. 解释怎样改变了代码
+3. 不要使用“和”，如果使用了and代表你有太多的改变，应该分次提交
+
+练习题：
+
+~~~
+
+"Add a
+
+tag to the body"
+
+
+The commit message should not contain specifics on how the change was made. This information can be found by running git log -p.
+
+提交消息不应该包含关于如何进行更改的细节。可以通过运行git log -p找到这些信息。
+
+~~~
+
+
+
+~~~
+"Add changes to app.js"
+
+Saying that changes have been added is not helpful. A commit can only include changes of some kind (new content, content being removed, content being altered. Saying that changes were made to "app.js"
+
+说已经添加了更改是没有帮助的。提交只能包含某些类型的更改(新内容、要删除的内容、要更改的内容)。只需说更改了“app.js”
+~~~
+
+
+
