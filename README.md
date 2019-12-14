@@ -774,3 +774,68 @@ samples/*.jpg
    That's right! Adding `*.png` will cause Git to ignore *all* PNG images.
 
 2. 要和.git目录保持再同一目录
+
+
+
+## git tag
+
+~~~bash
+git tag -a v1.0
+~~~
+
+*the* `-a` *flag is used. This flag tells Git to create an* *annotated* *flag.*  -a代表是有注释的提交
+
+### 验证
+
+~~~bash
+$ git tag
+v1.0
+
+~~~
+
+git log的新参数 --decorate，git 2.13 已经自带此参数
+
+~~~bash
+git log --decorate
+commit e428e290241c3dd2aa75b97e8ce08fbd9c6ec66c (HEAD -> master, tag: v1.0)
+Author: Burt Zheng <504779282@qq.com>
+Date:   Thu Dec 12 22:26:58 2019 +0800
+
+    git diff
+
+commit ce5c5cd347f6c8cc49eb5895cb74deb1233f1da1
+Author: Burt Zheng <504779282@qq.com>
+Date:   Wed Dec 11 20:40:23 2019 +0800
+
+    Add header to blog
+
+commit e4f0aba0cab0592e62982815e26b3369f84098ea
+Author: Burt Zheng <504779282@qq.com>
+Date:   Wed Dec 11 20:37:05 2019 +0800
+
+    Initial commit
+
+~~~
+
+### 删除tag
+
+with the `-d` flag (for *delete*!) 
+
+~~~bash
+git tag -d v1.0
+~~~
+
+和
+
+~~~bash
+git tag --delete v1.0
+~~~
+
+### 为之前的提交添加标签
+
+在语句后添加SHA就可以
+
+~~~bash
+git tag -a v1.0 a87984
+~~~
+
