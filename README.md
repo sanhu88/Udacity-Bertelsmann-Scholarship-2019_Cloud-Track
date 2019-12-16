@@ -939,11 +939,112 @@ git branch -d sidebar
 1. **无法删除当前工作的的分支** ，所以上方删除之前，需要切换到Master分支
 2. **如果要删除的分支，提交了其他分支没有的内容，也不允许删除**
 
+~~~bash
+$ git branch -d footer
+error: The branch 'footer' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D footer'.
+
+~~~
+
+
+
 强制删除用-D flag：
 
 ~~~bash
 git branch -D sidebar
 ~~~
 
+### Branch 有效性
+
+如果内容存储在一个分支上，但是提交在另外一个分支，这些另外的提交时不可见的，除非切换到另外的分支上。
+
+git diff 查看还没提交的修改
+
+创建并切换到新分支的快捷命令：
+
+~~~bash
+git checkout -b richards-branch-for-awesome-changes
+~~~
+
+git log 新flag
+
+~~~bash
+git log --oneline --decorate --graph --all
+~~~
+
+* --graph 将项目符号和行添加到输出的最左边部分（adds the bullets and lines to the leftmost part of the output）
+* --all 将显示仓库中所有的分支
+
+### Merging 合并
+
+合并sidebar到master ，不会影响到sidebar，可以继续对sidebar 进行修改提交
+
+如果某个分支有些提交时Master不包含的（多余Master的提交），可以 fast forward merge 快进合并，把HEAD 指向最新的提交（因为Master没有这些提交）。
+
+撤销一次合并：
+
+~~~bash
+git reset --hard HEAD^
+~~~
 
 
+
+~~~bash
+git merge <name-of-branch-to-merge-in>
+~~~
+
+当合并发生时，git会：
+
+* 检查要合并的分支
+* 回溯提交历史，找到两者都有的一个提交
+* 将不同分支的代码合并在一起
+* 为合并进行一次提交
+
+当合并时：
+
+1. 不会合并到两个分支到一个全新的分支
+2. 不会合并当前分支到另外的分支（是我们git merge中提到的，合并到当前）
+
+### Fast-forward Merge
+
+A Fast-forward merge will just move the currently checked out branch *forward* until it points to the same commit that the other branch (in this case, `footer`) is pointing to.
+
+~~~bash
+$ git merge footer
+Updating fd4dcb8..9743d0f
+Fast-forward
+ index.html | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
+
+~~~
+
+会让HEAD都指向 footer 和Master
+
+~~~bash
+9743d0f (HEAD -> master, footer) add footer social account links
+
+没合并前是：
+* 9743d0f (HEAD -> footer) add footer social account links
+~~~
+
+### 常规合并
+
+~~~bash
+$ git merge sidebar
+Auto-merging index.html
+Merge made by the 'recursive' strategy. #recursive[数] 递归的
+ index.html | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+~~~
+
+### 合并失败处理
+
+When a merge is performed and fails, that is called a **merge conflict**，下面会学到
+
+总结：
+
+常见两种合并类型：
+
+1. Fast-forward merge,要求合并的分支必须在当前分支的前面，当前分支的HEAD指针会移动到合并分分支相同的提交
+2. the regular type of merge常规提交。两个不同的分支会合并；合并提交会被创建。
