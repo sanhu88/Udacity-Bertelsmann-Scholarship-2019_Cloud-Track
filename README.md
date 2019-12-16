@@ -779,6 +779,8 @@ samples/*.jpg
 
 ## git tag
 
+关于末次提交的永久指针
+
 ~~~bash
 git tag -a v1.0
 ~~~
@@ -793,7 +795,7 @@ v1.0
 
 ~~~
 
-git log的新参数 --decorate，git 2.13 已经自带此参数
+git log的新参数 --decorate，git 2.13以后版本 已经自带此参数
 
 ~~~bash
 git log --decorate
@@ -838,4 +840,110 @@ git tag --delete v1.0
 ~~~bash
 git tag -a v1.0 a87984
 ~~~
+
+## git branch
+
+默认的是Master 分支
+
+~~~bash
+git branch sidebar
+~~~
+
+创建分支
+
+HEAD 指针，指向当前活跃的分支
+
+~~~bash
+git checkout sidebar
+~~~
+
+切换HEAD指针到sidebar，也可以
+
+~~~bash
+git checkout master
+~~~
+
+切换回Master
+
+往前溯源
+
+~~~bash
+git branch header-fix a
+~~~
+
+a是sidebar之前的提交SHA，也就是创建了一个新的交header-fix的分支，a最为分支开始点
+
+~~~bash
+git branch
+~~~
+
+可以用来
+
+* 显示仓库所有分支的名字
+* 创建一个分支
+* 删除分支
+
+~~~bash
+$ git branch
+* master
+
+
+~~~
+
+练习:
+
+即便创建了分支，没有切换过去前，还是在当前分分支。
+
+~~~bash
+git checkout sidebar
+~~~
+
+checkout的操作有两部：
+
+1. 删除当前工作目录中git跟踪的文件（仓库中仍然存在，没有丢失）
+2. 从仓库中拉取，分支所指向的文件和文件夹
+
+### 在log中查看branch
+
+~~~bash
+$ git log --oneline --decorate
+e428e29 (HEAD -> sidebar, tag: v1.0, master) git diff
+ce5c5cd Add header to blog
+e4f0aba Initial commit
+
+~~~
+
+可以看到HEAD指向的是sidebar
+
+### 查看活动的branch
+
+~~~bash
+$ git branch
+  master
+* sidebar
+
+~~~
+
+活动的分支前面有星号（An asterisk will appear next to the name of the active branch.），而且是绿色的
+
+### 删除分支
+
+分支常用来修复项目中不会项目的问题。修复完后回合并到master里
+
+~~~bash
+git branch -d sidebar
+~~~
+
+两种情况不允许删除：
+
+1. **无法删除当前工作的的分支** ，所以上方删除之前，需要切换到Master分支
+2. **如果要删除的分支，提交了其他分支没有的内容，也不允许删除**
+
+强制删除用-D flag：
+
+~~~bash
+git branch -D sidebar
+~~~
+
+
 
