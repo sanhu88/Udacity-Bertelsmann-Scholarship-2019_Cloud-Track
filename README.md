@@ -1048,3 +1048,63 @@ When a merge is performed and fails, that is called a **merge conflict**，下�
 
 1. Fast-forward merge,要求合并的分支必须在当前分支的前面，当前分支的HEAD指针会移动到合并分分支相同的提交
 2. the regular type of merge常规提交。两个不同的分支会合并；合并提交会被创建。
+
+### 合并冲突
+
+自动合并失败，叫做合并冲突 **merge conflict**
+
+git使用(e.g. `>>>` and <<<) 需要手动修复
+
+#### 什么会造成合并冲突？
+
+git跟踪的是行改变，多个分支改变在同一行，就会带来合并冲突
+
+~~~bash
+$ git merge heading-update
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.
+
+~~~
+
+提示有合并冲突
+
+~~~bash
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+~~~
+
+git给出的冲突的文件，处理办法
+
+~~~bash
+    <header>
+<<<<<<< HEAD
+        <h1>Quest</h1>
+=======
+        <h1>Crusade</h1>
+>>>>>>> heading-update
+    </header>
+~~~
+
+1. <<<<<<< HEAD ，代表是当前分支的代码，至下一个提示符号前
+2. ||||||| merged common ancestors，代表是共有的祖先代码是什么样子，至下一个提示符号前
+3. ======= ，代表原始代码的结束。接下来至下一个提示符，是正在合并的分支的代码
+4. \>>>>>>> heading-update，正要合并分支的代码 ，告诉了分支名称
+
+### 解决合并冲突
+
+1. choose which line(s) to keep 选择保留的代码行
+2. remove all lines with indicators 删除所有提示符的代码行
+
+git不会因为有合并冲突的提示符就停止提交，所以处理完合并冲突后，建议用git diff 检查，提交后使用git show -w
