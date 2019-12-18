@@ -987,7 +987,7 @@ git log --oneline --decorate --graph --all
 git reset --hard HEAD^
 ~~~
 
-
+最好带上-m 注释部分
 
 ~~~bash
 git merge <name-of-branch-to-merge-in>
@@ -1108,3 +1108,166 @@ git给出的冲突的文件，处理办法
 2. remove all lines with indicators 删除所有提示符的代码行
 
 git不会因为有合并冲突的提示符就停止提交，所以处理完合并冲突后，建议用git diff 检查，提交后使用git show -w
+
+## 撤销修改提交
+
+### --amend 改变最后一次提交
+
+~~~bash
+git commit --amend
+~~~
+
+--amend vt. 修改；改善，改进 vi. 改正，改善；改过自新
+
+比如笔误，或者是字体颜色，或者有些文件没有提交
+
+步骤：
+
+- edit the file(s) 编辑修改文件
+- save the file(s) 保存文件
+- stage the file(s) 暂存文件
+- and run `git commit --amend` 运行
+
+~~~bash
+$ git commit --amend
+[master ae37d47] fix a typo of header with git commit --amend
+ Date: Tue Dec 17 21:13:47 2019 +0800
+
+~~~
+
+git log --oneline --graph --all 查看
+
+~~~bash
+之前
+ 6a2b973 (HEAD -> master) fix merge conflict set header to adventurous Quest
+之后
+ ae37d47 (HEAD -> master) fix a typo of header with git commit --amend
+
+~~~
+
+### Revert  恢复复原提交
+
+恢复提交，将会和恢复到的提交A操作后，相反操作，比如A添加了代码，revert就删掉这部分；如果A删除了，vice verse
+
+使用方法：
+
+~~~bash
+git revert <SHA-of-commit-to-revert>
+~~~
+
+我本地运行
+
+~~~bash
+ git revert ae37d47
+error: commit ae37d47d94152864f4f83c08f2a887e713e5be19 is a merge but no -m option was given.
+fatal: revert failed
+
+~~~
+
+revert vt. 使恢复原状
+
+总结：
+
+This command:
+
+- will undo the changes that were made by the provided commit 撤销指定的提交的改变
+- creates a new commit to record the change 常见一个新的提交
+
+### Rest 重置提交
+
+Reverting creates a new commit that reverts or undos a previous commit. Resetting, on the other hand, *erases* commits!
+
+revert是恢复之前的然后创建一个提交，reset是擦除一个提交。
+
+reset后内容也会丢失，使用reflog可以看到SHA
+
+#### 相对提交引用 Relative Commit References
+
+Ancestry References 祖先引用
+
+* ^ 代表的是父提交
+* ~ 代表第一个父提交
+
+当前提交的父提交
+
+1. HEAD^
+2. HEAD~
+3. HEAD~1
+
+祖父级提交：
+
+1. HEAD^^
+2. HEAD~2
+
+曾祖父提交：
+
+1. HEAD^^^
+2. HEAD~3
+
+当一个提交时merge而来的时候，会有两个父提交：
+
+^ 代表的是第一父提交，也就是git merge的是所在的分支
+
+^2 代表的是第二父提交，也就是被合并进的分支。(因为^表示第一父提交不加数字)
+
+练习
+
+在git log 里 看到第一个是当前提交
+
+The `git reset` command is used to reset (erase) commits:
+
+~~~bash
+git reset <reference-to-commit>
+~~~
+
+一般用于：
+
+- move the HEAD and current branch pointer to the referenced commit 移动HEAD和分支指针到指定提交
+- erase commits 擦除提交
+- move committed changes to the staging index 移动提交的改变到暂存区
+- unstage committed changes 在暂存区移除已提交的改变
+
+#### git reset flag
+
+--mixed 是默认的，reset到父提交时，当前提交会放在工作目录，再提交时，SHA不会时当前的SHA
+
+--soft reset到父提交时，将当前提交所作的更改移动到暂存区,再提交时，SHA不会时当前的SHA
+
+--hard reset到父提交时，将当前提交所作的更改移动到 Trash 垃圾箱
+
+为了以防万一，会在reset之前，会未当前分支创建一个backup 
+
+```bash
+git branch backup
+```
+
+##### --mixed
+
+```bash
+
+$ git reset --mixed HEAD^
+Unstaged changes after reset:
+M       index.html
+
+```
+
+~~~bash
+/ 放弃单个文件修改,注意不要忘记中间的"--",不写就成了检出分支了!
+git checkout -- filepathname
+// 放弃所有的文件修改
+git checkout .  
+~~~
+
+在有backup分支后
+
+可以删除工作目录中的未提交的的改变
+
+然后把backup合并到master
+
+##### --soft
+
+Running `git reset --soft HEAD^` will take the changes made in commit `9ec05ca` and move them directly to the Staging Index.
+
+##### --hard
+
+Running `git reset --hard HEAD^` will take the changes made in commit `9ec05ca` and erases them.
