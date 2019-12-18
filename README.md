@@ -1204,6 +1204,11 @@ Ancestry References 祖先引用
 1. HEAD^^^
 2. HEAD~3
 
+> [@Md. Abdul Monim](https://bertelsmanncloud.slack.com/team/UQX0LCLMS) of Slack
+>
+> HEAD~n, number after ~ means 1->parent, 2->grandparent, 3->great grand parent.
+> HEAD^n, number after ^ means 1->1st parent, 2-> 2nd parent when the current commit has multiple parents.
+
 当一个提交时merge而来的时候，会有两个父提交：
 
 ^ 代表的是第一父提交，也就是git merge的是所在的分支
@@ -1277,3 +1282,15 @@ Running `git reset --hard HEAD^` will take the changes made in commit `9ec05ca` 
 1. git commit --amend 是改写或更新最近的提交
 2. git revert是撤销特定的提交
 3. git reset 是擦除或删除改变
+
+## Git Hub
+
+git skill 回顾：
+
+1. git init 创建 git clone 下载
+2. git status 查看状态
+3. git log 看提交的日志 git diff 查看未保存的改变 git show 查看暂存区的改变
+4. git add 添加提交
+5. git commit 提交到仓库
+6. git branch /git checkout <branchname> /git merge 分支操作
+7. git commit --amend /git revert/git reset  取消操作
