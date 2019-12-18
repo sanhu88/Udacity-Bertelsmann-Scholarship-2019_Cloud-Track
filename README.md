@@ -1271,3 +1271,9 @@ Running `git reset --soft HEAD^` will take the changes made in commit `9ec05ca` 
 ##### --hard
 
 Running `git reset --hard HEAD^` will take the changes made in commit `9ec05ca` and erases them.
+
+## Lesson 总结
+
+1. git commit --amend 是改写或更新最近的提交
+2. git revert是撤销特定的提交
+3. git reset 是擦除或删除改变
