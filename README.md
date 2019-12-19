@@ -1294,3 +1294,27 @@ git skill 回顾：
 5. git commit 提交到仓库
 6. git branch /git checkout <branchname> /git merge 分支操作
 7. git commit --amend /git revert/git reset  取消操作
+
+## 远程仓库
+
+双人合作
+
+1. 使用各自的电脑
+2. 各自有各自的进度
+3. 可以在大家都完成的时候进行合并
+
+使用话题进行分支，保存各自不同的变更。
+
+远程仓库，相对本地仓库而言。
+
+Git是一个分布式版本控制系统，这意味着没有一个主要的信息仓库。Git is a *distributed* version control system which means there is not *one* main repository of information.
+
+本地的分支可以合并成新的master 然后同步到远程仓库，也而可以所有分支分开同步到远程仓库。
+
+## Git Remote
+
+```bash
+ git remote
+```
+
+如果没有配置远程仓库，此命令无输出
