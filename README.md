@@ -1408,3 +1408,44 @@ $ git log --oneline --graph --decorate --all
 (HEAD -> master, origin/master) 
 
 ## 从远程拉取改变到本地 Pull changes from a remote
+
+如果远程origin 超过了本地master 的提交
+
+~~~bash
+git pull origin master
+~~~
+
+来拉取并合并到本地
+
+
+
+~~~bash
+$ git pull origin master
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+From github.com:sanhu88/my-travel-plans
+ * branch            master     -> FETCH_HEAD
+   51664f6..86a16b0  master     -> origin/master
+Updating 51664f6..86a16b0
+Fast-forward
+ css/app.css | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+~~~
+
+pull 到本地使用的是fast-forward merge 
+
+如果不想自动合并，使用git fetch
+
+If you don't want to automatically merge the local branch with the tracking branch then you wouldn't use `git pull` you would use a different command called `git fetch`.
+
+总结：
+
+git pull 运行时：
+
+- the commit(s) on the remote branch are copied to the local repository
+- the local tracking branch (`origin/master`) is moved to point to the most recent commit
+- the local tracking branch (`origin/master`) is merged into the local branch (`master`)
