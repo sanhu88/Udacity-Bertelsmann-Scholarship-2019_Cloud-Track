@@ -1318,3 +1318,93 @@ Git是一个分布式版本控制系统，这意味着没有一个主要的信�
 ```
 
 如果没有配置远程仓库，此命令无输出
+
+~~~bash
+$ git remote
+origin
+
+~~~
+
+origin是远程仓库的缩写，方便命令行使用。通常远程叫做origin
+
+~~~bash
+git remote -v
+$ git remote -v
+origin  git@github.com:sanhu88/Udacity-Bertelsmann-Scholarship-2019_Cloud-Track.git (fetch)
+origin  git@github.com:sanhu88/Udacity-Bertelsmann-Scholarship-2019_Cloud-Track.git (push)
+
+~~~
+
+会打印完整路径，对比缩写
+
+**演示仓库目录为my-travel-plans**
+
+~~~bash
+git remote add origin git@github.com:sanhu88/my-travel-plans.git
+~~~
+
+在本地创建好问津，在GitHub 创建不带READMD.mdD的仓库，然后连接
+
+~~~bash
+ git remote add repo-on-GitHub https://github.com/richardkalehoff/RichardsFantasticProject.git
+~~~
+
+可以把origin换成其他自定义的名字，只是一个缩写而已。
+
+~~~bash
+$ git remote -v
+origin  git@github.com:sanhu88/my-travel-plans.git (fetch)
+origin  git@github.com:sanhu88/my-travel-plans.git (push)
+
+~~~
+
+总结：
+
+- `git remote add` is used to add a connection to a new remote repository. 用来创建和新远程仓库的连接
+- `git remote -v` is used to see the details about a connection to a remote. 显示远程连接的细节
+
+## Push 推送
+
+~~~bash
+git log --oneline --graph --decorate --all
+~~~
+
+查看日志
+
+~~~bash
+git push <remote-shortname> <branch>
+~~~
+
+push 的是本地的分支
+
+如果push需要账号密码，因为：
+
+* 使用的是HTTP 而不是SSH 版本remote add的
+* 使用SSH 而且配置了key就不用输入账号密码
+
+
+
+~~~bash
+git push origin master
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (6/6), 1008 bytes | 252.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To github.com:sanhu88/my-travel-plans.git
+ * [new branch]      master -> master
+
+
+~~~
+
+~~~bash
+$ git log --oneline --graph --decorate --all
+* 51664f6 (HEAD -> master, origin/master) revert index.html
+* 661a6cd File complete local
+
+~~~
+
+(HEAD -> master, origin/master) 
+
+## 从远程拉取改变到本地 Pull changes from a remote
