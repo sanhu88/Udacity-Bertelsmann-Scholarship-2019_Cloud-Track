@@ -1478,3 +1478,131 @@ You can think of `git fetch` as half of a `git pull` 可以理解成，fetch只�
 One main point when you want to use `git fetch` rather than `git pull` is if your remote branch and your local branch both have changes that neither of the other ones has. In this case, you want to fetch the remote changes to get them in your local branch and then perform a merge manually. Then you can push that new merge commit back to the remote.
 
 而且，本地具有远程没有的提交时，git pull不会工作
+
+in [my-travel-plans](https://github.com/sanhu88/my-travel-plans)
+
+~~~bash
+$ git log --oneline --graph --all
+* 2b41bde (HEAD -> master) add text on local for test fetch
+* 86a16b0 (origin/master) change app.css
+* 51664f6 revert index.html
+* 661a6cd File complete local
+
+~~~
+
+![fetch_on_Github](.\images\fetch_on_Github.png)
+
+on local repo we can see HEAD ->master SHA is 2b41bde but origin/master point to 86a16b0.
+
+On the other hand,Github HEAD is e25d6a6 and 86a16b0 is HEAD^
+
+~~~bash
+
+$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From github.com:sanhu88/my-travel-plans
+ * branch            master     -> FETCH_HEAD
+   86a16b0..e25d6a6  master     -> origin/master
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.
+
+~~~
+
+~~~bash
+$ git pull origin master
+error: Pulling is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+
+~~~
+
+~~~bash
+git fetch origin master
+From github.com:sanhu88/my-travel-plans
+ * branch            master     -> FETCH_HEAD
+
+~~~
+
+
+
+~~~bash
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+
+        both modified:   README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+~~~
+
+~~~bash
+$ git log --oneline --graph --all
+* 2b41bde (HEAD -> master) add text on local for test fetch
+| * e25d6a6 (origin/master) add text on Github
+|/
+* 86a16b0 change app.css
+* 51664f6 revert index.html
+* 661a6cd File complete local
+
+~~~
+
+~~~bash
+
+$ git merge origin/master
+fatal: You have not concluded your merge (MERGE_HEAD exists).
+Please, commit your changes before you merge.
+
+~~~
+
+~~~bash
+
+git merge origin/master
+Already up to date.
+
+~~~
+
+~~~bash
+$ git log --oneline --graph --all
+*   03f08b5 (HEAD -> master) fix merge conflict by pull
+|\
+| * e25d6a6 (origin/master) add text on Github
+* | 2b41bde add text on local for test fetch
+|/
+* 86a16b0 change app.css
+* 51664f6 revert index.html
+* 661a6cd File complete local
+
+~~~
+
+~~~bash
+git push -u origin master
+~~~
+
+update remote repo from local and keep both same
+
+~~~bash
+$ git log --oneline --graph --all
+*   03f08b5 (HEAD -> master, origin/master) fix merge conflict by pull
+|\
+| * e25d6a6 add text on Github
+* | 2b41bde add text on local for test fetch
+|/
+* 86a16b0 change app.css
+* 51664f6 revert index.html
+* 661a6cd File complete local
+
+~~~
+
