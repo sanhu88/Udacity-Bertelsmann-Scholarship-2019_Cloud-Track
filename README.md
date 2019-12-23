@@ -843,7 +843,7 @@ git tag -a v1.0 a87984
 
 ## git branch
 
-默认的是Master 分支
+默认的是master 分支
 
 ~~~bash
 git branch sidebar
@@ -863,7 +863,7 @@ git checkout sidebar
 git checkout master
 ~~~
 
-切换回Master
+切换回master
 
 往前溯源
 
@@ -936,7 +936,7 @@ git branch -d sidebar
 
 两种情况不允许删除：
 
-1. **无法删除当前工作的的分支** ，所以上方删除之前，需要切换到Master分支
+1. **无法删除当前工作的的分支** ，所以上方删除之前，需要切换到master分支
 2. **如果要删除的分支，提交了其他分支没有的内容，也不允许删除**
 
 ~~~bash
@@ -979,7 +979,7 @@ git log --oneline --decorate --graph --all
 
 合并sidebar到master ，不会影响到sidebar，可以继续对sidebar 进行修改提交
 
-如果某个分支有些提交时Master不包含的（多余Master的提交），可以 fast forward merge 快进合并，把HEAD 指向最新的提交（因为Master没有这些提交）。
+如果某个分支有些提交时master不包含的（多余master的提交），可以 fast forward merge 快进合并，把HEAD 指向最新的提交（因为master没有这些提交）。
 
 撤销一次合并：
 
@@ -1018,7 +1018,7 @@ Fast-forward
 
 ~~~
 
-会让HEAD都指向 footer 和Master
+会让HEAD都指向 footer 和master
 
 ~~~bash
 9743d0f (HEAD -> master, footer) add footer social account links
@@ -1449,3 +1449,32 @@ git pull 运行时：
 - the commit(s) on the remote branch are copied to the local repository
 - the local tracking branch (`origin/master`) is moved to point to the most recent commit
 - the local tracking branch (`origin/master`) is merged into the local branch (`master`)
+
+## Pull 和 Fetch
+
+当远程仓库具有本地仓库所不具有的提交时，使用
+
+~~~bash
+git fetch origin master
+~~~
+
+只是把 origin/master 分支更新到和远程一致，不会自动合并，但是master 分支没有任何改变。
+
+如果想要把master 指向最新提交，需要使用merge命令来合并origin/master分支到master
+
+~~~bash
+git merge origin/master
+~~~
+
+fetch总结：
+
+- the commit(s) on the remote branch are copied to the local repository 下载远程分支到本地
+- the local tracking branch (e.g. `origin/master`) is moved to point to the most recent commit 本地对应的分支回指向最新提交（不是master）
+
+You can think of `git fetch` as half of a `git pull` 可以理解成，fetch只做了pull的一半，pull多了merge。
+
+主要用于远程和本地都有了对方没有的提交，使用fetch来拉取到origin/master 分支，然后手动再合并。最后整理到最新的去远程，远程也回记录不同的提交，然后合并到和本地一致。
+
+One main point when you want to use `git fetch` rather than `git pull` is if your remote branch and your local branch both have changes that neither of the other ones has. In this case, you want to fetch the remote changes to get them in your local branch and then perform a merge manually. Then you can push that new merge commit back to the remote.
+
+而且，本地具有远程没有的提交时，git pull不会工作
