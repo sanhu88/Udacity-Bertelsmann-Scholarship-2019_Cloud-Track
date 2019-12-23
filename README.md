@@ -7,7 +7,7 @@ Notice：
 
 1.此篇笔记，代码在前，文字解释在代码区块下方。
 
-
+[学习进度](https://progress-bar.dev/28/?title=Learned)
 
 ## Shell Workshop
 
@@ -1482,6 +1482,12 @@ One main point when you want to use `git fetch` rather than `git pull` is if you
 in [my-travel-plans](https://github.com/sanhu88/my-travel-plans)
 
 ~~~bash
+git diff -w
+~~~
+
+
+
+~~~bash
 $ git log --oneline --graph --all
 * 2b41bde (HEAD -> master) add text on local for test fetch
 * 86a16b0 (origin/master) change app.css
@@ -1605,4 +1611,138 @@ $ git log --oneline --graph --all
 * 661a6cd File complete local
 
 ~~~
+
+## Fork /Review /Permission
+
+### fork
+
+fork 名词时叉子，动词是（路）岔开了，Git中fork代表split 分成相同的两份，但是没有git fork命令，由宿主环境提供（Github）。复制一个仓库并成为拥有者
+
+总结：
+
+Forking is an action that's done on a hosting service, like GitHub. Forking a repository creates an identical copy of the original repository and moves this copy to your account. You have total control over this forked repository. Modifying your forked repository does not alter the original repository in any way.
+
+### 查看已经存在的工作
+
+~~~bash
+git log
+~~~
+
+#### 按照贡献数量
+
+~~~bash
+$ git shortlog
+Burt Zheng (5):
+      translate from line 3490
+      translate update to line 3500
+      aupdate line 3501-3524
+      aupdate line 3474-3489
+      update line 3224-3290
+
+Jimmy (1):
+      Merge pull request #5 from sanhu88/master
+
+MyoDaisy (1):
+      Merge pull request #6 from sanhu88/master
+
+SMP (2):
+      update
+      update
+
+Sam (32):
+      init
+      init
+      init
+      init
+      init
+~~~
+
+git shortlog 查看各提交者贡献多少提交 how many commits each contributor has added to the repository
+
+~~~bash
+git shortlog -s -n
+    37  sam
+    32  Sam
+     5  Burt Zheng
+     3  Sam Thomas
+     2  SMP
+     1  Jimmy
+     1  MyoDaisy
+     1  Simon Sippert
+
+~~~
+
+-s 代表只看提交总数，不查看提交备注信息to show just the number of commits (rather than each commit's message) 
+
+-n 按照提交总数排序，而不是按照默认的名字首字母排序 sort them numerically (rather than alphabetically by author name).
+
+#### 按作者查找
+
+~~~bash
+$ git log --author=Sam
+commit 496b552658707f33bb61c7c27a20203197c94d89
+Merge: 56acf3f 91a80af
+Author: Sam Thomas <imsamthomas@users.noreply.github.com>
+Date:   Thu May 23 10:46:59 2019 +0700
+
+    Merge pull request #7 from sippsolutions/patch-1
+
+    Remove fixed version from composer.json
+
+commit 5b9e8b0fa7623526a43eafed174a07cb8c2581a2
+Author: Sam <sam@mageplaza.com>
+Date:   Wed Apr 10 17:40:15 2019 +0700
+
+    Update Language Pack
+
+~~~
+
+--author 是过滤条件，会显示所有符合的作者详细提交信息
+
+
+
+~~~bash
+$ git log --author="Paul Lewis"
+~~~
+
+筛选特定的人名用上述方法
+
+#### 按照特定的SHA来搜索
+
+~~~bash
+ git show 5966b66
+~~~
+
+会提供更多的提交信息，尤其是被注释的部分。it easier for others to review the changes to. Another thing is filtering commits by information in the current message or description area.
+
+#### 按照关键字词来搜索
+
+~~~bash
+$ git log --grep=bug
+$ git log --grep bug
+~~~
+
+按照关键词来搜索，留意，如果关键词包含空格，必须使用引号来包裹。
+
+Grep is a pattern matching tool.
+
+总结
+
+- group commits by author
+
+  ```bash
+    $ git shortlog
+  ```
+
+- filter commits with the `--author` flag
+
+  ```bash
+    $ git log --author="Richard Kalehoff"
+  ```
+
+- filter commits using the `--grep` flag
+
+  ```bash
+    $ git log --grep="border radius issue in Safari"
+  ```
 
