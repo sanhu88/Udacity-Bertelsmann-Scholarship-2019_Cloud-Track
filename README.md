@@ -1746,3 +1746,93 @@ Grep is a pattern matching tool.
     $ git log --grep="border radius issue in Safari"
   ```
 
+### 按照约定去参与
+
+#### Pull Request
+
+如果发现原作者的repo有bug，可以fork后到自己的仓库修改，git pull修改然后，git psuh到GitHub
+
+#### CONTRIBUTING.md File
+
+this file lists out the information you should follow to contribute to the project. You should look for this file before you start doing development work of any kind.
+
+In a CONTRIBUTING.md file it explains *how* your code should be formatted and the steps you should go about to contribute
+
+我们参与前要仔细阅读相关要求 Do in Rome as Rome does
+
+As you can see this contributor file has a ton of information in it. So you should definitely look for a CONTRIBUTING.md file when you want to contribute to a project.
+
+#### GitHub Issues
+
+比较大的变动，和开发者或者维护者沟通，也可以避免别人重复劳动（比如别人已经在做你准备要做的事情）
+
+Now, "issues" doesn't mean that there's actually a bug, it can just be any change that needs to be made to the project. GitHub's issue tractor is quite sophisticated. Each issue can:
+
+- have a label or multiple labels applied to it 可以有一个或者多个标签
+- can be assigned to an individual 可以分配给个人
+- can be assigned a milestone (for example the issue will be resolved by the next major release) 可以分配给一个里程碑
+
+每一个issue，提供给参与者一个表单可以追踪一个话题
+
+Another thing that's nice about issues is:
+
+- they let you subscribe to an issue so you'll be notified of new comments and code changes-可以订阅这个话题，可以收到新的评论和代码变动
+- you can communicate back and forth with a project maintainer on a specific change -以与项目维护者就特定的更改进行交流
+
+发表新的话题前，应该提前搜索是否已经存在。
+
+#### New Issue Page
+
+如果repo包含CONTRIBUTING.md ，当提交新的话题时，会提醒你去查看指导方案。
+
+话题页面支持MK语法，Udaciy有这门[课程](https://www.udacity.com/course/writing-readmes--ud777)
+
+1. an issue with an informative title that explains briefly what you want to do 标题要简明说明
+2. provide plenty of detail on what the change is, or why you think it's needed, or how this will make the project better 解释如何提升了项目
+3. Once the project maintainer has given you the go-ahead it's time to start working on the changes you want to contribute back to the project. 等待项目维护者批准
+
+#### 话题分支 Topic Branches
+
+针对issue 创建一个话题分支，命名可以参考：
+
+- `login`
+- `login-bug`
+- `signup-bug`
+- `login-form-bug`
+- etc.
+
+So definitely check out the CONTRIBUTING.md file to see if they provide instructions on what you should name your topic branches.
+
+命名分支前需要参考指导文档，`bugfix-` prefix.
+
+#### 最佳实践 Best Practices
+
+1. Write Descriptive Commit Messages 编写描述性提交消息
+
+   ​	The more descriptive your branch name and commit messages are the more likely it is that the project's maintainer will not have to ask you questions about the purpose of your code or have dig into the code themselves.
+
+2. Create Small, Focused Commits  更小的提交，更容易通过
+
+   make sure your commits are in small enough chunks and that each commit is focused on altering just one thing. This way the maintainer can say I like commits A, B, C, D, and F but not commit E.
+
+3. Update The README
+
+   And lastly if any of the code changes that you're adding drastically changes the project you should update the README file to instruct others about this change.
+
+   如果发生了重大改变，应该更新README文档中相关部分
+
+#### 如何优雅的合作总结:
+
+1. 开始之前，应该检查CONTRIBUTING.md 。Before you start doing any work, make sure to look for the project's CONTRIBUTING.md file.
+2. 创建issue
+   * ook at the existing issues to see if one is similar to the change you want to contribute 查看是否已经存在相近的话题
+   * if necessary create a new issue 
+   * communicate the changes you'd like to make to the project maintainer in the issue 和项目者在issue中沟通将要做的改变
+3. 开始改进工作，在话题分支上进行
+   * do not work on the master branch
+   * make sure to give the topic branch clear, descriptive name 给出清晰的表述性的提交名称
+4. general best practice for writing commits 书写提交的最佳实践
+   * make frequent, smaller commits 小型化提交
+   * use clear and descriptive commit messages 清楚描述性的提交信息
+   * update the README file, if necessary
+
