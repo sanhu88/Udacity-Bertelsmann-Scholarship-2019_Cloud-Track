@@ -1836,3 +1836,50 @@ So definitely check out the CONTRIBUTING.md file to see if they provide instruct
    * use clear and descriptive commit messages 清楚描述性的提交信息
    * update the README file, if necessary
 
+## Create a Pull Request
+
+A **pull request** is a request to the *original* or *source repository's* maintainer to include changes in their project that you made in your fork of their project.
+
+请求项目维护者包含自己在fork项目中做的改变。
+
+自己创先的fix-bug-** 分支pull给项目维护者，接受后会在master 创建merge 然后point指向合并后的新提交
+
+~~~bash
+$ git push -u origin master
+Everything up-to-date
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+Admin@DESKTOP-BEH3BD4 MINGW64 /d/Online/Udacity/course-collaboration-travel-plans (add-city-of-China)
+$ git push -u origin add-city-of-China
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 615 bytes | 87.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+remote:
+remote: Create a pull request for 'add-city-of-China' on GitHub by visiting:
+remote:      https://github.com/sanhu88/course-collaboration-travel-plans/pull/new/add-city-of-China
+remote:
+To github.com:sanhu88/course-collaboration-travel-plans.git
+ * [new branch]      add-city-of-China -> add-city-of-China
+Branch 'add-city-of-China' set up to track remote branch 'add-city-of-China' from 'origin'.
+
+~~~
+
+
+
+As long as you following the steps we covered in the previous section on:
+
+- reviewing the project's CONTRIBUTING.md file 查看CONTRIBUTING
+- checking out the project's existing issues 查看issue里是否存在相同话题
+- talking with the project maintainer 和项目维护者沟通
+
+总结：
+
+- you must *fork* the source repository 分发到自己的账号
+- clone your fork down to your machine 克隆到本地
+- make some commits (ideally on a topic branch!) 创建提交
+- push the commits back to *your fork* 提交到自己fork的
+- create a new pull request and choose the branch that has your new commits 创建pull
