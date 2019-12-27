@@ -1413,6 +1413,7 @@ $ git log --oneline --graph --decorate --all
 
 ~~~bash
 git pull origin master
+语法 git pull  远程（拥有较多提交） 本地分支（较少提交）
 ~~~
 
 来拉取并合并到本地
@@ -1456,9 +1457,11 @@ git pull 运行时：
 
 ~~~bash
 git fetch origin master
+
+语法 git fetch  远程（拥有较多提交） 本地分支（较少提交）
 ~~~
 
-只是把 origin/master 分支更新到和远程一致，不会自动合并，但是master 分支没有任何改变。
+只是把 本地origin/master 分支更新到和远程一致，不会自动合并，但是本地master 分支没有任何改变。
 
 如果想要把master 指向最新提交，需要使用merge命令来合并origin/master分支到master
 
@@ -1496,7 +1499,7 @@ $ git log --oneline --graph --all
 
 ~~~
 
-![fetch_on_Github](.\images\fetch_on_Github.png)
+![fetch_on_Github](README.assets/fetch_on_Github.png)
 
 on local repo we can see HEAD ->master SHA is 2b41bde but origin/master point to 86a16b0.
 
@@ -1883,3 +1886,152 @@ As long as you following the steps we covered in the previous section on:
 - make some commits (ideally on a topic branch!) 创建提交
 - push the commits back to *your fork* 提交到自己fork的
 - create a new pull request and choose the branch that has your new commits 创建pull
+
+## 和原仓库保持一致 Stay in sync with source project
+
+打星标原始仓库
+
+~~~bash
+https://github.com/stars
+~~~
+
+如果不想星标，可以使用watching功能
+
+"Watching" ，in this way GitHub will notify you whenever anything happens with the repository like people pushing changes to the repository, new issues being created, or comments being added to existing issues.
+
+本地从仓库和自己fork出来的repo 成为origin ，和原本的被fork仓库成为upstream
+
+![upstream](README.assets/image-20191227210338090.png)
+
+~~~bash
+$ git remote -v
+origin  git@github.com:sanhu88/course-collaboration-travel-plans.git (fetch)
+origin  git@github.com:sanhu88/course-collaboration-travel-plans.git (push)
+
+~~~
+
+在本地查看远程repo 使用git remote -v
+
+origin是默认为我们分配关联的，在git clone的时候
+
+~~~bash
+git remote add upstream https://github.com/udacity/course-collaboration-travel-plans.git
+~~~
+
+使用remote add upstream 来添加被fork的repo
+
+upstream不是唯一指定的，可以为其他名称，但是是典型常见的
+
+~~~bash
+$ git remote -v
+origin  git@github.com:sanhu88/course-collaboration-travel-plans.git (fetch)
+origin  git@github.com:sanhu88/course-collaboration-travel-plans.git (push)
+upstream        https://github.com/udacity/course-collaboration-travel-plans.git (fetch)
+upstream        https://github.com/udacity/course-collaboration-travel-plans.git (push)
+
+~~~
+
+### origin和upstream
+
+* the word `origin` is not actually the original repository 名字origin 的repo不是真正指向原始仓库
+
+* origin 和upstream不是特定的，可以自己改成mine和source-repo也行的
+
+  ~~~bash
+  git remote rename origin mine
+  
+  git remote rename upstream source-repo
+  
+  ~~~
+
+### 检查upstream的变化 Retrieving Upstream Changes
+
+~~~bash
+git fetch upstream master
+~~~
+
+fetch之后，只会改变local 仓库，GitHub上的仓库还需要push去更新
+
+~~~bash
+git fetch upstream master
+From https://github.com/udacity/course-collaboration-travel-plans
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> upstream/master
+
+~~~
+
+然后查看详情
+
+~~~bash
+git log --oneline --graph --decorate --all
+~~~
+
+![The terminal application showing the log of my local repository after fetching  the `upstream` remote's changes](README.assets/ud456-l3-03-git-log-of-upstream-changes.png)
+
+这时，upstream/master（upstream的master） 已经超过本地master的提交了。
+
+~~~bash
+ git fetch upstream master
+~~~
+
+用fetch 把upstream上多的提交取下来
+
+~~~bash
+git pull upstream/master master
+~~~
+
+也可以用pull 直接合并，确保master没有和原仓库有不同的提交
+
+
+
+upstream/master 拉取到本地仓库后，不要直接push到我们fork的仓库
+
+~~git push origin upstream/master~~
+
+因为 upstream/master 并不是我们本地的一个分支。使用merge合并到本地的master
+
+~~~bash
+$ git log --oneline --graph --all
+* 5c74e39 (upstream/master) Update Language Pack
+* 4b07aa2 Update Language Pack
+| * 94bbeab (HEAD -> master, origin/master, origin/HEAD) update line 3224-3290
+|/
+* c8292ce Update Language Pack
+~~~
+
+fetch完会发现HEAD并不在最近的SHA上
+
+~~~bash
+git checkout master
+#切换到master，因为开发是在自己的分支上
+
+git merge upstream/master
+#合并upstream上的master最新的递交 到本地master
+
+git push origin master
+#提交到我们GitHub上fork的远程仓库
+~~~
+
+~~~bash
+git log --oneline --graph --all
+*   65cf29c (HEAD -> master) Merge remote-tracking branch 'upstream/master' on Dec 27 2019
+|\
+| * 5c74e39 (upstream/master) Update Language Pack
+| * 4b07aa2 Update Language Pack
+* | 94bbeab (origin/master, origin/HEAD) update line 3224-3290
+|/
+* c8292ce Update Language Pack
+
+~~~
+
+总结：
+
+跟踪项目维护者的原始仓库变化：
+
+1. 为本地repo添加一个upstream分支 git remote add
+2. fetch 来抓取 upstream上的变化
+3. 合并upstream到本地的master
+4. 推送新的master到GitHub（其他远程仓库）上
+
+
+
