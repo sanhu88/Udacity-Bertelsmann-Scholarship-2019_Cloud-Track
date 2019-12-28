@@ -2033,5 +2033,8 @@ git log --oneline --graph --all
 3. 合并upstream到本地的master
 4. 推送新的master到GitHub（其他远程仓库）上
 
+### 管理PR  Manage an active PR（pull request）
 
-
+1. The CONTRIBUTING.md file should be used to list out all information that the project's maintainer wants, so make sure to follow the information there.
+2. be kind - the project's maintainer is a regular person just like you
+3. be patient - they will respond as soon as they are able
