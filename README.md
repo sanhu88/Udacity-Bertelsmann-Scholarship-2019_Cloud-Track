@@ -2038,3 +2038,98 @@ git log --oneline --graph --all
 1. The CONTRIBUTING.md file should be used to list out all information that the project's maintainer wants, so make sure to follow the information there.
 2. be kind - the project's maintainer is a regular person just like you
 3. be patient - they will respond as soon as they are able
+
+### 压缩提交 Squash Commits
+
+~~~bash
+git rebase -i
+#有相对的操作风险
+~~~
+
+~~~bash
+git rebase -i HEAD~3
+~~~
+
+将会最后三个提交合压缩成一个，具体是讲所的提交和前两个提交压制为一个新的，并指向这个新的
+
+安全起见，创建一个backup分支备份，让log里保存之前的提交
+
+* `HEAD~3` as the base where all of the other commits (`HEAD~2`, `HEAD~1`, and `HEAD`) will connect to
+* The `-i` in the command stands for "interactive". 交互式（推荐使用）
+
+git rebase 后commit部分
+
+1. 底部的提交是最新的提交，逆时序
+2. rebase的命令
+   1. p pick，使用提交
+   
+   2. r reword 使用并修改提交
+   
+   3. s squash 使用但合并到之前的提交（不可以全是s）
+   
+   4. e edit 保留提交但是停用之前的提交，我们可以：
+   
+      添加新的文件和内容
+   
+      删除文件和内容
+   
+      修改过去提交中的内容
+   
+   5. f fixup -to combine this commit's change into the previous one but drop the commit message合并这次提交的改变到之前的提交，但是要删除提交信息
+   
+   6. x exec 运行shell命令
+   
+   7. d drop 删除提交
+
+注意，不应当rebase合并合作中广泛使用的提交，让合作者也需要如此操作才能保持一致。
+
+If you then use `git rebase` to change things around and then force push the commits, then the other developers will now be out of sync with the remote repository. They will have to do some complicated surgery to their Git repository to get their repo back in a working state...and it might not even be possible for them to do that; 
+
+~~~bash
+$ git log --oneline --decorate --graph --all
+* e3e348e (HEAD -> add-city-of-China) add city from China
+| * eddb989 (origin/add-city-of-China) add shanghai of China
+| * 49fafde add Beijing
+|/
+* 650a8de (upstream/master, origin/master, origin/HEAD, master) Update index.html
+* 574c456 changed travel destinations
+* 9039cf9 changed to Sao Paolo
+* b2d0353 Add animation to destination headings
+* 1204be0 Style destinations
+* 7562e21 Add starting destinations
+* 5e9b201 Initial commit
+
+~~~
+
+~~~bash
+$ git push
+To github.com:sanhu88/course-collaboration-travel-plans.git
+ ! [rejected]        add-city-of-China -> add-city-of-China (non-fast-forward)
+error: failed to push some refs to 'git@github.com:sanhu88/course-collaboration-travel-plans.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+~~~
+
+需要强制更新
+
+~~~bash
+git push -f
+~~~
+
+~~~bash
+$ git push -f origin add-city-of-China
+Enumerating objects: 9, done.
+Counting objects: 100% (9/9), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 673 bytes | 112.00 KiB/s, done.
+Total 5 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To github.com:sanhu88/course-collaboration-travel-plans.git
+ + eddb989...e3e348e add-city-of-China -> add-city-of-China (forced update)
+
+~~~
+
