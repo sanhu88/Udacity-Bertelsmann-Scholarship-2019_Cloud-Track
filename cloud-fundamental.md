@@ -87,3 +87,63 @@ Did you know that Amazon Web Services (AWS) provides a mix of infrastructure as 
 - Scale globally in minutes.
 
 - Deliver faster.
+
+## Cloud 服务商
+
+* AWS - Amazon Web Services
+* GCP- Google Cloud Platform 
+* Microsoft Azure 
+
+AWS 服务预览
+
+1. Analytics 分析
+
+   Amazon Quicksight
+
+2. Application integration 应用集成
+
+   SQS- simple queue service
+
+   SNS- simple notification service
+
+3. AWS cost management / Budgets (预算)
+
+4. Compute services
+
+   * EC2 -Elastic(弹性) Cloud Compute 虚拟机
+   * Lambda 拉姆达 无主机服务
+   * Elastic Beanstalk 网页服务
+
+5. 数据库 Database
+
+   * MySQL
+   * Oracle
+   * SQL Server
+   * NoSQL - Dynamo DB
+   * Document-based Database -MongoDB
+
+6. Developer Tools
+
+   * AWS Cloud 9 -Cloud IDE
+   * Code Pipeline -continue integration 持续集成
+
+7. Security services 安全服务
+
+   * KMS -  key management service for data encryption
+   * AWS shield - DDoS protection
+   * IAM -Identity and Access Management 
+
+8. Additional Services
+
+   - Blockchain
+   - Machine Learning
+   - Computer Vision
+   - Internet of Things (IoT)
+   - AR/VR
+
+将会学习到：
+
+popular storage、content delivery services 、networking 、security and messaging services
+
+
+
