@@ -67,4 +67,23 @@ Did you know that Amazon Web Services (AWS) provides a mix of infrastructure as 
 
    PII(personally identifiable information) 和网页服务搭配使用时
 
-   
+## 可见好处 Common Benefits
+
+- ability to innovate quickly
+
+- ability to fail fast
+
+  fail-fast就是在做系统设计的时候先考虑异常情况，一旦发生异常，直接停止并上报
+
+  对两个整数做除法的方法，在divide方法中，我们对被除数做了个简单的检查，如果其值为0，那么就直接抛出一个异常，并明确提示异常原因。这其实就是fail-fast理念的实际应用。
+  这样做的好处就是可以预先识别出一些错误情况，一方面可以避免执行复杂的其他代码，另外一方面，这种异常情况被识别之后也可以针对性的做一些单独处理。
+
+- Stop guessing about capacity.
+
+- Avoid huge capital investments(投资) up front.
+
+- Pay for only what you use.
+
+- Scale globally in minutes.
+
+- Deliver faster.
