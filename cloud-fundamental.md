@@ -94,7 +94,7 @@ Did you know that Amazon Web Services (AWS) provides a mix of infrastructure as 
 * GCP- Google Cloud Platform 
 * Microsoft Azure 
 
-AWS 服务预览
+## AWS 服务预览
 
 1. Analytics 分析
 
@@ -145,5 +145,26 @@ AWS 服务预览
 
 popular storage、content delivery services 、networking 、security and messaging services
 
+## 全球基础架构 Global Infrastructure
 
+1. ### Region 区域 （22） 
+
+   A region is considered a geographic location or an area on a map.
+
+   区域间资源不会跨区域复制replicate
+
+2. ### Availability Zone AZs 可用区
+
+   An availability zone is an isolated location within a geographic region and is a physical data center within a specific region.一个可用区失败不会影响到另外一个可用区
+
+3. ### Edge Location 本地区域
+
+   An edge location is as a mini-data center used solely to cache large data files closer to a user's location. CDN
+
+### Additional Information
+
+- There are more Availability Zones (AZs) than there are Regions.
+- There should be at least two AZs per Region.
+- Each region is located in a separate geographic area.
+- AZs are distinct locations that are engineered to be isolated from failures.
 
