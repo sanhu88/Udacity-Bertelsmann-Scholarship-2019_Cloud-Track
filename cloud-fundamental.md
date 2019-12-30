@@ -43,3 +43,28 @@ Bertelsmann Tech Scholarship Challenge Course - Cloud Track on Udacity.com
 
 Did you know that Amazon Web Services (AWS) provides a mix of infrastructure as a service (IaaS), platform as a service (PaaS) and packaged software as a service (SaaS) offerings?
 
+## 云部署模型  Cloud Deployment Models
+
+1. 公有云 Public Cloud
+
+   A public cloud makes resources available over the Internet to the general public.
+
+   资源包括 服务器、数据库、应用开发服务
+
+   AWS是最大公有云提供商
+
+2. 私有云 Private Cloud 
+
+   A private cloud is a proprietary(专属) network that supplies services to a limited number of people.
+
+   On-premises 内部部署  best describes a private cloud.
+
+3. 混合云 Hybrid Cloud
+
+   A hybrid model contains a combination of both a public and a private cloud.
+
+   *he hybrid model gives organizations the flexibility to slowly migrate to the cloud.*
+
+   PII(personally identifiable information) 和网页服务搭配使用时
+
+   
