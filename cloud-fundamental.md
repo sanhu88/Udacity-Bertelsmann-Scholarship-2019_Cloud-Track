@@ -19,7 +19,7 @@ Bertelsmann Tech Scholarship Challenge Course - Cloud Track on Udacity.com
 
 1. Pay-as-you-go 即用即付 无长期合同
 2. Auto scaling 自动伸缩 自动增减
-3. Sever-less 无主机 cloud运营商提供管理主机服务；分工
+3. Sever-less 无主机 cloud运营商提供管理主机服务（cloud provider manages servers for you）；分工
 
 ## 云计算类型 Types of Cloud Computing
 
@@ -168,3 +168,64 @@ popular storage、content delivery services 、networking 、security and messag
 - Each region is located in a separate geographic area.
 - AZs are distinct locations that are engineered to be isolated from failures.
 
+## 共同责任模式 Shared Responsibility Model
+
+当我们开发程序并提供服务给用户和客户时，我们与AWS共同承担责任
+
+### AWS is responsible for:
+
+- Securing edge locations
+- Monitoring physical device security
+- Providing physical access control to hardware/software
+- Database patching
+- Discarding physical storage devices
+- Providing generators and un-interruptible power supply (UPS) systems
+
+### You are responsible for:
+
+* Managing AWS Identity and Access Management (IAM)
+* Encrypting data
+* Preventing or detecting when an AWS account has been compromised
+* Restricting access to AWS services to only those users who need it
+* Applying security patches to EC2 
+* Configuring a firewall
+
+## 开设试用账户 Setup free-tier account
+
+## Prerequisites:
+
+- Credit card
+- Valid email address
+- Phone number (used during sign up for validation)
+- Virtual Multi-Factor Authentication (MFA) application, such as, Google Authenticator, Authy 2-Factor Authentication, or Authenticator installed on your mobile phone
+
+# Travel blog website
+
+## 为何需要云服务器
+
+1. Scale capacity up and down based on demands.
+2. Storage, more memory, and computing power can be added as needed.
+3. Obtain servers in minutes.
+4. No need for onsite hardware or capital expenses.
+
+## EC2 - Elastic Cloud Compute 弹性云计算
+
+EC2 instance 
+
+EC2 is found under the Compute section of the AWS Management Console.是AWS 最小的基础单位
+
+价格选项：
+
+1. On Demand - Pay as you go, no contract.
+2. Dedicated Hosts - You have your own dedicated hardware and don't share it with others.
+3. Spot(点) - You place a bid on an instance price. If there is extra capacity that falls below your bid, an EC2 instance is provisioned. If the price goes above your bid while the instance is running, the instance is terminated.
+4. Reserved Instances - You earn huge discounts if you pay up front and sign a 1-year or 3-year contract.
+
+## EBS -elastic block store 弹性块存储
+
+a storage solution for EC2 instances and is a physical hard drive that is attached to the EC2 instance to increase storage.
+
+好处 benefit ：
+
+1. able to persist(存留) data after EC2 is terminated
+2. automatically  replicated in its AZ(availability zone)
