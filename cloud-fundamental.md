@@ -229,3 +229,21 @@ a storage solution for EC2 instances and is a physical hard drive that is attach
 
 1. able to persist(存留) data after EC2 is terminated
 2. automatically  replicated in its AZ(availability zone)
+
+## security in the cloud
+
+- Configure your virtual network with public or private facing subnets-使用面向公共或私有子网配置虚拟网络
+- Launch your servers in the selected network to secure access-启动所选网络中的服务器以确保访问安全
+
+## Virtual Private Cloud (VPC)-隔离云资源
+
+Virtual Private Cloud or VPC allows you to create your own private network in the cloud. You can launch services, like EC2, inside of that private network. A VPC spans all the Availability Zones in the region.
+
+VPC 可以控制：
+
+- IP address ranges
+- subnets
+- route tables
+- network gateways
+
+EC2 Instances can be launched in a VPC, and you can store data in Amazon S3 and restrict access so that it’s only accessible from instances in your VPC.
