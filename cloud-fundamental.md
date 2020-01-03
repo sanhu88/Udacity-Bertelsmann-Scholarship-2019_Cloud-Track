@@ -326,3 +326,18 @@ Compute power in the cloud is a faster way to build applications, providing:
 - ability to continuously scale
 - ability to run code on demand in response to events
 - pay only when your code runs
+
+## AWS Lambda
+
+a chuck of code that run in the Cloud,Lambda is one serverless technology offered by AWS.
+
+- Lambda is found under the Compute section on the AWS Management Console.
+- Lambdas have a time limit of 15 minutes.
+- The code you run on AWS Lambda is called a “Lambda function.”
+- Lambda code can be triggered by other AWS services.
+- AWS Lambda supports Java, Go, PowerShell, Node.js, C#/.NET, Python, and Ruby. There is a Runtime API that allows you to use other programming languages to author your functions.
+- Lambda code can be authored via the console.
+
+The Lambda console editor in the AWS Management Console is the easiest way.
+
+Lambda is event-driven, so you can run your code based on certain events happening, like a file upload, or a record being inserted in a database, etc.
