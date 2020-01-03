@@ -657,3 +657,13 @@ Redshift is a cloud data warehousing service to help companies manage big data. 
      - Select `I acknowledge that upon instance deletion, automated backups, including system snapshots and point-in-time recovery, will no longer be available.`
      - Enter the requested confirmation for deletion.
      - Click the `Delete` button
+
+##  Content Delivery Network (or CDN) 
+
+A Content Delivery Network (or CDN) speeds up delivery of your static and dynamic web content by caching content in an Edge Location close to your user base.
+
+The benefits of a CDN includes:
+
+- low latency
+- decreased server load
+- better user experience
