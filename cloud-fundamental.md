@@ -584,3 +584,76 @@ RDS (or Relational Database Service) is a service that aids in the administratio
 练习题：
 
 To deliver a managed service experience, Amazon RDS doesn't provide shell access to DB instances.
+
+## RedShift
+
+Redshift is a cloud data warehousing service to help companies manage big data. Redshift allows you to run fast queries against your data using SQL(standard query language), ETL(extract transform load tolols), and BI (business intelligence )tools. Redshift stores data in a column format to aid in fast querying.
+
+- Redshift can be found under the Database section on the AWS Management Console.
+- Redshift delivers great performance by using machine learning.
+- Redshift Spectrum is a feature that enables you to run queries against data in Amazon S3.
+- Redshift encrypts and keeps your data secure in transit and at rest.
+- Redshift clusters can be isolated using Amazon Virtual Private Cloud (VPC).
+
+以在线商店为例，当年的订单数据应当存储在RDS关系型数据库中，以便每日使用。10年之前的数据可以archive到redshift中用来分析，有快速的查询和分析能力
+
+实习：
+
+## Steps:
+
+1. **Launch MySQL Database**
+
+   - On the AWS Management Console page, type `rds` in the `Find Services` box and then select `RDS`.
+
+   - On the left-hand side, click `Databases`.
+
+   - Click `Create database`.
+
+   - Under engines option, select `MySQL` and click the `Next` button
+
+   - Under `Instance specifications`, leave the defaults.
+
+   - Under the `Settings` section:
+
+     - Enter a name for the instance under `DB instance identifier`
+
+     Note: This will not be the database name.
+
+   - Enter a `Master username`
+
+   - Enter a `Master password` and confirm the password.
+
+   - Click `Next`
+
+   - For `Virtual Private Cloud (VPC)`, select `Create new VPC`.
+
+   - Ensure `Create new DB Subnet Group` is selected.
+
+   - Leave the defaults for `Subnet group`, `Public accessibility`, `Availability zone`, and `VPC security groups`.
+
+   - Under `Database options`, enter a `Database name` and leave the rest as defaults.
+
+   - Under `Deletion protection`, uncheck `Enable deletion protection`. ***Important:\*** In a real production scenario, you would leave this option checked.
+
+   - Click Create database`.
+
+2. View Instance Details
+
+   - Once your database is created, open it by clicking on `View DB Instance details`.
+   - Make sure the `DB instance status` shows `available`.
+   - Scroll through and observe how the instance is configured.
+
+3. Delete Database Instance
+
+    
+
+   Clean up the resources to avoid recurring charges.
+
+   - From the RDS Dashboard homepage, select `Databases` from the left-hand navigation pane.
+   - Select your newly created database by clicking on the name radio button next to the name.
+   - From the `Actions` menu, select `Delete`.
+   - In the confirmation popup:
+     - Uncheck `Create final snapshot`
+     - Select `I acknowledge that upon instance deletion, automated backups, including system snapshots and point-in-time recovery, will no longer be available.`
+     - Enter the requested confirmation for deletion.
+     - Click the `Delete` button
