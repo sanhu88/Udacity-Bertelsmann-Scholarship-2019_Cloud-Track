@@ -472,7 +472,7 @@ Amazon Simple Storage Service (or S3) is an object storage system in the cloud�
 
 文本，图片，html都可以
 
-文件存储在bucket里，S3 的bucket在region里；必须全局唯一名字
+文件存储在bucket(存储桶)里，S3 的bucket在region里；必须全局唯一名字
 
 使用案例：
 
@@ -505,3 +505,82 @@ S3 Glacier 用于举例：
 - A single object can be up to 5 terabytes in size.
 - You can enable Multi-Factor Authentication (MFA) Delete on an S3 bucket to prevent accidental deletions.
 - **S3 Acceleration** can be used to enable fast, easy, and secure transfers of files over long distances between your data source and your S3 bucket.
+
+## DynamoDB 
+
+DynamoDB is a NoSQL document database service that is fully managed. Unlike traditional databases, NoSQL databases, are schema-less. Schema-less simply means that the database doesn't contain a fixed (or rigid) data structure.
+
+Data is stored in JSON or JSON like text,JSON is simple text representing data in key value pairs.
+
+
+
+- DynamoDB is found under the Database section on the AWS Management Console.
+- DynamoDB can handle more than 10 trillion requests per day.
+- DynamoDB is serverless as there are no servers to provision, patch, or manage.
+- DynamoDB supports key-value and document data models.
+- DynamoDB synchronously replicates data across three AZs in an AWS Region.
+- DynamoDB supports GET/PUT operations using a primary key.
+
+实习DynamoDB:
+
+### Topics Covered:
+
+By the end of this lab, you will be able to:
+
+- Create a table
+- Add data to a table
+- Query data in a table
+
+### Steps:
+
+1. Access the DynamoDB service from AWS Management Console
+   - On the AWS Management Console page, type "dynamo" in the `Find Services` box and then select `DynamoDB`.
+   - On the DynamoDB Console, click `Create table`.
+   - Enter `Course` as the `Table name`.
+   - Enter `Name` in for the `Partition key` and ensure `String` is selected. ***Note:\*** The partition key spreads data against partitions for scalability.
+   - Keep the remainder of the defaults, and click the `Create` button.
+2. Add Data to the Table
+   - Once the table is created, click on the `Items` tab.
+   - Click Create item
+     - In the data entry window, type the following:
+       - For name, enter, `Course 1` and click `Save`
+       - Click the +i con to add additional fields:
+         - Select `Insert`
+         - Select `String`
+         - For the field name, enter `Teacher`
+         - For the value, enter `Kesha Williams`
+         - Click `Save`
+   - Follow the same process to add 5 more documents.
+3. Query Data in a Table
+   - In the dropdown that contains `Scan`, change it to `Query`.
+   - Where it says `Enter value`, in the row next to the `name` Partition key, enter `Course 1` and click `Start Search`.
+   - You should see your search results appear in the window.
+4. Cleanup and delete resources
+   - To clean up the resources to avoid recurring charges, ensure the table name is selected.
+   - Click on the `Delete table` button.
+   - Ensure `Delete all CloudWatch alarms for this table` is selected and click `Delete`.
+
+## 关系型数据库RDS (or Relational Database Service)
+
+RDS (or Relational Database Service) is a service that aids in the administration and management of databases. RDS assists with database administrative tasks that include upgrades, patching, installs, backups, monitoring, performance checks, security, etc.
+
+- Oracle
+- PostgreSQL
+- MySQL
+- MariaDB
+- SQL Server
+
+### Features
+
+- failover
+- backups
+- restore
+- encryption
+- security
+- monitoring
+- data replication
+- scalability
+
+练习题：
+
+To deliver a managed service experience, Amazon RDS doesn't provide shell access to DB instances.
