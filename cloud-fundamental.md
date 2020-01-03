@@ -465,3 +465,43 @@ Elastic Beanstalk can spin up database instances for you, VPCs, security groups,
 - ElastiCache
 - Neptune
 - Amazon DocumentDB
+
+## 冰川网络S3 & S3 Glacier
+
+Amazon Simple Storage Service (or S3) is an object storage system in the cloud，like file system in the cloud
+
+文本，图片，html都可以
+
+文件存储在bucket里，S3 的bucket在region里；必须全局唯一名字
+
+使用案例：
+
+* hosting static websites
+* content delivery
+* backup and recovery
+* archiving and big data
+* application data
+* hybrid cloud storage
+
+### Storage Classes 分类
+
+- S3 Standard
+- S3 Glacier(for data archiving purposes,比标准版便宜)
+- S3 Glacier Deep Archive
+- S3 Intelligent-Tiering
+- S3 Standard Infrequent Access
+- S3 One Zone-Infrequent Access
+
+S3 Glacier 用于举例：
+
+1. monthly log files
+2. Audit(审计) purpose
+3. preserve(保存) purpose
+4. infrequently accessed(经常访问)
+
+### Tips
+
+- S3 is found under the Storage section on the AWS Management Console.
+- A single object can be up to 5 terabytes in size.
+- You can enable Multi-Factor Authentication (MFA) Delete on an S3 bucket to prevent accidental deletions.
+- **S3 Acceleration** can be used to enable fast, easy, and secure transfers of files over long distances between your data source and your S3 bucket.
