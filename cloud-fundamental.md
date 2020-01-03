@@ -445,3 +445,23 @@ Elastic Beanstalk can spin up database instances for you, VPCs, security groups,
    - Select `Delete application`.
    - Enter the name of your application.
    - Click the `Delete` button.
+
+## storage in the cloud
+
+* Durability(耐久坚固) -guarantees that you will not lose the data that you upload to the cloud
+* Availability - addresses how quickly you can access your data(解决访问数据的速度问题)
+* Scalability - allows applications running in your environment to always meet demand seamlessly
+  1. Vertical scaling -scaling up
+  2. Horizontal scaling - scaling out  add or remove server to meet demands
+  3. Diagonal scaling - combination horizontal and vertical;maximum flexibility
+
+### Storage & Database Services
+
+- Amazon Simple Storage Service (Amazon S3)
+- Amazon Simple Storage Service (Amazon S3) Glacier
+- DynamoDB
+- Relational Database Service (RDS)
+- Redshift
+- ElastiCache
+- Neptune
+- Amazon DocumentDB
