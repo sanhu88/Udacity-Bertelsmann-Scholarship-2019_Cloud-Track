@@ -777,3 +777,17 @@ As adoption of cloud services has increased, so has the need for increased secur
 The way security is delivered depends on the cloud provider you're using and the cloud security options they offer.
 
 需要保存PII（personally identifiable information）数据：social security numbers（SSN）,bank account information，passport number
+
+## AWS Shield
+
+AWS Shield is a managed DDoS (or Distributed Denial of Service) protection service that safeguards web applications running on AWS.
+
+AWS Shield is a service that you get "out of the box", it is always running (automatically) and is a part of the free standard tier. If you want to use some of the more advanced features, you'll have to utilize the paid tier.
+
+- AWS Shield can be found under the Security, Identity, & Compliance section on the AWS Management Console.
+- AWS Shield Standard is always-on, using techniques to detect malicious（恶意的）traffic.
+- AWS Shield Advanced provides enhanced detection.
+
+练习
+
+Distributed Denial of Service (DDoS) attack is an attempt to make a website or an application unavailable by overwhelming(淹没) it with traffic from multiple sources.
