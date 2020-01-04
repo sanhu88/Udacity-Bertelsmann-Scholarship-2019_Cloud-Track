@@ -809,3 +809,68 @@ WAF can stop common web attacks by reviewing the data being sent to your applica
 AWS WAF helps protects your website from common attack techniques like SQL injection and Cross-Site Scripting (XSS).
 
 WAF can only monitor IP addresses, HTTP headers, HTTP body, and URI strings.
+
+## IAM-Identity & Access Management
+
+Identity & Access Management (IAM) is an AWS service that allows us to configure who can access our AWS account, services, or even applications running in our account. IAM is a global service and is automatically available across ALL regions.
+
+### user
+
+IAM 用户可以是人员或某种服务
+
+A person or service that interacts with services or applications running in your AWS account.
+
+### IAM group
+
+A collection of users.
+
+### IAM Role
+
+Identity with permissions or a set of privileges.具有权限或一组特权的标识。
+
+### Policy
+
+Defines granular level permissions.定义粒度级权限。
+
+使用JSON 创建Policy，policy派生users，groups，roles
+
+secure root account is by using Multi Factor Authentication(MFA) 
+
+### EC2 Security Group
+
+EC2 Security Group 不是IAM的一部分，是和EC2 实例相关，相当于为虚拟服务器创建一个防护墙，只和EC2相关
+
+习题
+
+You can ;
+
+create policies in JSON using the visual editor or the JSON editor in the IAM console.
+
+### 实习 IAM:
+
+#### Topics Covered:
+
+By the end of this lab, you will be able to:
+
+- Create an IAM policy using the visual editor.
+
+#### Steps:
+
+1. Create a Policy
+   - On the AWS Management Console page, type `IAM` in the `Find Services` box and then select `IAM`.
+   - Click on `Policies` on the left-hand side.
+   - Click `Create policy`.
+   - Next to `Service`, click `Choose a service`.
+   - In the selection box, type `S3`.
+   - Select `S3`.
+   - Specify the actions allowed in S3 by clicking on `List`.
+   - Expand the `Read` action by clicking on the arrow next to it, then select `GetObject`.
+   - Next in the `Resources` section, ensure `Specific` is selected, and select the `Any` checkboxes next to `bucket` and `object`.
+   - Then click on `Review policy`.
+   - Enter a name for your policy in the `Name` box.
+   - Then click on `Create policy`.
+2. Review Policy
+   - After your policy is created, enter the name of the policy you just created in the `Filter policies` text box.
+   - Click on the name of your policy.
+   - Review the JSON for the policy you just created on the `Permissions` tab.
+   - Click on the `Policy usage` tab to see if this policy is in use. Notice this policy is not attached to any resources yet.
