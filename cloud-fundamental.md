@@ -791,3 +791,21 @@ AWS Shield is a service that you get "out of the box", it is always running (aut
 练习
 
 Distributed Denial of Service (DDoS) attack is an attempt to make a website or an application unavailable by overwhelming(淹没) it with traffic from multiple sources.
+
+## 网页程序防火墙-AWS WAF
+
+AWS WAF (or AWS Web Application Firewall) provides a firewall that protects your web applications.
+
+WAF can stop common web attacks by reviewing the data being sent to your application and stopping well-known attacks.
+
+- WAF is found under the Security, Identity, & Compliance section on the AWS Management Console.
+- WAF can protect web sites not hosted in AWS through Cloud Front.
+- You can configure CloudFront to present a custom error page when requests are blocked.
+
+
+
+习题：
+
+AWS WAF helps protects your website from common attack techniques like SQL injection and Cross-Site Scripting (XSS).
+
+WAF can only monitor IP addresses, HTTP headers, HTTP body, and URI strings.
