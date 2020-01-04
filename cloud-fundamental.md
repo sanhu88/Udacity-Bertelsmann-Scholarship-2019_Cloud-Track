@@ -510,6 +510,8 @@ S3 Glacier 用于举例：
 
 DynamoDB is a NoSQL document database service that is fully managed. Unlike traditional databases, NoSQL databases, are schema-less. Schema-less simply means that the database doesn't contain a fixed (or rigid) data structure.
 
+DynamoDB 是一种完全托管的 NoSQL 数据库服务，提供快速而可预测的性能，能够实现无缝扩展。您可以使用 DynamoDB 创建一个数据库表来存储和检索任意数量的数据，为任何级别的流量请求提供服务
+
 Data is stored in JSON or JSON like text,JSON is simple text representing data in key value pairs.
 
 
@@ -585,9 +587,15 @@ RDS (or Relational Database Service) is a service that aids in the administratio
 
 To deliver a managed service experience, Amazon RDS doesn't provide shell access to DB instances.
 
-## RedShift
+### Amazon Aurora
+
+Amazon Aurora 是一款兼容 MySQL 和 PostgreSQL 的企业级数据库，每天费用起价不到一美元。Aurora 最高支持 64TB 自动扩展存储容量和在三个可用区进行 6 种方法复制，以及 15 个低延迟只读副本。
+
+## Amazon Redshift console -大数据分析
 
 Redshift is a cloud data warehousing service to help companies manage big data. Redshift allows you to run fast queries against your data using SQL(standard query language), ETL(extract transform load tolols), and BI (business intelligence )tools. Redshift stores data in a column format to aid in fast querying.
+
+Amazon Redshift 是一种快速、可扩展的数据仓库，可让您轻松且经济高效地分析您的数据仓库和数据湖中的所有数据。
 
 - Redshift can be found under the Database section on the AWS Management Console.
 - Redshift delivers great performance by using machine learning.
@@ -597,9 +605,13 @@ Redshift is a cloud data warehousing service to help companies manage big data. 
 
 以在线商店为例，当年的订单数据应当存储在RDS关系型数据库中，以便每日使用。10年之前的数据可以archive到redshift中用来分析，有快速的查询和分析能力
 
+
+
+
+
 实习：
 
-## Steps:
+### Steps:
 
 1. **Launch MySQL Database**
 
@@ -625,15 +637,15 @@ Redshift is a cloud data warehousing service to help companies manage big data. 
 
    - Click `Next`
 
-   - For `Virtual Private Cloud (VPC)`, select `Create new VPC`.
+   - For `Virtual Private Cloud (VPC)`, select `Create new VPC`(新建 VPC).
 
-   - Ensure `Create new DB Subnet Group` is selected.
+   - Ensure `Create new DB Subnet Group`(创建新的数据库子网组) is selected.
 
    - Leave the defaults for `Subnet group`, `Public accessibility`, `Availability zone`, and `VPC security groups`.
 
    - Under `Database options`, enter a `Database name` and leave the rest as defaults.
 
-   - Under `Deletion protection`, uncheck `Enable deletion protection`. ***Important:\*** In a real production scenario, you would leave this option checked.
+   - Under `Deletion protection`(删除保护), uncheck `Enable deletion protection`. ***Important:\*** In a real production scenario, you would leave this option checked.
 
    - Click Create database`.
 
@@ -667,3 +679,80 @@ The benefits of a CDN includes:
 - low latency
 - decreased server load
 - better user experience
+
+## 全球内容分发网络-Cloud Front
+
+Cloud Front is used as a global content delivery network (CDN). Cloud Front speeds up the delivery of your content through Amazon's worldwide network of mini-data centers called Edge Locations.
+
+可以用于：
+
+- Amazon S3
+- Elastic Load Balancing
+- Amazon EC2
+- Lambda@Edge
+- AWS Shield
+
+特点：
+
+- CloudFront is found under the Networking & Content Delivery section on the AWS Management Console.
+- Amazon continuously adds new Edge Locations.
+- CloudFront ensures that end-user requests are served from the closest edge location.
+- CloudFront works with non-AWS origin sources.
+- You can use GeoIP blocking to serve content (or not serve content) to specific countries.
+- Cache control headers determine how frequently CloudFront needs to check the origin for an updated version your file.
+- The maximum size of a single file that can be delivered through Amazon CloudFront is 20 GB.
+
+练习：
+
+Files are pulled from the origin and then stored in the cache at the edge location.而不是让客户直接放原服务器
+
+Cloud Front is used to stream content more efficiently，而不是Throttle web service requests（调整web 服务请求）
+
+两种方式：
+
+| Web                                                          |
+| ------------------------------------------------------------ |
+| 如果您需要执行以下操作，请创建 Web 分配:加快静态内容和动态内容的分配，例如 .html、.css、.php 和图形文件。使用 HTTP 或 HTTPS 分配媒体文件。添加、更新或删除对象，并从 Web 表单提交数据。使用实时流来实时流式传输事件。您将文件存储在源 (Amazon S3 存储桶或 Web 服务器) 中。创建分配后，您可以向分配添加更多源。 |
+
+
+
+| RTMP                                                         |
+| ------------------------------------------------------------ |
+| 创建 RTMP 分配以使用 Adobe Flash Media Server 的 RTMP 协议来加快流媒体文件的分配。RTMP 分配允许最终用户在媒体文件从 CloudFront 边缘站点下载完之前开始播放该文件。请注意:要创建 RTMP 分配，您必须将媒体文件存储在 Amazon S3 存储桶中。要使用 CloudFront 实时流，请创建 Web 分配。 |
+
+实习：
+
+### Steps:
+
+1. Create S3 Bucket
+   - On the AWS Management Console page, type `S3` in the `Find Services` box and then select `S3`.
+   - Click `Create bucket`
+   - Enter a Bucket name .
+     - ***Note:\*** Bucket names must be globally unique.
+   - Click the `Create` button.
+   - Once the bucket is created, click on the name of the bucket to open the bucket to the contents.
+2. Upload Object to Bucket
+   - Once the bucket is open to its contents, click the `Upload` button.
+   - Click the `Add Files` button.
+   - Select a file from your local computer to upload.
+   - Click `Open`.
+   - Click `Upload`.
+3. Create CloudFront Distribution
+   - Select `Services` from the top left corner.
+   - Enter `cloud front` in the `Find a service by name or feature` text box and select `Cloud Front`.
+   - Click `Create Distribution`.
+   - Under the `Web` delivery method, select `Get Started`.
+   - Under `Origin Settings`:
+   - Under `Origin Domain Name`, select the S3 bucket that you just created.
+   - Under `Origin Path`, enter `/` to indicate the root level.
+   - Leave the defaults for the rest of the options.
+   - Click Create Distribution.
+     - ***Note:\*** It may take up to 10 minutes for the CloudFront Distribution to be created.
+4. Delete Bucket and Distribution
+   - To delete the Cloud Front distribution, click on the radio button next to the `Delivery Method` for the distribution. Click `Disable` and then `Yes, Disable`. Click `Close`.
+   - Once the distribution is disabled, you can delete it by selecting the radio button next to the `Delivery Method` and clicking the `Delete` button.
+   - To delete the S3 bucket, navigate to S3, but clicking on `Services` and typing `S3` in the `Find Services` box and then select `S3`.
+   - Select the radio button next to the name of the bucket you want to delete.
+   - Click `Delete`.
+   - Type the name of the bucket to confirm deletion.
+   - Click the `Confirm` button.
