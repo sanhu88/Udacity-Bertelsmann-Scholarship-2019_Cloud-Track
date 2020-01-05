@@ -928,3 +928,22 @@ Route 53 does not provide website hosting as it is only an authoritative DNS ser
 * Internet routing
 * health checking for resource
 
+## elasticity in the cloud
+
+One of the main benefits of the cloud is that it allows you to stop guessing about capacity when you need to run your applications. Sometimes you buy too much or you don't buy enough to support the running of your applications.
+
+防止过量或者缺少硬件来支持网站程序。
+
+With elasticity, your servers, databases, and application resources can automatically scale up or scale down based on load.
+
+习题：
+
+Scale up：
+
+Vertical scaling by resizing an instance to add more capacity
+
+Scale out：
+
+Horizontal scaling by increasing the number of servers in the farm
+
+Resources can scale up (or vertically). In Amazon EC2, this can easily be achieved by stopping an instance and resizing it to an instance type that has more RAM, CPU, IO, or you can scale out (or horizontally), which increases the number of resources. An example would be adding more servers.
