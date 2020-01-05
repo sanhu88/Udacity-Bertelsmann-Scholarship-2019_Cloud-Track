@@ -506,7 +506,7 @@ S3 Glacier 用于举例：
 - You can enable Multi-Factor Authentication (MFA) Delete on an S3 bucket to prevent accidental deletions.
 - **S3 Acceleration** can be used to enable fast, easy, and secure transfers of files over long distances between your data source and your S3 bucket.
 
-## DynamoDB 
+## DynamoDB -NoSQL数据库
 
 DynamoDB is a NoSQL document database service that is fully managed. Unlike traditional databases, NoSQL databases, are schema-less. Schema-less simply means that the database doesn't contain a fixed (or rigid) data structure.
 
@@ -778,7 +778,7 @@ The way security is delivered depends on the cloud provider you're using and the
 
 需要保存PII（personally identifiable information）数据：social security numbers（SSN）,bank account information，passport number
 
-## AWS Shield
+## AWS Shield -DDoS
 
 AWS Shield is a managed DDoS (or Distributed Denial of Service) protection service that safeguards web applications running on AWS.
 
@@ -810,7 +810,7 @@ AWS WAF helps protects your website from common attack techniques like SQL injec
 
 WAF can only monitor IP addresses, HTTP headers, HTTP body, and URI strings.
 
-## IAM-Identity & Access Management
+## IAM-Identity & Access Management-账户级别
 
 Identity & Access Management (IAM) is an AWS service that allows us to configure who can access our AWS account, services, or even applications running in our account. IAM is a global service and is automatically available across ALL regions.
 
@@ -857,6 +857,7 @@ By the end of this lab, you will be able to:
 #### Steps:
 
 1. Create a Policy
+
    - On the AWS Management Console page, type `IAM` in the `Find Services` box and then select `IAM`.
    - Click on `Policies` on the left-hand side.
    - Click `Create policy`.
@@ -869,8 +870,30 @@ By the end of this lab, you will be able to:
    - Then click on `Review policy`.
    - Enter a name for your policy in the `Name` box.
    - Then click on `Create policy`.
+
 2. Review Policy
+
    - After your policy is created, enter the name of the policy you just created in the `Filter policies` text box.
    - Click on the name of your policy.
    - Review the JSON for the policy you just created on the `Permissions` tab.
    - Click on the `Policy usage` tab to see if this policy is in use. Notice this policy is not attached to any resources yet.
+
+   ****
+
+   # 16. Networking & Elasticity
+
+## Networks
+
+ reliably carry loads of data around the globe allowing for the delivery of content and applications with high availability. The network is the foundation of your infrastructure.
+
+Cloud networking includes:
+
+- network architecture
+- network connectivity
+- application delivery
+- global performance
+- delivery
+
+DNS-domain name system
+
+IP- Internet protocol Address
