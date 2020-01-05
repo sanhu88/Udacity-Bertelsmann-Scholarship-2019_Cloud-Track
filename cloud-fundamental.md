@@ -947,3 +947,21 @@ Scale out：
 Horizontal scaling by increasing the number of servers in the farm
 
 Resources can scale up (or vertically). In Amazon EC2, this can easily be achieved by stopping an instance and resizing it to an instance type that has more RAM, CPU, IO, or you can scale out (or horizontally), which increases the number of resources. An example would be adding more servers.
+
+## EC2 Auto Scaling
+
+EC2 Auto Scaling is a service that monitors your EC2 instances and automatically adjusts by adding or removing EC2 instances based on conditions you define in order to maintain application availability and provide peak performance to your users.
+
+- Automatically scale in and out based on needs.
+- Included automatically with Amazon EC2.
+- Automate how your Amazon EC2 instances are managed.
+
+贴士：
+
+- EC2 Auto Scaling is found on the EC2 Dashboard.
+- EC2 Auto Scaling adds instances only when needed, optimizing cost savings.
+- EC2 predictive scaling removes the need for manual adjustment of auto scaling parameters over time.
+
+习题
+
+You can configure EC2 Auto Scaling to send an SNS notification whenever your EC2 Auto Scaling group scales.
