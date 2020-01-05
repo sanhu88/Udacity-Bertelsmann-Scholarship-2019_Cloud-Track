@@ -1170,3 +1170,20 @@ Amazon Simple Notification Service (or SNS) is a cloud service that allows you t
 Notifications can be sent to end users using mobile push, text messages, and email.
 
 Google alert 和Slack notification不行
+
+## Queues
+
+A queue is a data structure that holds requests called messages. Messages in a queue are commonly processed in order, first in, first out (or FIFO).
+
+和排队队伍相似
+
+Messaging queues improve:
+
+- performance
+- scalability
+- user experience
+- Asynchronous（异步） processing 
+
+练习：
+
+The use of asynchronous processing, where a user doesn't wait for a response, improves the overall user experience.
