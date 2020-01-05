@@ -962,6 +962,8 @@ EC2 Auto Scaling is a service that monitors your EC2 instances and automatically
 - EC2 Auto Scaling adds instances only when needed, optimizing cost savings.
 - EC2 predictive scaling removes the need for manual adjustment of auto scaling parameters over time.
 
+AWS auto-scaling 和EC2 auto-scaling 有所不同，AWS auto-scaling 允许设置其他服务自伸缩，比如DynamoDB
+
 习题
 
 You can configure EC2 Auto Scaling to send an SNS notification whenever your EC2 Auto Scaling group scales.
