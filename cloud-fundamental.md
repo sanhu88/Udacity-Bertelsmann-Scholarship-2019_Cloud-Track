@@ -897,3 +897,34 @@ Cloud networking includes:
 DNS-domain name system
 
 IP- Internet protocol Address
+
+## Route 53
+
+ is a cloud domain name system (DNS) service that has servers distributed around the globe used to translates human-readable names like [www.google.com](http://www.google.com/) into the numeric IP addresses like 74.125.21.147.
+
+- scales automatically to manage spikes in DNS queries
+
+- allows you to register a domain name (or manage an existing)
+
+- routes Internet traffic to the resources for your domain
+
+- checks the health of your resources
+
+  1. ensure web service are up and run
+  2. offer DNS fail-over to automatically route web visitors to alternate to avoid outage
+
+  
+
+- Route 53 is found under the Networking & Content Delivery section on the AWS Management Console.
+- Route 53 allows you to route users based on the user’s geographic location.
+
+习题：
+
+Route 53 does not provide website hosting as it is only an authoritative DNS service.
+
+包含：
+
+* domain name registration
+* Internet routing
+* health checking for resource
+
