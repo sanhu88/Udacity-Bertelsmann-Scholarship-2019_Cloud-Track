@@ -1107,13 +1107,27 @@ By the end of this lab, you will be able to:
 4. Test Auto Scaling
 
    - Click on the `Instances` tab.
+
    - Under the `Instance ID` column, click on the blue Instance ID link.
+
    - You will be taken to the Amazon EC2 console Instances page.
+
    - Your instance should be selected.
+
    - Click the `Actions` button, scroll down to `Instance State`, and select `Terminate`. Then select `Yes, Terminate`.
+
    - In the left-hand navigation pane, click `Auto Scaling Groups`.
+
    - Click the `Instances` tab. You will eventually see a new instance appear. If the new instance doesn’t appear, click refresh occasionally to update the list.
+
+     会有一个新的实例自己产生
+
    - Click on the `Activity History` tab to review the history for the Instance.
+
+     | Successful | Launching a new EC2 instance: i-00aae1acfc3de2bce | 2020 January 5 18:02:12 UTC+8 | 2020 January 5 18:02:43 UTC+8 |
+     | ---------- | ------------------------------------------------- | ----------------------------- | ----------------------------- |
+     | Successful | Terminating EC2 instance: i-05cb632e69f1e72c5     | 2020 January 5 18:01:40 UTC+8 | 2020 January 5 18:02:22 UTC+8 |
+     | Successful | Launching a new EC2 instance: i-05cb632e69f1e72c5 | 2020 January 5 15:37:14 UTC+8 | 2020 January 5 15:37:45 UTC+8 |
 
 5. Delete Auto Scaling Resources
 
