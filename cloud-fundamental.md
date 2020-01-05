@@ -1187,3 +1187,27 @@ Messaging queues improve:
 练习：
 
 The use of asynchronous processing, where a user doesn't wait for a response, improves the overall user experience.
+
+## Amazon Simple Queue Service (SQS) 
+
+is a fully managed message queuing service that allows you to integrate (一体化)queuing functionality in your application. 
+
+SQS offers two types of message queues: 
+
+standard and FIFO.
+
+在线学习课程，顺序很重要，比如创建账号要在注册课程之前完成，这是需要使用FIFO 队列
+
+作用
+
+- send messages
+- store messages
+- receive messages
+
+贴士：
+
+- The Simple Queue Service (SQS) is found under the Application Integration on the AWS Management Console.
+- FIFO queues support up to 300 messages per second.
+- FIFO queues guarantee the ordering of messages.
+- Standard queues offer best-effort ordering but **no guarantees**.
+- Standard queues deliver a message at least once, but occasionally more than one copy of a message is delivered.
