@@ -208,7 +208,7 @@ popular storage、content delivery services 、networking 、security and messag
 3. Obtain servers in minutes.
 4. No need for onsite hardware or capital expenses.
 
-## EC2 - Elastic Cloud Compute 弹性云计算
+## EC2 - Elastic Cloud Compute 云中的虚拟服务器，弹性云计算
 
 EC2 instance 
 
@@ -457,8 +457,8 @@ Elastic Beanstalk can spin up database instances for you, VPCs, security groups,
 
 ### Storage & Database Services
 
-- Amazon Simple Storage Service (Amazon S3)
-- Amazon Simple Storage Service (Amazon S3) Glacier
+- Amazon Simple Storage Service (Amazon S3) 云中可扩展存储
+- Amazon Simple Storage Service (Amazon S3) Glacier 云中存档存储
 - DynamoDB
 - Relational Database Service (RDS)
 - Redshift
@@ -466,7 +466,7 @@ Elastic Beanstalk can spin up database instances for you, VPCs, security groups,
 - Neptune
 - Amazon DocumentDB
 
-## 冰川网络S3 & S3 Glacier
+## S3 & S3 Glacier
 
 Amazon Simple Storage Service (or S3) is an object storage system in the cloud，like file system in the cloud
 
@@ -812,6 +812,8 @@ WAF can only monitor IP addresses, HTTP headers, HTTP body, and URI strings.
 
 ## IAM-Identity & Access Management-账户级别
 
+管理对AWS资源的访问
+
 Identity & Access Management (IAM) is an AWS service that allows us to configure who can access our AWS account, services, or even applications running in our account. IAM is a global service and is automatically available across ALL regions.
 
 ### user
@@ -997,3 +999,123 @@ Performance
 If a server starts having issues or bottlenecks, the load balancer will add more servers to the pool of available servers. Auto scaling automatically adjusts capacity to maintain a steady state.
 
 如果服务器开始出现问题或瓶颈，负载均衡器将向可用服务器池中添加更多服务器。自动缩放自动调整容量，保持稳定状态。
+
+## 实习EC2 Auto Scaling
+
+### Topics Covered:
+
+By the end of this lab, you will be able to:
+
+- Use auto scaling to launch EC2 instances
+- Create an auto scaling group
+- Test auto scaling
+
+### Steps:
+
+1. **Create a Launch Configuration**
+
+   - On the AWS Management Console page, type `EC2` in the `Find Services` box and then select `EC2`.
+
+   - Scroll down to the `Auto Scaling` section on the left-hand menu and click `Auto Scaling Groups`.
+
+     您可以使用 Auto Scaling 自动管理 EC2 容量、为您的应用程序维持适当数量的实例、操作运行状况良好的实例组以及根据需要扩展它。
+
+   - Click the `Create Auto Scaling group` button.
+
+     * 第 1 步：创建或选择启动配置
+
+       创建或选择您的 Auto Scaling 组将用于启动 EC2 实例的启动配置。
+
+       您可以随时更改组的启动配置。
+
+     * 第 2 步: 创建 Auto Scaling 组
+
+       接下来，为您的组提供名称，并指定您要在其中运行的实例的数目。
+
+       您的组将维持此数量的实例，并替换任何运行状况不佳或受损的实例。
+
+       您可以选择将您的组配置为根据需求调整容量，以响应 Amazon CloudWatch 指标。
+
+   - Review the steps and click on `Get started`.
+
+   - Create a launch configuration by first selecting an Amazon Machine Image (AMI). In the row for `Amazon Linux 2 AMI (HVM), SSD Volume Type`, click the `Select` button.
+
+     ***Note:\*** An AMI is a template for an instance that indicates the operating system, an application server, and applications.
+
+   - Confirm that `t2.micro` is selected.
+
+   - Click `Next: Configure details`.
+
+   - Enter a name of your choosing in the `Name` field.
+
+   - Expand the `Advanced Details` section.
+
+   - Next to `IP Address Type`, click on `Assign a public IP address to every instance.`
+
+   - Click `Next: Add Storage`. Review the screen.
+
+   - Click `Next: Configure Security Group`.
+
+   - Ensure `Create a new security group` is selected.
+
+   - Click `Review`.
+
+     提高使用启动配置 udacity-EC2 Auto Scaling 启动的实例的安全性。您的安全组 AutoScaling-Security-Group-1 向世界开放。
+
+     您的实例可以从任何 IP 地址访问。我们建议您更新您的安全组规则，只允许从已知的 IP 地址访问。
+     您也可以在安全组中打开其他端口，以便于访问您正在运行的应用程序或服务，例如 Web 服务器的 HTTP (80)。 编辑安全组
+
+   - Click on `Create launch configuration`.
+
+   - On the `Select an existing key pair or create a new key pair`, select `Create a new key pair`, enter a key pair name in the `Key pair name` field, and click `Download Key Pair`.
+
+   - Click on `Create launch configuration`.
+
+     提高使用启动配置 udacity-EC2 Auto Scaling 启动的实例的安全性。您的安全组 AutoScaling-Security-Group-1 向世界开放。
+
+     您的实例可以从任何 IP 地址访问。我们建议您更新您的安全组规则，只允许从已知的 IP 地址访问。
+     您也可以在安全组中打开其他端口，以便于访问您正在运行的应用程序或服务，例如 Web 服务器的 HTTP (80)。 编辑安全组
+
+     我确认我有权访问选定的私有密钥文件(udacity.pem)，并且如果没有此文件，我将无法登录到我的实例。
+
+     
+
+2. Create an Auto Scaling Group
+
+   - On the `Create Auto Scaling Group` page, enter a group name of your choosing in the `Group name` field, ensure the `Group size` is set to `1`, for `Network` leave the default value. If no default value is shown, click on `Create new VPC`, and select the first `Subnet` by clicking in the `Subnet` field.
+
+   - Click `Next: Configure scaling policies`.
+
+     创建 Auto Scaling 组
+
+     如果您要自动调整组的大小（实例数），可以选择调整扩展策略。扩展策略是指一组说明，指示如何为响应您分配的 Amazon CloudWatch 警报而进行这类调整。在每个策略中，您可以选择添加或移除特定数量的实例或现有组大小的百分比，也可以将组设置为精确大小。警报触发时，它会指定策略并相应地调整组大小。[了解更多](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)有关扩展策略的信息。
+
+   - Ensure that `Keep this group at its initial size` is selected.
+
+   - Click `Review`.
+
+   - Review the selected options and click `Create Auto Scaling group`.
+
+   - Click `Close`.
+
+3. Verify your Auto Scaling Group
+
+   - Verify that the group has launched your EC2 instance by first ensuring the auto scaling group you just created is selected and examining the `Details` tab shown on the bottom of the screen.
+   - Click the `Activity History` tab. The status of your instance should be `Successful`, which means the instance is launched.
+   - Click on the `Instances` tab. Notice the `Lifecycle` column states `InService`.
+
+4. Test Auto Scaling
+
+   - Click on the `Instances` tab.
+   - Under the `Instance ID` column, click on the blue Instance ID link.
+   - You will be taken to the Amazon EC2 console Instances page.
+   - Your instance should be selected.
+   - Click the `Actions` button, scroll down to `Instance State`, and select `Terminate`. Then select `Yes, Terminate`.
+   - In the left-hand navigation pane, click `Auto Scaling Groups`.
+   - Click the `Instances` tab. You will eventually see a new instance appear. If the new instance doesn’t appear, click refresh occasionally to update the list.
+   - Click on the `Activity History` tab to review the history for the Instance.
+
+5. Delete Auto Scaling Resources
+
+   - At the top of the screen, click the `Actions` button next to the `Create Auto Scaling group`.
+   - Click the `Delete` option.
