@@ -967,3 +967,33 @@ AWS auto-scaling 和EC2 auto-scaling 有所不同，AWS auto-scaling 允许设�
 习题
 
 You can configure EC2 Auto Scaling to send an SNS notification whenever your EC2 Auto Scaling group scales.
+
+## 负载平衡-Elastic Load Balancing 
+
+automatically distributes incoming application traffic across multiple servers.
+
+Elastic Load Balancer is a service that:
+
+- Balances load between two or more servers
+- Stands in front of a web server
+- Provides redundancy(冗余) and performance
+
+贴士
+
+- Elastic Load Balancing can be found on the EC2 Dashbaoard.
+- Elastic Load Balancing works with EC2 Instances, containers, IP addresses, and Lambda functions.
+- You can configure Amazon EC2 instances to only accept traffic from a load balancer.
+
+习题：
+
+Redundancy：
+
+If you lose a server, the load balancer will send requests to other working servers. This feature maintains continuous operations in an emergency.
+
+如果您丢失了一台服务器，负载均衡器将向其他工作的服务器发送请求。此功能在紧急情况下保持连续操作。
+
+Performance
+
+If a server starts having issues or bottlenecks, the load balancer will add more servers to the pool of available servers. Auto scaling automatically adjusts capacity to maintain a steady state.
+
+如果服务器开始出现问题或瓶颈，负载均衡器将向可用服务器池中添加更多服务器。自动缩放自动调整容量，保持稳定状态。
