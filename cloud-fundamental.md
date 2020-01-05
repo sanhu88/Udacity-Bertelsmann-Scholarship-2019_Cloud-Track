@@ -1147,3 +1147,26 @@ The use of the cloud offers benefits like ： lowered costs, increased storage, 
 习题
 
 Messaging typically occurs between Internet-based applications and devices. One system can send a message to another system.
+
+## Amazon Simple Notification Service (or SNS)
+
+托管的发布/订阅消息主题
+
+Amazon Simple Notification Service (or SNS) is a cloud service that allows you to **send notifications to the users** of your applications. SNS allows you to decouple（解耦，分离） the notification logic from being embedded in your applications and allows notifications to be published to a large number of subscribers.
+
+特点：
+
+- SNS uses a publish/subscribe model.订阅者可以是用户，也可以是其他的AWS 服务
+- SNS can publish messages to Amazon SQS queues, AWS Lambda functions, and HTTP/S web-hooks.
+
+贴士：
+
+- SNS is found under the Application Integration section on the AWS Management Console.
+- SNS Topic names are **limited to 256** characters.
+- A notification can contain only one message.
+
+习题：
+
+Notifications can be sent to end users using mobile push, text messages, and email.
+
+Google alert 和Slack notification不行
