@@ -1133,3 +1133,17 @@ By the end of this lab, you will be able to:
 
    - At the top of the screen, click the `Actions` button next to the `Create Auto Scaling group`.
    - Click the `Delete` option.
+
+***
+
+# 17 Messaging  & Containers
+
+## Messaging in the Cloud
+
+There are often times that users of your applications need to be notified when certain events happen. Notifications, such as text messages or emails can be sent through services in the cloud. 
+
+The use of the cloud offers benefits like ： lowered costs, increased storage, and flexibility.
+
+习题
+
+Messaging typically occurs between Internet-based applications and devices. One system can send a message to another system.
