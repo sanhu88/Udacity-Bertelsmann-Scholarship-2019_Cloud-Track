@@ -1286,3 +1286,25 @@ Each container is an independent component that can run on its own and be moved 
 A container consists of everything an application needs to run: the application itself and its dependencies (e.g. libraries, utilities, configuration files), all bundled into one package.
 
 不包含：虚拟的硬件和主机操作系统
+
+## Elastic Container Service (ECS)
+
+运行和管理Docker容器
+
+ECS is an orchestration service（业务流程服务） used for automating deployment, scaling, and managing of your containerized applications. ECS works well with Docker containers by:
+
+- launching and stopping Docker containers
+
+- scaling your applications
+
+- querying the state of your applications
+
+- convenience serive
+
+   
+
+
+
+- ECS is under the Compute section on the AWS Management Console.
+- You can schedule long-running applications, services, and batch processeses using ECS.
+- Docker is the only container platform supported by Amazon ECS.
