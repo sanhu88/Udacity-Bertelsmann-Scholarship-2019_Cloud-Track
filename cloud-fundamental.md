@@ -1299,7 +1299,7 @@ ECS is an orchestration service（业务流程服务） used for automating depl
 
 - querying the state of your applications
 
-- convenience serive
+- convenience service
 
    
 
