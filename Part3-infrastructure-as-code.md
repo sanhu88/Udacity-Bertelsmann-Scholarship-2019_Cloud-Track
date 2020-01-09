@@ -129,3 +129,4 @@ ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
 如果还提示，可以在本地先导入创建主机的私钥【**Amazon Linux 2 AMI (HVM), SSD Volume Type**】
 
 EC2 开放端口是在网络安全--安全组--对应的组--入站
+
