@@ -218,3 +218,35 @@ Hit the Refresh button in the upper right-hand corner so that the Designer is no
 5. Delete CloudFormation Stack
 
 - To avoid on-going charges, delete the stack by navigating to the stack, and clicking the `Delete` button in the upper right-hand corner. ***Note:\*** When the stack is deleted, all resources created by the stack template will be deleted also.
+
+## The AWS CLI 
+
+(or Command Line Interface) allows you to access and control services running in your AWS account from the command line. To use the CLI, simply download, install, and configure it.
+
+安装 本地CLI上使用;
+
+~~~bash
+ aws ec2 describe-instance	#list all of the instance running in account
+ 
+ aws sns publish --topic-arn arn:aws:sns:us-east-1:xxxxxxx:topicName --message "Publish via Command LIne"	#publish a message to an SNS topic ,will returns the message ID and Email will received
+ 
+ aws sqs(severice name) send-message(action) --queue-ur https://sqs.us-east-q.amazonaws.com/xxxx/payment-request-q.fifo --message-body "Message fROM CLI" --message-group-if "3424235577" --message-deduplication-id "456456222445"#send message to sqs
+ 
+ aws sqs receive-message --queue-url https://sqs.us-east-q.amazonaws.com/xxxx/payment-request-q.fifo#list th message in a queue
+ 
+aws s3 ls s3://codevr(bucket name) #list the contents of an S3 bucket via the CLI
+~~~
+
+![image-20200110224403620](Part3-infrastructure-as-code.assets/image-20200110224403620.png)
+
+
+
+![image-20200110224919911](Part3-infrastructure-as-code.assets/image-20200110224919911.png)
+
+
+
+![image-20200110225134772](Part3-infrastructure-as-code.assets/image-20200110225134772.png)
+
+links [[AWS Command Line Interface](https://aws.amazon.com/cli/)](https://amazonaws-china.com/cn/cli/)
+
+英文版 [https://amazonaws-china.com/cli/?nc1=h_ls](https://amazonaws-china.com/cli/?nc1=h_ls)
