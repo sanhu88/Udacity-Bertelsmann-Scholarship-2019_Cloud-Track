@@ -250,3 +250,32 @@ aws s3 ls s3://codevr(bucket name) #list the contents of an S3 bucket via the CL
 links [[AWS Command Line Interface](https://aws.amazon.com/cli/)](https://amazonaws-china.com/cn/cli/)
 
 英文版 [https://amazonaws-china.com/cli/?nc1=h_ls](https://amazonaws-china.com/cli/?nc1=h_ls)
+
+***
+
+# 19 Cloud Formation
+
+## Course Overview
+
+**Lesson 1:** Introduction to Cloud Formation
+**Lesson 2:** Understanding Diagrams of Cloud Architecture
+**Lesson 3:** Infrastructure as Code (convert diagrams into code)
+**Lesson 4:** Deploying Services
+**Lesson 5:** Additional services that you’ll use in the project
+
+## DevOps 
+
+development operations
+
+#### Issues that DevOps tries to solve:
+
+- Unpredictable deployments
+- Mismatched environments (development doesn’t match production) 不同的系统
+- Configuration Drift-配置漂移，比如线上因为某次维护使得线上和本地开发不一致
+
+#### DevOps gives best practices and tools for solving these problems:
+
+- DevOps Tools: DevOps tools deploy and manage configuration changes to servers.
+  - [Stackexchange](https://softwareengineering.stackexchange.com/questions/130850/difference-between-devops-and-software-configuration-management) has a discussion post detailing the difference between DevOps tools vs. Software Configuration Tools
+- Allows for predictable deployments, because it’s an automated script.
+- Enables **Continuous Integration Continuous Deployment (CI/CD)** so that new features are automatically deployed with all the required dependencies.
