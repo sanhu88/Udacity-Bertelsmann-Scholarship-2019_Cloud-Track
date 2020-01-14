@@ -279,3 +279,21 @@ development operations
   - [Stackexchange](https://softwareengineering.stackexchange.com/questions/130850/difference-between-devops-and-software-configuration-management) has a discussion post detailing the difference between DevOps tools vs. Software Configuration Tools
 - Allows for predictable deployments, because it’s an automated script.
 - Enables **Continuous Integration Continuous Deployment (CI/CD)** so that new features are automatically deployed with all the required dependencies.
+
+## CloudFormation
+
+### AWS region used for this course
+
+Choose AWS region US-west-2 (Oregon) for our course. This will guarantee the options are the same for all students.
+
+### Glossary
+
+**CloudFormation:** CloudFormation is a tool in AWS for managing, configuring and deploying infrastructure (push code along with the necessary server configurations).
+
+习题：
+
+You'll need these three tools to get started in CloudFormation：
+
+* Version Control 
+* Code Editor for YAML and JSON
+* Amazon Web Services account
