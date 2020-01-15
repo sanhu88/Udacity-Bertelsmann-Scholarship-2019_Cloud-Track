@@ -315,3 +315,16 @@ In practice, Dev and DevOps members may have separate user accounts for the dev 
 #### Access Key ID and Secret Access Keys
 
 Remember not to save these in your code or to check into any repositories. Keep these private to you.
+
+保证秘钥的安全性
+
+练习：
+
+When creating a new API Access user, you will：
+
+* Specify the region - in our case, us-west-2
+* Create a programmatic access IAM User
+* Configure the AWS CLI Tool with the newly created keys for our user
+* Assign an appropriate IAM Policy to the user, depending on the required access
+
+Specifying a region is a nice-to-have and not mandatory, but it does make your life easier when using region-specific services.
