@@ -338,3 +338,48 @@ When creating a new API Access user, you will：
 * Assign an appropriate IAM Policy to the user, depending on the required access
 
 Specifying a region is a nice-to-have and not mandatory, but it does make your life easier when using region-specific services.
+
+## Configuring AWS CLI
+
+https://aws.amazon.com/cli/ to download software
+
+习题：
+
+Regarding your access keys it's always best to：
+
+* Rotate them (change them ) frequently，It's great practice to change them every 90 days or sooner and 
+
+* Make them inactive if they won't be used for a while，also to just delete them or mark them inactive when not in use.
+* Please do NOT store your access key in a code repository; this is very insecure.
+* We strongly recommend you don't put them in shared storage inside a text file either.
+
+### Configuring the AWS Command Line Interface (CLI)
+
+- Download and install the [AWS CLI tool.](https://aws.amazon.com/cli/)
+- In the terminal, type `aws --version`: this verifies that you have the AWS CLI tool.
+
+~~~
+$ aws --version
+aws-cli/1.17.3 Python/2.7.16 Windows/10 botocore/1.14.3
+
+~~~
+
+
+
+- To set up your AWS CLI, type `aws configure` in the terminal. Next when prompted for the AWS Access Key ID, paste in your `Secret access key`.
+- Region: Please use `us-west-2`, even if you’re living closer to another available region.
+
+![image-20200116194738699](Part3-infrastructure-as-code.assets/image-20200116194738699.png)
+
+### Verifying your Setup
+
+- One way to check if your AWS CLI is set up properly is to try a command. You can try listing your S3 buckets:`aws s3 ls` . **This will be blank if you have no S3 buckets**. However, if you have no error message, then you’ve verified that your user has API access to communicate with AWS.
+
+~~~
+aws s3 ls
+2020-01-16 19:17:45 elasticbeanstalk-us-east-2-0729
+~~~
+
+
+
+- Note that each user can have up to 2 access keys at the same time.
