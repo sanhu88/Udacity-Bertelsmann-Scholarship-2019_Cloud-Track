@@ -383,3 +383,16 @@ aws s3 ls
 
 
 - Note that each user can have up to 2 access keys at the same time.
+
+more detail on 
+
+1. [https://github.com/aws/aws-cli](https://github.com/aws/aws-cli)
+2. [http://docs.aws.amazon.com/cli/latest/reference/](http://docs.aws.amazon.com/cli/latest/reference/)
+
+## Additional Access Keys
+
+Note that each user can have up to 2 access keys at the same time.
+
+### Why Making Keys Inactive is a Better Choice
+
+You may make your access key temporarily inactive rather than destroying it and creating a new one. This may be helpful if you want to stop an automated process that uses that key (for example, a CI/CD process).
