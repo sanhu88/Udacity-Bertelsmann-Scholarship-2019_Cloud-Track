@@ -318,6 +318,16 @@ Remember not to save these in your code or to check into any repositories. Keep 
 
 保证秘钥的安全性
 
+![image-20200116191142180](Part3-infrastructure-as-code.assets/image-20200116191142180.png)
+
+
+
+![image-20200116191207228](Part3-infrastructure-as-code.assets/image-20200116191207228.png)
+
+![image-20200116191228295](Part3-infrastructure-as-code.assets/image-20200116191228295.png)
+
+![image-20200116191404417](Part3-infrastructure-as-code.assets/image-20200116191404417.png)
+
 练习：
 
 When creating a new API Access user, you will：
