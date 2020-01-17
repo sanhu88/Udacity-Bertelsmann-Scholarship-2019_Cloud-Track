@@ -411,3 +411,33 @@ You may make your access key temporarily inactive rather than destroying it and 
 
 - Here is the [Wikipedia page](https://en.wikipedia.org/wiki/Imperative_programming) describing the differences between the two.
 - Here is a [Stack Overflow](https://stackoverflow.com/questions/17826380/what-is-difference-between-functional-and-imperative-programming-languages) thread describing imperative languages.
+
+## CloudFormation Script
+
+#### YAML and JSON
+
+- YAML and JSON file formats are both supported in CloudFormation, but YAML is the industry preferred version that’s used for AWS and other cloud providers (Azure, Google Cloud Platform).
+- An important note about YAML files: the whitespace indentation matters! We recommend that you use **four white spaces for each indentation**.（四个空格作为一个缩进）
+
+#### Glossary in CloudFormation scripts
+
+**Name**: A name you want to give to the resource (does this have to be unique across all resource types?)
+**Type**: Specifies the actual hardware resource that you’re deploying.
+**Properties**: Specifies configuration options for your resource. Think of these as all the drop down menus and checkbox options that you would see in the AWS console if you were to request the resource manually.
+**Stack**: A stack is a group of resources. These are the resources that you want to deploy, and that are specified in the YAML file.
+
+#### Best practices
+
+**Coding best practice:** Create separate files to organize your code. You can either create separate files for similar resources, or create files for each developer who uses those resources.
+
+#### Documentation for CloudFormation syntax
+
+You don't need to memorize the code that you need for each resource. You can find sample code in the [documentation for CloudFormation](https://docs.aws.amazon.com/index.html) for examples of how to write your CloudFormation scripts.
+
+习题：
+
+If you have a team of database, operations and networking experts, you would split your CloudFormation script into several files based on:
+
+Type of resource
+
+You'd have a file for network resources, another for database resources, and so on. This allows each expert to work on, and become familiar with, their resources and leverage their already-existing knowledge.
