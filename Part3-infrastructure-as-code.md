@@ -441,3 +441,23 @@ If you have a team of database, operations and networking experts, you would spl
 Type of resource
 
 You'd have a file for network resources, another for database resources, and so on. This allows each expert to work on, and become familiar with, their resources and leverage their already-existing knowledge.
+
+## run CloudFormation
+
+- For this example, we’ll assume your CloudFormation file name is called `testcfn.yml`, and you’re giving your stack the name `myfirsttest`.
+- In the terminal, to use your yml code to request the resources, type the following in the same directory as your yml file:
+
+~~~yaml
+aws cloudformation create-stack 
+--stack-name myfirsttest 
+--region us-west-2 
+--template-body testcfn.yml
+~~~
+
+* You may also want to use `update-stack` when you want to update an existing stack instead of destroying your stack and creating a new one.
+
+习题：
+
+If you have a team of database, operations and networking experts, you would split your CloudFormation script into several files based on: Yes
+
+CloudFormation uses a lot of logic behind the scenes to make sure everything works as expected, even when you don't specify resources in a specific order.
