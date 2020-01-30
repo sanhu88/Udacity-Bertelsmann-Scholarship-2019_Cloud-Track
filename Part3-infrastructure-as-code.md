@@ -467,3 +467,19 @@ CloudFormation uses a lot of logic behind the scenes to make sure everything wor
 1. select our VPC from our region and I'll click the Create VPC button in the AWS console
 2. use YAML file create at AWS CLI
 
+## Automating with CloudFormation
+
+duplicate with before we learn about create a user in IAM.
+
+习题：
+
+You are likely to need AWS Credentials (API Keys) in order to write code using the AWS SDK and to use the AWS Command Line Interface (CLI). Where do you suggest we store those credentials
+
+On my work computer
+
+Surprisingly, this is the best choice here! The problem with S3 and EC2 is that in order to access those, you'll need credentials in the first place.
+
+## Verifying in console
+
+like in run CloudFormation ,use user use aws cloudformation create-stack to create a stack in CLI
+
