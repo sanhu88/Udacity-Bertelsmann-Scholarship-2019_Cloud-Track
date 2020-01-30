@@ -136,7 +136,7 @@ EC2 开放端口是在网络安全--安全组--对应的组--入站
 
 有点类似docker 的 yml部署
 
-## Cloud Formation
+## Cloud Formation（云模板）
 
 使用模板创建额管理资源
 
@@ -461,3 +461,9 @@ aws cloudformation create-stack
 If you have a team of database, operations and networking experts, you would split your CloudFormation script into several files based on: Yes
 
 CloudFormation uses a lot of logic behind the scenes to make sure everything works as expected, even when you don't specify resources in a specific order.
+
+## Creating a VPC: Manually vs Automated
+
+1. select our VPC from our region and I'll click the Create VPC button in the AWS console
+2. use YAML file create at AWS CLI
+
