@@ -4,7 +4,7 @@ lesson 18 - 24
 
 ****
 
-# lesson 18 AWS Management
+# lesson 18 - AWS Management
 
 ## logging and auditing in the cloud
 
@@ -253,7 +253,7 @@ links [[AWS Command Line Interface](https://aws.amazon.com/cli/)](https://amazon
 
 ***
 
-# 19 Cloud Formation
+# lesson 19 - Cloud Formation
 
 ## Course Overview
 
@@ -473,13 +473,32 @@ duplicate with before we learn about create a user in IAM.
 
 习题：
 
+Can you verify the status of your CloudFormation stack from the command line?
+
+Certainly! This is actually very useful if you are creating a program or script that verifies your stacks for you. However, if you are troubleshooting your stack, is probably best to do so from the AWS Console.
+
+
+
+## Verifying in console
+
+like in run CloudFormation ,use user use AWS cloud formation create-stack to create a stack in CLI
+
+习题：
+
 You are likely to need AWS Credentials (API Keys) in order to write code using the AWS SDK and to use the AWS Command Line Interface (CLI). Where do you suggest we store those credentials
 
 On my work computer
 
 Surprisingly, this is the best choice here! The problem with S3 and EC2 is that in order to access those, you'll need credentials in the first place.
 
-## Verifying in console
+## Conclusion
 
-like in run CloudFormation ,use user use aws cloudformation create-stack to create a stack in CLI
+### Manually deploy an EC2 Instance for use with the CLI Tool.
 
+We have installed and configured the AWS CLI to do our work for this course. However, there’s an alternative.
+
+Go ahead and create an EC2 Instance that you can SSH into (or Remote Desktop, if you prefer Windows). Do this manually, in the console. Be sure to limit access to your IP address only, using Security Groups.
+
+Once the instance is running, create an IAM Role with Admin access to your account, associate the role to your EC2 and install the AWS CLI on it.
+
+The CLI tool, in this case, will pick up the credentials from the role and won’t need hard-coded credentials
