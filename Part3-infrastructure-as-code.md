@@ -502,3 +502,15 @@ Go ahead and create an EC2 Instance that you can SSH into (or Remote Desktop, if
 Once the instance is running, create an IAM Role with Admin access to your account, associate the role to your EC2 and install the AWS CLI on it.
 
 The CLI tool, in this case, will pick up the credentials from the role and won’t need hard-coded credentials
+
+# lesson 20 Infrastructure Diagrams 、基础设施图表
+
+## Introduction
+
+in the cloud,don't have physical access to that data center，need diagrams and then turn those diagrams into actual infrastructure called scripts
+
+## Generalizing(归纳) to other cloud providers
+
+similar names when it comes to other Cloud providers
+
+In Google Cloud and AWS, they call it BPC
