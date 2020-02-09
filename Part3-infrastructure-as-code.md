@@ -532,3 +532,51 @@ a great discussion tool to communicate to others what you intend to create
 We’ll use [Lucidchart](https://lucidchart.com/) to create cloud diagrams. Other applications that generate diagrams include Visio or Cloudcraft.
 
 **Note to students**: You won’t need to know how to create diagrams for the project. The goal of this lesson is to get you familiar with cloud diagrams so that you can write cloud formation code based on interpreting the diagrams.
+
+## Exercise: Setting Up Lucid Charts
+
+1. **Open** your browser and go navigate to https://www.lucidchart.com/
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefbd56_screen-shot-2019-05-30-at-12.57.16-pm/screen-shot-2019-05-30-at-12.57.16-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/ebfe4292-c64f-4158-8ad6-44ae983ea85b#)
+
+
+
+1. **Click** the plus icon to create a new `Document`
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefbd98_screen-shot-2019-05-30-at-12.58.03-pm/screen-shot-2019-05-30-at-12.58.03-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/ebfe4292-c64f-4158-8ad6-44ae983ea85b#)
+
+
+
+1. **Click** on `Blank Diagram` to select a blank template.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefbeab_screen-shot-2019-05-30-at-12.58.09-pm/screen-shot-2019-05-30-at-12.58.09-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/ebfe4292-c64f-4158-8ad6-44ae983ea85b#)
+
+
+
+- You should now have a blank Document that looks like this:
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc264_screen-shot-2019-05-30-at-12.58.23-pm/screen-shot-2019-05-30-at-12.58.23-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/ebfe4292-c64f-4158-8ad6-44ae983ea85b#)
+
+
+
+1. **Click** on the `Shapes` button in the top left of the control panel to access the `Shape Manager` screen
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc28d_screen-shot-2019-05-30-at-12.58.51-pm/screen-shot-2019-05-30-at-12.58.51-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/ebfe4292-c64f-4158-8ad6-44ae983ea85b#)
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc3f6_screen-shot-2019-05-30-at-12.58.59-pm/screen-shot-2019-05-30-at-12.58.59-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/ebfe4292-c64f-4158-8ad6-44ae983ea85b#)
+
+
+
+1. **Select** both `AWS Architecture 2017` & `AWS Architecture 2019` and then **Click** the `X` icon in the top right hand corner.
