@@ -518,3 +518,17 @@ In Google Cloud and AWS, they call it BPC
 Generalizable to AWS, Google Cloud Platform, Microsoft Azure
 
 The diagrams and resources covered in this lesson are generalizable to other cloud providers (such as Azure and Google Cloud Platform).
+
+## Setting up Lucidcharts
+
+练习：
+
+Cloud Architecture diagrams are...
+
+a great discussion tool to communicate to others what you intend to create
+
+#### Lucidchart
+
+We’ll use [Lucidchart](https://lucidchart.com/) to create cloud diagrams. Other applications that generate diagrams include Visio or Cloudcraft.
+
+**Note to students**: You won’t need to know how to create diagrams for the project. The goal of this lesson is to get you familiar with cloud diagrams so that you can write cloud formation code based on interpreting the diagrams.
