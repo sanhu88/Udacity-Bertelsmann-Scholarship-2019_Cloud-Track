@@ -514,3 +514,7 @@ in the cloud,don't have physical access to that data center，need diagrams and 
 similar names when it comes to other Cloud providers
 
 In Google Cloud and AWS, they call it BPC
+
+Generalizable to AWS, Google Cloud Platform, Microsoft Azure
+
+The diagrams and resources covered in this lesson are generalizable to other cloud providers (such as Azure and Google Cloud Platform).
