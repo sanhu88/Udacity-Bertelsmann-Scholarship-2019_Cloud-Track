@@ -580,3 +580,26 @@ We’ll use [Lucidchart](https://lucidchart.com/) to create cloud diagrams. Othe
 
 
 1. **Select** both `AWS Architecture 2017` & `AWS Architecture 2019` and then **Click** the `X` icon in the top right hand corner.
+
+
+
+## 20-5 : Diagramming AWS Accounts and Regions
+
+#### Cloud Container
+
+This represents your AWS account and all resources it can access.
+
+#### Region
+
+A local business may be entirely contained in a region.
+
+习题：
+
+If my diagram covers multiple AWS accounts, regions and subnets，
+
+Create multiple diagrams, with each diagram covering a logical container, such as subnet, VPC or Account.
+
+If you have too much going on inside a subnet, for example, you could create a Cloud Architecture diagram just for that one subnet and have a separate diagram that shows the VPC, AWS Account and/or region.
+
+Large diagrams become unreadable and difficult to print and present on the screen. It is best to have a "full scope" diagram that just shows accounts, regions or VPCs. Along with reduced-scope diagrams, it should show a specific subnet or VPC.
+
