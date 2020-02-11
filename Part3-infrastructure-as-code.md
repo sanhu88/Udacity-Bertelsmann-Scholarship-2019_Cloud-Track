@@ -705,3 +705,82 @@ Large diagrams become unreadable and difficult to print and present on the scree
 
 
 [![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.34.04-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/efb15a8e-b7b4-463d-a41e-15df81c83d83#)
+
+
+
+## 20-9 ： Virtual Private Cloud
+
+* the main goal of the VPC is to provide private IP address space for your network and resources.
+* A subnet is simply a smaller chunk of that IP address space.
+  1. The slash number at the end of an address represents the number of bits that are constant for this VPC or subnet from left to right.
+* VPC has the ability to span over several availability zones in Diagramming.
+* Divide the number behind the slash by 8, which is the fixed number at the front of the subnet
+
+#### Glossary
+
+**Virtual Private Cloud (VPC)**: A virtual private cloud is a pool of networked cloud resources. **It can span more than one availability zone**.
+The equivalent of this would be a data center. However, thanks to availability zones, VPCs can span more than one physical building. This is an amazing feature that protects against real world disasters like electrical failures, fires and similar events.
+
+## 20-10 : Exercise: Virtual Private Cloud
+
+1. **Locate** the `Virtual Private Cloud` container from the `Shapes` panel.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.35.49-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+1. **Drag** the `Virtual Private Cloud` container onto your canvas.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.36.18-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+1. Arrange your `Virtual Private Cloud` container so that it encloses both of your `Availability Zones`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.36.39-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+1. **Locate** the `VPC _subnet` container from the `Shapes` panel.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.37.19-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+1. **Drag** the `VPC _subnet` container onto your canvas and place it inside of your first `Availability Zone`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.37.29-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.37.52-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+1. **Drag** another `VPC _subnet` container onto your canvas, but this time place it in your second `Availability Zone`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.37.58-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+1. **Rename** the top`VPC _subnet` container to `Public Subnet 1` and the bottom `VPC_subnet` container to `Public Subnet`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.39.20-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.39.05-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
