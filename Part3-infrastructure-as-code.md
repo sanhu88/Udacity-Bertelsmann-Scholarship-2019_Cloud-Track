@@ -603,3 +603,65 @@ If you have too much going on inside a subnet, for example, you could create a C
 
 Large diagrams become unreadable and difficult to print and present on the screen. It is best to have a "full scope" diagram that just shows accounts, regions or VPCs. Along with reduced-scope diagrams, it should show a specific subnet or VPC.
 
+20-6 ：Diagramming AWS accounts & regions
+
+1. From the `Shapes` panel. Scroll down to the `Containers` and drag `AWS cloud` container onto your canvas.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc78a_screen-shot-2019-05-30-at-1.07.10-pm/screen-shot-2019-05-30-at-1.07.10-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/75fb551c-d726-4e75-9a5d-86d80269bbbd#)
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc814_screen-shot-2019-05-30-at-1.07.19-pm/screen-shot-2019-05-30-at-1.07.19-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/75fb551c-d726-4e75-9a5d-86d80269bbbd#)
+
+
+
+1. **Stretch** your `AWS cloud` container to give yourself more room by dragging its corners.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc82a_screen-shot-2019-05-30-at-1.07.53-pm/screen-shot-2019-05-30-at-1.07.53-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/75fb551c-d726-4e75-9a5d-86d80269bbbd#)
+
+
+
+1. **Search** for `users` and locate `AWS General Users`
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefc970_screen-shot-2019-05-30-at-1.11.11-pm/screen-shot-2019-05-30-at-1.11.11-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/75fb551c-d726-4e75-9a5d-86d80269bbbd#)
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefcd69_screen-shot-2019-05-30-at-1.11.35-pm/screen-shot-2019-05-30-at-1.11.35-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/75fb551c-d726-4e75-9a5d-86d80269bbbd#)
+
+
+
+1. **Drag** the `AWS General Users` onto your canvas.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cefcd8a_screen-shot-2019-05-30-at-1.11.52-pm/screen-shot-2019-05-30-at-1.11.52-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/75fb551c-d726-4e75-9a5d-86d80269bbbd#)
+
+
+
+1. **Rename** your `AWS General Users` shape to `Users`.
+
+
+
+## 20-7 ：Diagramming Availability Zones
+
+* You can think of an availability zone as a data center
+* AZs or availability zones are designed to be resilient by themselves，always want to have more than one
+* design an application that is highly available，having more than one availability zone
+* think about **cost** or **high availability**
+
+#### Glossary
+
+**Availability Zones (AZ):** An AZ is a data center (physical building).
+
+### Best Practices
+
+- Choose to have more than one availability zone to avoid a single point of failure.
+- Include more than one availability zone to design for high availability, .
+- You may choose to reduce to one AZ, possibly for prototyping（原型设计） and design for low cost. But it is not recommended for production environments.
