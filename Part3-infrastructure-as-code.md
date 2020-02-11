@@ -784,3 +784,47 @@ The equivalent of this would be a data center. However, thanks to availability z
 
 
 [![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.39.05-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9cacac1f-06e0-4063-b5d7-f34357e06296#)
+
+## 20-11 : Public vs Private Subnets
+
+练习：
+
+Public ：Public-facing Web Server / Load Balancer to your web servers
+
+Private : Database / Back-end application server
+
+#### Subnets
+
+- A subnet is a subset of the overall VPC network and it only exists in a single availability zone, unlike its parent network, the VPC.
+- A subnet contains resources, and can be assigned access rights that apply to all resources within that subnet.
+- **Subnets can be public or private.** Public subnets are accessible to external users. Private subnets are only accessed internally by other resources within your cloud container.
+
+#### Use IP addresses for routing traffic
+
+- Use IP addresses as the “keys” for routing traffic. We can route traffic to stay within the VPC, or within a particular subnet, for security reasons.
+- For example, a database or any sensitive data will be placed in a private subnet. A public server, like a web server, can be placed in a public subnet. Routing rules applied to a subnet allow us to define access to all resources placed inside that subnet.
+
+## 20-12 : Exercise: Public vs Private Subnets
+
+1. **Drag** 2 new `VPC_subnet` containers onto your canvas.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5ceff9ef_screen-shot-2019-05-30-at-11.46.12-am/screen-shot-2019-05-30-at-11.46.12-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f42cfc44-bafa-462e-9642-4fed803f3cee#)
+
+
+
+1. **Place** one of the newly dragged `VPC_subnet` containers into each of your `Availability Zone` containers.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5ceffa04_screen-shot-2019-05-30-at-11.46.50-am/screen-shot-2019-05-30-at-11.46.50-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f42cfc44-bafa-462e-9642-4fed803f3cee#)
+
+
+
+1. **Rename** all of your `VPC_subnet` containers to match the following:
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5ceffa2e_screen-shot-2019-05-30-at-11.47.40-am/screen-shot-2019-05-30-at-11.47.40-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f42cfc44-bafa-462e-9642-4fed803f3cee#)
+
