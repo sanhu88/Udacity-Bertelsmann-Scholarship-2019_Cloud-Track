@@ -665,3 +665,43 @@ Large diagrams become unreadable and difficult to print and present on the scree
 - Choose to have more than one availability zone to avoid a single point of failure.
 - Include more than one availability zone to design for high availability, .
 - You may choose to reduce to one AZ, possibly for prototyping（原型设计） and design for low cost. But it is not recommended for production environments.
+
+## 20-8 ： Exercise: Diagramming Availability Zones
+
+1. **Locate** the `Availability Zone` shape from the `Containers` section.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.31.26-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/efb15a8e-b7b4-463d-a41e-15df81c83d83#)
+
+
+
+1. **Drag** the `Availability Zone` shape inside of your existing `AWS cloud` container.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.31.41-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/efb15a8e-b7b4-463d-a41e-15df81c83d83#)
+
+
+
+1. **Expand** your `Availability Zone`'s width within the `AWS cloud` container.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.31.58-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/efb15a8e-b7b4-463d-a41e-15df81c83d83#)
+
+
+
+1. **Add** another `Availability Zone` container below your existing `Availability Zone` container by repeating the initial 3 steps.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.33.56-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/efb15a8e-b7b4-463d-a41e-15df81c83d83#)
+
+
+
+- Your final result should look like this:
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.34.04-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/efb15a8e-b7b4-463d-a41e-15df81c83d83#)
