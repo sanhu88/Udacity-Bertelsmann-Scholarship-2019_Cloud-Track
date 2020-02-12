@@ -873,3 +873,33 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 
 
 [![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.56.50-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/819bd9f7-b106-4e73-9b7c-7487368f6d94#)
+
+## 20-15 ：Network Address Translation
+
+* A NAT or Network Address Translation Service，is used to provide outbound Internet access to resources in your private sub-nets.
+* What it does is it translates incoming public traffic into private traffic.
+* it needs to have public access itself.
+
+## 20-16 ： Exercise: NAT's
+
+1. **Search** the shapes panel for `VPC_NAT gateway`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.03.00-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/5969f3f8-a425-47f6-b5e0-cd137ada357b#)
+
+
+
+1. **Drag** the `VPC_NAT gateway` shape onto your canvas and place it directly inside `Public Subnet 1`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.03.18-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/5969f3f8-a425-47f6-b5e0-cd137ada357b#)
+
+
+
+1. **Repeat** step 3, but instead place your new `VPC_NAT gateway` inside of `Public Subnet 2`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.03.36-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/5969f3f8-a425-47f6-b5e0-cd137ada357b#)
