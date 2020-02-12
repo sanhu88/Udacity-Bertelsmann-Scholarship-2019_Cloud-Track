@@ -828,3 +828,48 @@ Private : Database / Back-end application server
 
 [![img](https://video.udacity-data.com/topher/2019/May/5ceffa2e_screen-shot-2019-05-30-at-11.47.40-am/screen-shot-2019-05-30-at-11.47.40-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f42cfc44-bafa-462e-9642-4fed803f3cee#)
 
+## 20-13 ： IGW Internet Gateway
+
+习题
+
+If I just created a VPC and I want to provide internet to it, I should make sure
+
+* Create a route to the IGW and associate it with your subnet(s)
+* Create an IGW
+* Attach the IGW to  your VPC
+
+Sometimes you'll forget the route or forget to attach the Internet Gateway. Just be sure to consider these steps when troubleshooting a "no internet access" issue.
+
+
+
+#### Internet Gateway
+
+- An internet gateway is a resource that enables inbound and outbound traffic from the internet to your VPC.
+- An internet gateway allows external users access to communicate with parts of your VPC.
+- If you create a private VPC for an application that is internal to your company, you will not need an internet gateway.
+
+Network Address Translation (NAT) Gateway: provides **outbound-only** internet gateway for private services to access the internet. This keeps the private service protected from inbound connections, but allows it to connect to the internet *in order to perform functions such as downloading software updates.* The NAT gateway serves as an intermediary to take a private resource’s request, connect to the internet, and then relay the response back to the private resource without exposing(暴露) that private resource’s IP address to the public.
+
+**Note**: Place NAT Gateways inside the **public** subnets and not the private subnets. NAT gateways need to be in the public subnet so that they can communicate with the public internet, and handle requests from resources that are in a private subnet.
+
+
+
+## 20-14 ： Exercise: IGW Internet Gateway
+
+1. **Search** for `VPC internet gateway` in the search shapes panel.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.56.09-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/819bd9f7-b106-4e73-9b7c-7487368f6d94#)
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.56.21-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/819bd9f7-b106-4e73-9b7c-7487368f6d94#)
+
+
+
+1. **Drag** the `VPC internet gateway` shape onto your canvas and place it directly to the right of your `Users`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-11.56.50-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/819bd9f7-b106-4e73-9b7c-7487368f6d94#)
