@@ -533,7 +533,7 @@ We’ll use [Lucidchart](https://lucidchart.com/) to create cloud diagrams. Othe
 
 **Note to students**: You won’t need to know how to create diagrams for the project. The goal of this lesson is to get you familiar with cloud diagrams so that you can write cloud formation code based on interpreting the diagrams.
 
-## Exercise: Setting Up Lucid Charts
+### Exercise: Setting Up Lucid Charts
 
 1. **Open** your browser and go navigate to https://www.lucidchart.com/
 
@@ -666,7 +666,7 @@ Large diagrams become unreadable and difficult to print and present on the scree
 - Include more than one availability zone to design for high availability, .
 - You may choose to reduce to one AZ, possibly for prototyping（原型设计） and design for low cost. But it is not recommended for production environments.
 
-## 20-8 ： Exercise: Diagramming Availability Zones
+### 20-8 ： Exercise: Diagramming Availability Zones
 
 1. **Locate** the `Availability Zone` shape from the `Containers` section.
 
@@ -721,7 +721,7 @@ Large diagrams become unreadable and difficult to print and present on the scree
 **Virtual Private Cloud (VPC)**: A virtual private cloud is a pool of networked cloud resources. **It can span more than one availability zone**.
 The equivalent of this would be a data center. However, thanks to availability zones, VPCs can span more than one physical building. This is an amazing feature that protects against real world disasters like electrical failures, fires and similar events.
 
-## 20-10 : Exercise: Virtual Private Cloud
+### 20-10 : Exercise: Virtual Private Cloud
 
 1. **Locate** the `Virtual Private Cloud` container from the `Shapes` panel.
 
@@ -804,7 +804,7 @@ Private : Database / Back-end application server
 - Use IP addresses as the “keys” for routing traffic. We can route traffic to stay within the VPC, or within a particular subnet, for security reasons.
 - For example, a database or any sensitive data will be placed in a private subnet. A public server, like a web server, can be placed in a public subnet. Routing rules applied to a subnet allow us to define access to all resources placed inside that subnet.
 
-## 20-12 : Exercise: Public vs Private Subnets
+### 20-12 : Exercise: Public vs Private Subnets
 
 1. **Drag** 2 new `VPC_subnet` containers onto your canvas.
 
@@ -854,7 +854,7 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 
 
 
-## 20-14 ： Exercise: IGW Internet Gateway
+### 20-14 ：Exercise: IGW Internet Gateway
 
 1. **Search** for `VPC internet gateway` in the search shapes panel.
 
@@ -880,7 +880,7 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 * What it does is it translates incoming public traffic into private traffic.
 * it needs to have public access itself.
 
-## 20-16 ： Exercise: NAT's
+### 20-16 ： Exercise: NAT's
 
 1. **Search** the shapes panel for `VPC_NAT gateway`.
 
@@ -903,3 +903,74 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 
 
 [![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.03.36-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/5969f3f8-a425-47f6-b5e0-cd137ada357b#)
+
+
+
+## 20-17 ：Autoscaling groups
+
+* highly available/reliability(AZ1-->AZ2)
+* elasticity (auto scaling,only pay for resources that you're actually using)
+
+#### Glossary
+
+**Autoscaling group:** An autoscaling group manages multiple instances of the same resource (for example, servers), based on need. For instance, when there is a lot of internet traffic to a site, the autoscaling group can start more servers. When there is less traffic, the autoscaling group can reduce the number of servers.
+
+#### Best Practice
+
+- It is recommended that an autoscaling group **spans more than one availability zone, for reliability**.
+- If we set the autoscaling group to run one resource, it will run that one resource in one of the availability zones.
+- If there is a failure of that resource, the autoscaling group will shut it down in that availability zone and start that same resource in the other availability zone.
+
+### 20-18 : Exercise: Autoscaling Groups
+
+1. **Search** the shapes panel for `EC2` compute service.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.08.22-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/0772552f-52c9-4d57-8e48-ad64dfb9fea3#)
+
+
+
+1. **Drag** the `EC2` computer service onto your canvas and place it directly inside `Public Subnet 1`, to the left of your `VPC_NAT gateway`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cf1374b_screen-shot-2019-05-30-at-12.08.45-pm/screen-shot-2019-05-30-at-12.08.45-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/0772552f-52c9-4d57-8e48-ad64dfb9fea3#)
+
+
+
+1. **Rename** the `EC2` compute service to `WWW`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.09.27-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/0772552f-52c9-4d57-8e48-ad64dfb9fea3#)
+
+
+
+1. **Duplicate** your `EC2` compute service and place it inside `Public Subnet 2`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.09.46-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/0772552f-52c9-4d57-8e48-ad64dfb9fea3#)
+
+
+
+1. **Search** the shapes panel for `Auto Scaling` and locate the one under `Group Icons`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.10.20-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/0772552f-52c9-4d57-8e48-ad64dfb9fea3#)
+
+
+
+1. **Drag** the `Auto Scaling` group icon onto your canvas and place it inside `Private Subnet 1`.
+
+
+
+[![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.10.29-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/0772552f-52c9-4d57-8e48-ad64dfb9fea3#)
+
+
+
+1. **Resize** the `Auto Scaling` group icon so that it starts in `Private Subnet 1`, then extends and covers `Private Subnet 2`.
+
+![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.10.47-pm-1581477520573.png)
