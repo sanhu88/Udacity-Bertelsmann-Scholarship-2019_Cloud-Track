@@ -974,3 +974,34 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 1. **Resize** the `Auto Scaling` group icon so that it starts in `Private Subnet 1`, then extends and covers `Private Subnet 2`.
 
 ![img](Part3-infrastructure-as-code.assets/screen-shot-2019-05-30-at-12.10.47-pm-1581477520573.png)
+
+
+
+## 20-19： Load Balancers
+
+1. elastic load balancer distributes to exist server or instance
+2. Auto scaling group increase server or instanse.
+3. The load balancer will check health of servers,make sure that they're operational
+
+#### Load Balancer
+
+- A load balancer takes incoming traffic and distributes it to two or more resources. For example, it can take inbound user requests to access your website, and it can distribute the requests evenly among two or more servers.
+- Without a load balancer, having public-facing servers in more than one AZ would mean that users would have to use a different URL to reach each of the AZs. This can be impractical(不切实际的) compared to just a single URL.
+
+### 20-20: Exercise: Load Balancers
+
+**Important:** Before this section we have taken the liberty of adding an `Amazon EC2 Instance` directly inside of `Public Subnet 1` & our `AutoScaling`. Please take the time to add this to your diagram before continuing with this exercise.
+
+1. **Search** shapes panel for `Compute` section and find the `Auto Scaling Load Balancer` .
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cf14646_screen-shot-2019-05-30-at-12.53.04-pm/screen-shot-2019-05-30-at-12.53.04-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/aba0cf6a-6c42-4a0c-84d8-745ec12c7fd9#)
+
+
+
+1. **Drag** the `Application Load Balancer` onto your canvas and place it on the right side of your `Internet Gateway`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cf14667_screen-shot-2019-05-30-at-12.53.16-pm/screen-shot-2019-05-30-at-12.53.16-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/aba0cf6a-6c42-4a0c-84d8-745ec12c7fd9#)
