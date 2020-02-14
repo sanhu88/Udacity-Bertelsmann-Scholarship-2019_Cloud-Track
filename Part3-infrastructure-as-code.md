@@ -1071,3 +1071,33 @@ you can be as specific as 1 IP address ( when giving access to yourself, for exa
 
 
 [![img](https://video.udacity-data.com/topher/2019/June/5d036a28_screen-shot-2019-06-14-at-10.30.45-am/screen-shot-2019-06-14-at-10.30.45-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f62d2b56-b823-431e-bff3-909ccb6e094d#)
+
+## 20-25 S3
+
+1. if you need to access this bucket within your private subnets,you have to have those NAT gateways so that they can access the Internet
+
+#### S3
+
+- An S3 bucket is a public service for users to upload or download files.
+- Place the S3 service **outside of your VPC**.
+
+练习
+
+Images, Video, large text files, log files, audit logs are all great uses for S3.
+
+### 20-26 ： Exercise: S3
+
+1. **Search** the shapes panel for `S3 Bucket`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/June/5d036bc3_screen-shot-2019-06-14-at-10.31.50-am/screen-shot-2019-06-14-at-10.31.50-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/cd21e1d4-6e99-4625-be1b-2800a59233d1#)
+
+
+
+1. **Drag** the `S3 Bucket` and place it on the outer exterior of your `AWS Cloud Container`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/June/5d036be8_screen-shot-2019-06-14-at-10.32.17-am/screen-shot-2019-06-14-at-10.32.17-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/cd21e1d4-6e99-4625-be1b-2800a59233d1#)
+
