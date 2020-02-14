@@ -1049,3 +1049,25 @@ you can be as specific as 1 IP address ( when giving access to yourself, for exa
 
 
 [![img](https://video.udacity-data.com/topher/2019/May/5cf146de_screen-shot-2019-05-30-at-12.55.19-pm/screen-shot-2019-05-30-at-12.55.19-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9dbbed0e-6153-4f2c-9e0b-33ecc9ae8523#)
+
+## 20-22: Routing Table
+
+1. route tables can regulate traffic to and from your network
+
+![image-20200214190213110](Part3-infrastructure-as-code.assets/image-20200214190213110.png)
+
+### 20-24 : Exercise: Routing Table
+
+1. **Search** the shapes panel for `Route Table`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/June/5d036a52_screen-shot-2019-06-14-at-10.30.01-am/screen-shot-2019-06-14-at-10.30.01-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f62d2b56-b823-431e-bff3-909ccb6e094d#)
+
+
+
+1. **Drag** the `Route Table` and place it in the center of your 4 `Subnets`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/June/5d036a28_screen-shot-2019-06-14-at-10.30.45-am/screen-shot-2019-06-14-at-10.30.45-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/f62d2b56-b823-431e-bff3-909ccb6e094d#)
