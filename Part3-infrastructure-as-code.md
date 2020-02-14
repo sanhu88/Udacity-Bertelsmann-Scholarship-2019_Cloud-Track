@@ -1101,3 +1101,13 @@ Images, Video, large text files, log files, audit logs are all great uses for S3
 
 [![img](https://video.udacity-data.com/topher/2019/June/5d036be8_screen-shot-2019-06-14-at-10.32.17-am/screen-shot-2019-06-14-at-10.32.17-am.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/cd21e1d4-6e99-4625-be1b-2800a59233d1#)
 
+## 20-27 Reviewing Our Diagram
+
+练习
+
+1. Should I include hostnames and IP addresses in my cloud diagrams? No
+
+Hostnames and IPs are bound to change, thus making your diagrams obsolete fairly quickly! Instead, use descriptive names such as "App Database", "BackEnd Server", or anything that has meaning to your audience.
+
+ it would be too much clutter and the data can change.
+
