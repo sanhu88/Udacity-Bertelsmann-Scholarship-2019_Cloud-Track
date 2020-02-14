@@ -981,7 +981,8 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 
 1. elastic load balancer distributes to exist server or instance
 2. Auto scaling group increase server or instanse.
-3. The load balancer will check health of servers,make sure that they're operational
+3. load balancer send requests to your servers,it's going to equally distribute the load of incoming requests
+4. The load balancer will check health of servers,make sure that they're operational
 
 #### Load Balancer
 
@@ -1005,3 +1006,46 @@ Network Address Translation (NAT) Gateway: provides **outbound-only** internet g
 
 
 [![img](https://video.udacity-data.com/topher/2019/May/5cf14667_screen-shot-2019-05-30-at-12.53.16-pm/screen-shot-2019-05-30-at-12.53.16-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/aba0cf6a-6c42-4a0c-84d8-745ec12c7fd9#)
+
+## 20-21: Security Groups
+
+* security group，a way to manage traffic
+* to provide network traffic control at the level of the server
+* providing a web server and this web server opened on port 80
+
+#### Security Groups
+
+- Security groups manage traffic at the server level (the resource level). Security Groups aren’t for managing higher level groups such as subnets, VPC, or user accounts.
+- The same security group can be assigned to multiple resources that require the same security access settings defined by that security group.
+
+练习：
+
+While you could certainly specify just one type of traffic, it's common practice to include rules for both inbound and outbound in a single Security group.
+
+A security group can be scoped to a single IP address
+
+you can be as specific as 1 IP address ( when giving access to yourself, for example ) or as broad as the entire network ( 0.0.0.0/0)
+
+### 20-22: Exercise: Security Groups
+
+1. **Search** the shapes panel in the `Containers` section and locate the `Security Group` container .
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cf146a8_screen-shot-2019-05-30-at-12.54.04-pm/screen-shot-2019-05-30-at-12.54.04-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9dbbed0e-6153-4f2c-9e0b-33ecc9ae8523#)
+
+
+
+1. **Drag** the `Security Group` container and place it on top of `Public Subnet 2`.
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cf146bf_screen-shot-2019-05-30-at-12.54.23-pm/screen-shot-2019-05-30-at-12.54.23-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9dbbed0e-6153-4f2c-9e0b-33ecc9ae8523#)
+
+
+
+1. **Resize** the `Security Group` container so that it is only surrounding our `EC2 Instance` .
+
+
+
+[![img](https://video.udacity-data.com/topher/2019/May/5cf146de_screen-shot-2019-05-30-at-12.55.19-pm/screen-shot-2019-05-30-at-12.55.19-pm.png)](https://classroom.udacity.com/nanodegrees/nd003-bert/parts/d9261840-748d-4d0e-a4db-fcc94d511fdd/modules/31350216-5d13-4b5a-8695-45b28a6a1c5a/lessons/cf58481e-ac1b-4c1a-8243-1e46b87243c0/concepts/9dbbed0e-6153-4f2c-9e0b-33ecc9ae8523#)
