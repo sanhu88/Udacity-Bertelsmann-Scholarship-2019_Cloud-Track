@@ -1124,3 +1124,54 @@ Hostnames and IPs are bound to change, thus making your diagrams obsolete fairly
    In this case, you’d have a network that only contains private subnets, and does not have NAT Gateways.
 
    These components get replaced by a VGW (Virtual Gateway) and a VPN Connection. You’ll also need a CGW (Customer Gateway), which represents the on-premises side of the VPN Connection.
+
+----
+
+# Lesson 21 - Networking Infrastructure 
+
+## 21-2: Workflow and Helpers
+
+* a normal CloudFormation script needs to have at least one resource
+* Description totally optional
+
+When creating your `.yml` file remember that using the `Description Field` is optional. Here we start by adding a short description of our name and project we are working on.
+
+> ```yaml
+> Description: >
+>     Carlos Rivas / Udacity 2019
+> ```
+
+#### YAML File Available to You as a Resource
+
+The `network.yml` file that I use here is included in the Resources tab in the left sidebar of this page, if you'd like to download it.
+
+
+
+#### Recommended best practices
+
+Although descriptions are optional , `Resource` fields are required. Remember to include **at least one resource** (e.g., a VPC, an EC2 instance, a database) in the CloudFormation `.yml` script, otherwise it will give an error when you try to run the script..
+
+```yaml
+Resources:
+    VPC:
+        TYPE: AWS::EC2::VPC
+```
+
+
+
+#### Practice Fixing Errors
+
+- Practice fixing errors, as this will help you prepare for real scenarios on the job.
+- For instance, try altering correct, working yml scripts to see if they generate an error.
+- Practice reading error messages to understand what caused the error, and how to fix them.
+
+#### Common commands used
+
+Common commands we’ll use are 
+
+`aws cloudformation create-stack`, 
+
+and 
+
+`aws cloudformation update-stack`.
+
