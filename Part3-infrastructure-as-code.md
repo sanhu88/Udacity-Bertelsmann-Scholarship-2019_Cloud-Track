@@ -1183,9 +1183,64 @@ and
 
 ## 21-3: VPC and Internet Gateway
 
-* network.yml
+* 构建的脚本文件 network.yml 拷贝到myinfra.yml，不仅仅需要Parameters 还需要Resource 部分
 
-* network-parameters.json ,the parameter file should be in `.json` format, as `.yml` format is not yet supported for the parameter file.
+  ~~~yaml
+  Descirption：
+  	option
+  Parameters：
+  	EnviromentName:
+  		Description: An Environment name
+  		Type:String
+  		
+  	VpcCIDR:
+  		Description:Please enter the IP range
+  		Type:String
+  		Default:10.0.0.0/16
+  		
+  Resource：
+  	VPC:
+  		Type：AWS::EC2::VPC
+  		Properties：
+  			CidrBlock：！Ref VpcCIDR
+  			EnableDnsHostnames：true
+  			Tags：
+  				-key：Name
+  				value：！Ref EnviromentName
+  	
+  	InternetGateway:
+  		Type:AWS::EC2::InternetGateway
+  		Properties:
+  			Tags:
+  				-key:Name
+  				value:!Ref EnviromentName
+  	
+  	InternetGatewayAttachment:
+  		Type:AWS::EC2::VPCGatewayAttachment
+  		Properties:
+  			InternetGatewayId:!Ref InternetGateway
+  			VpcId:!Ref VPC
+  		
+  ~~~
+
+  
+
+* 参数文件去传递YAML中定义的值 network-parameters.json 拷贝到ourinfra-params.json ,the parameter file should be in `.json` format, as `.yml` format is not yet supported for the parameter file.
+
+  ~~~json
+  {
+      {
+      	"ParameterKey":"EnviromentName",
+      	"ParameterVlue":"UdacityProject"
+  	},
+  	{
+          "ParameterKey":"VpcCIDR",
+          "ParameterValue":"10.0.0.0/16"
+      }
+  }
+  ~~~
+
+  
 
 * you're going to take this Internet gateway and associate it with the VPC that you want,Otherwise it will just be an Internet gateway that is not connected to any network
 
@@ -1199,9 +1254,7 @@ and
   	 Value : !Ref EnviromentName
   ~~~
 
-  
-
-  
+* update.sh ,The parameters remain the same we're going to use the same stack their already exists,stack may take several minutes ,special when your load balancers and all the scaling groups
 
 #### Connecting VPC's & Internet Gateways
 
