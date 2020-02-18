@@ -1538,9 +1538,9 @@ The following declarations are from the sample code shown in the above video:
 
 
 
-
-
 The `EIP` in `AWS::EC2::EIP` stands for **Elastic IP.** This will give us a known/constant IP address to use instead of a disposable or ever-changing IP address. This is important when you have applications that depend on a particular IP address. `NateGateway1EIP` uses this type for that very reason:
+
+> Elastic IP, a public IP that will never change
 
 ```yaml
  NatGateway1EIP:
