@@ -1183,7 +1183,7 @@ and
 
 ## 21-3: VPC and Internet Gateway
 
-* 构建的脚本文件 network.yml 拷贝到myinfra.yml，不仅仅需要Parameters 还需要Resource 部分
+* 构建的脚本模板文件 network.yml 拷贝到myinfra.yml，不仅仅需要Parameters 还需要Resource 部分
 
   ~~~yaml
   Descirption：
@@ -1225,7 +1225,7 @@ and
 
   
 
-* 参数文件去传递YAML中定义的值 network-parameters.json 拷贝到ourinfra-params.json ,the parameter file should be in `.json` format, as `.yml` format is not yet supported for the parameter file.
+* 参数文件 去传递YAML中定义的值 network-parameters.json 拷贝到ourinfra-params.json ,the parameter file should be in `.json` format, as `.yml` format is not yet supported for the parameter file.
 
   ~~~json
   {
@@ -1276,7 +1276,7 @@ Avoid hard coding parameter values. Instead, use a separate parameter file to st
 
 Here is an example parameters file from `network-parameters.json` which is holding key-value pairs for the `Environment` & `VpcCIDR`.
 
-```yaml
+```json
 [
     {
         "ParameterKey": "EnvironmentName",
@@ -1371,7 +1371,44 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
 
 ## 21-4: NAT Gateway And Subnets
 
-* 
+* json参数文件中给变量参数赋值，第一个报错：Unresolved resource dependencies [PublicSubnet1CIDR] in the Resource block of the template.
+
+  ~~~json
+  [
+      {
+          "ParameterKey": "PublicSubnet1CIDR",
+          "ParameterValue": "10.0.0.0/24"
+      },
+      //SAME TO PublicSubnet2CIDR "10.0.1.0/16"
+      {
+          "ParameterKey": "PrivateSubnet1CIDR",
+          "ParameterValue": "10.0.2.0/16"
+      },
+      //SAME TO PrivateSubnet2CIDR "10.0.3.0/16"
+      
+  ]
+  ~~~
+
+* 第二个报错，Parameters ：[上面json添加的四个] do not exist in the template。 在yaml文件中Parameters添加
+
+  ~~~yaml
+  Parameters
+  	...
+  	PublicSubnet1CIDR:
+  		Descriotion: ......
+  		Type:String
+  		Default:10.0.0.0/24
+  	//SAME TO PublicSubnet2CIDR "10.0.1.0/16"
+      PrivateSubnet1CIDR:
+      	Descriotion: ......
+  		Type:String
+  		Default:10.0.2.0/24
+  	//SAME TO PrivateSubnet2CIDR "10.0.3.0/16"
+      
+  	
+  ~~~
+
+  
 
 *  CF的select函数
 
@@ -1387,7 +1424,7 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
 
 To specify a `Subnet` for your `VPC` you use the following syntax:
 
-```
+```yaml
 Type: AWS::EC2::Subnet
 Properties: 
   AssignIpv6AddressOnCreation: Boolean
@@ -1406,7 +1443,7 @@ Properties:
 
 Here is the actual setup of our 2 private `Subnets`:
 
-```
+```yaml
 PrivateSubnet1
     Type: AWS::EC2::Subnet
     Properties:
@@ -1454,13 +1491,13 @@ calls the function GetAZ, which returns a list of availability zones, which are 
 
 
 
-### Adding a NAT Gateway
+#### Adding a NAT Gateway
 
 ------
 
 You can use `NAT Gateways` in both your public and/or private `Subnets`. The following code is the basic syntax for declaring a `NAT Gateway`:
 
-```
+```yaml
 Type: AWS::EC2::NatGateway
 Properties: 
   AllocationId: String
@@ -1473,7 +1510,7 @@ Properties:
 
 The following declarations are from the sample code shown in the above video:
 
-```
+```yaml
  NatGateway1EIP:
         Type: AWS::EC2::EIP
         DependsOn: InternetGatewayAttachment
@@ -1503,9 +1540,9 @@ The following declarations are from the sample code shown in the above video:
 
 
 
-The `EIP` in `AWS::EC2::EIP` stands for Elastic IP. This will give us a known/constant IP address to use instead of a disposable or ever-changing IP address. This is important when you have applications that depend on a particular IP address. `NateGateway1EIP` uses this type for that very reason:
+The `EIP` in `AWS::EC2::EIP` stands for **Elastic IP.** This will give us a known/constant IP address to use instead of a disposable or ever-changing IP address. This is important when you have applications that depend on a particular IP address. `NateGateway1EIP` uses this type for that very reason:
 
-```
+```yaml
  NatGateway1EIP:
         Type: AWS::EC2::EIP
         DependsOn: InternetGatewayAttachment
@@ -1521,8 +1558,6 @@ In the scenario above the `EIP` allocation will only happen after the `InternetG
 
 
 
-
-
 #### Resources
 
 ------
@@ -1531,7 +1566,3 @@ In the scenario above the `EIP` allocation will only happen after the `InternetG
 - [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html)
 - [Creating NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating)
 - [NAT Gateway Resource Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html)
-
-
-
-下一项
