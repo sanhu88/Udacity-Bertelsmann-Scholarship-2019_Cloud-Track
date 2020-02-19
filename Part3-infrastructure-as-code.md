@@ -848,7 +848,7 @@ Sometimes you'll forget the route or forget to attach the Internet Gateway. Just
 - An internet gateway allows external users access to communicate with parts of your VPC.
 - If you create a private VPC for an application that is internal to your company, you will not need an internet gateway.
 
-Network Address Translation (NAT) Gateway: provides **outbound-only** internet gateway for private services to access the internet. This keeps the private service protected from inbound connections, but allows it to connect to the internet *in order to perform functions such as downloading software updates.* The NAT gateway serves as an intermediary to take a private resource’s request, connect to the internet, and then relay the response back to the private resource without exposing(暴露) that private resource’s IP address to the public.
+Network Address Translation (NAT)网络地址转换 Gateway: provides **outbound-only** internet gateway for private services to access the internet. This keeps the private service protected from inbound connections, but allows it to connect to the internet *in order to perform functions such as downloading software updates.* The NAT gateway serves as an intermediary to take a private resource’s request, connect to the internet, and then relay the response back to the private resource without exposing(暴露) that private resource’s IP address to the public.
 
 **Note**: Place NAT Gateways inside the **public** subnets and not the private subnets. NAT gateways need to be in the public subnet so that they can communicate with the public internet, and handle requests from resources that are in a private subnet.
 
@@ -1371,7 +1371,11 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
 
 ## 21-4: NAT Gateway And Subnets
 
-* json参数文件中给变量参数赋值，第一个报错：Unresolved resource dependencies [PublicSubnet1CIDR] in the Resource block of the template.
+* Video  21-6 ~ 21-10
+
+* 21-6 首先添加两对公网子网和私有子网，因为分布在两个AZ。
+
+* 21-7 json参数文件中给变量参数赋值，第一个报错Template format error：Unresolved resource dependencies [PublicSubnet1CIDR] in the Resource block of the template.
 
   ~~~json
   [
@@ -1389,10 +1393,10 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
   ]
   ~~~
 
-* 第二个报错，Parameters ：[上面json添加的四个] do not exist in the template。 在yaml文件中Parameters添加
+* 第二个报错，Parameters ：[上面json添加的四个] do not exist in the template。 在yaml模板文件中Parameters添加各个子网的CIDR，然后创建了VPC下的子网。
 
   ~~~yaml
-  Parameters
+  Parameters:
   	...
   	PublicSubnet1CIDR:
   		Descriotion: ......
@@ -1417,6 +1421,16 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
   ~~~
 
 * YAML 和 json，的声明的变量必须一致。比如YAML 有四个子网，必须在json中给四个子网赋值 ；相反json赋值的参数，也必须在yaml中被定义
+
+* 21-8 ：两个NatGateway1和NatGateway1EIP，AWS自动分配的话，是一次性的，会变化。NAT 需要一个不会变化的elastic IP.
+
+* 21-9 ： DependsOn 在EIP里，是要等到InternetGatewayAttachment 运行后，才能获取IP。
+
+  * NatGateway 里参数引用各个公共子网的IP
+  * GetAtt 引用别的参数的值
+  * yaml 文件的格式缩进的状况，保持tab一致空行 indented properly.YAML is a very picky format.
+
+* 21-10 create route tables
 
 #### Adding Subnets
 
@@ -1566,3 +1580,213 @@ In the scenario above the `EIP` allocation will only happen after the `InternetG
 - [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html)
 - [Creating NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-creating)
 - [NAT Gateway Resource Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-natgateway.html)
+
+## 21-5: Routing 
+
+* Video  21-11
+* 
+*  
+*  
+
+#### lossary
+
+**Routing**: Routing is the action of applying routing rules to your network, in this case, to your VPC.
+*Routing rule:* Resources follow the routing rule, which defines what resource has access to communicate with another resource. It blocks traffic from resources that do not follow the routing rule.
+
+
+
+
+
+#### Route Tables
+
+------
+
+We create `RouteTable`s for `VPC`s so that we can add `Route`s that we later associate with `Subnet`s. The following is the syntax used to define a `RouteTable`:
+
+```yaml
+Type: AWS::EC2::RouteTable
+Properties: 
+  Tags: 
+    - Tag
+  VpcId: String
+```
+
+The only required property for setting up a `RouteTable` is the `VpcId`. Here is an example table from the video lesson:
+
+```
+PublicRouteTable:
+        Type: AWS::EC2::RouteTable
+        Properties: 
+            VpcId: !Ref VPC
+            Tags: 
+                - Key: Name 
+                  Value: !Sub ${EnvironmentName} Public Routes
+```
+
+
+
+
+
+#### Routes
+
+------
+
+The following is the syntax used to set up our `Route`:
+
+```
+Type: AWS::EC2::Route
+Properties: 
+  DestinationCidrBlock: String
+  DestinationIpv6CidrBlock: String
+  EgressOnlyInternetGatewayId: String
+  GatewayId: String
+  InstanceId: String
+  NatGatewayId: String
+  NetworkInterfaceId: String
+  RouteTableId: String
+  VpcPeeringConnectionId: String
+```
+
+The `DestinationCidrBlock` property is used for destination matching and a `wildcard address` (`0.0.0/0`) to reference all traffic. So in the following example, when we use the wildcard address `0.0.0.0/0`, we are saying for any address that comes through this route, send it to the referenced `GatewayId`:
+
+```
+DefaultPublicRoute: 
+        Type: AWS::EC2::Route
+        DependsOn: InternetGatewayAttachment
+        Properties: 
+            RouteTableId: !Ref PublicRouteTable
+            DestinationCidrBlock: 0.0.0.0/0
+            GatewayId: !Ref InternetGateway
+```
+
+
+
+
+
+#### SubnetRouteTableAssociation
+
+------
+
+In order to associate `Subnet`s with our `Route Table` we will need to use a `SubnetRouteTableAssociation`. `SubnetRouteTableAssociation`s are defined using the following syntax:
+
+```
+Type: AWS::EC2::SubnetRouteTableAssociation
+Properties: 
+  RouteTableId: String
+  SubnetId: String
+```
+
+This only takes two properties, which are the id's used for our `RouteTable` and our `Subnet`. You can see references used in the example from our video lesson above:
+
+```
+PublicSubnet1RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PublicRouteTable
+            SubnetId: !Ref PublicSubnet1
+```
+
+
+
+
+
+**Important Note:** `Routes` should be defined starting with the most specific rule and transitioning to the least specific rule.
+
+
+
+```
+PublicRouteTable:
+        Type: AWS::EC2::RouteTable
+        Properties: 
+            VpcId: !Ref VPC
+            Tags: 
+                - Key: Name 
+                  Value: !Sub ${EnvironmentName} Public Routes
+
+    DefaultPublicRoute: 
+        Type: AWS::EC2::Route
+        DependsOn: InternetGatewayAttachment
+        Properties: 
+            RouteTableId: !Ref PublicRouteTable
+            DestinationCidrBlock: 0.0.0.0/0
+            GatewayId: !Ref InternetGateway
+
+    PublicSubnet1RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PublicRouteTable
+            SubnetId: !Ref PublicSubnet1
+
+    PublicSubnet2RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PublicRouteTable
+            SubnetId: !Ref PublicSubnet2
+
+
+    PrivateRouteTable1:
+        Type: AWS::EC2::RouteTable
+        Properties: 
+            VpcId: !Ref VPC
+            Tags: 
+                - Key: Name 
+                  Value: !Sub ${EnvironmentName} Private Routes (AZ1)
+
+    DefaultPrivateRoute1:
+        Type: AWS::EC2::Route
+        Properties:
+            RouteTableId: !Ref PrivateRouteTable1
+            DestinationCidrBlock: 0.0.0.0/0
+            NatGatewayId: !Ref NatGateway1
+
+    PrivateSubnet1RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PrivateRouteTable1
+            SubnetId: !Ref PrivateSubnet1
+
+    PrivateRouteTable2:
+        Type: AWS::EC2::RouteTable
+        Properties: 
+            VpcId: !Ref VPC
+            Tags: 
+                - Key: Name 
+                  Value: !Sub ${EnvironmentName} Private Routes (AZ2)
+
+    DefaultPrivateRoute2:
+        Type: AWS::EC2::Route
+        Properties:
+            RouteTableId: !Ref PrivateRouteTable2
+            DestinationCidrBlock: 0.0.0.0/0
+            NatGatewayId: !Ref NatGateway2
+
+    PrivateSubnet2RouteTableAssociation:
+        Type: AWS::EC2::SubnetRouteTableAssociation
+        Properties:
+            RouteTableId: !Ref PrivateRouteTable2
+            SubnetId: !Ref PrivateSubnet2
+```
+
+
+
+### 练习题
+
+If your servers have no internet access it's probably because...
+
+- You created the internet gateway but forgot to attach it to your VPC
+- You placed your NAT Gateways inside private subnets with no routes to the outside world
+- You have a missing route in your routing table
+- You created a routing table but forgot to associate your subnet(s) with it.
+
+提交
+
+
+
+#### Resources
+
+------
+
+- [Route Tables Overview](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
+- [Route Table Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html)
+- [Route Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html)
+- [Subnet Route Table Association Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-route-table-assoc.html)
