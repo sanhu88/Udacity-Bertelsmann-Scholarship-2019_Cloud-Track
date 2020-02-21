@@ -1432,7 +1432,10 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
 
 * 21-10 create route tables ，get Elastic IP （Public IP）for NAT gateways,
 
-  * There is routing provided to all VPC is just as soon as you create them.
+  * **PublicRouteTables: 和 PrivateRouteTables** There is routing provided to all VPC is just as soon as you create them. we're going to create rules to allow traffic to flow in and out of our public subnets. And we also going to have rules for the traffic to flow outbound only from my private subnets ,
+  * stack更新完成后，Nat gateway 下的对应nat gateway会获取公网IP（Elastic IP），用routing对这些IP进行测试
+  * routing provided to all VPC is just as soon as you create them
+  * the default rules for routing in a VPC allow traffic within the VPC any resource will be able to talk to each other，the tricky part is when you want to talk to the outside world,That's why we need this routing rules
 
 #### Adding Subnets
 
