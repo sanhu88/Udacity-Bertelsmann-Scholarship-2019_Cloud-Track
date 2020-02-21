@@ -2024,14 +2024,64 @@ git log --oneline --graph --all
 
 ~~~
 
-总结：
+### 同步过程总结：
 
-跟踪项目维护者的原始仓库变化：
+跟踪项目维护者的原始仓库变化步骤：
 
-1. 为本地repo添加一个upstream分支 git remote add
-2. fetch 来抓取 upstream上的变化
-3. 合并upstream到本地的master
-4. 推送新的master到GitHub（其他远程仓库）上
+1. 为本地电脑repo添加一个upstream分支 git remote add
+
+   ~~~
+   git remote add upstream http://原作者的github地址.git
+   ~~~
+
+   
+
+2. fetch 来抓取 upstream上的变化，保存变化到本地电脑上master
+
+   ~~~
+    git fetch upstream master
+   ~~~
+
+   
+
+3. 合并原作者upstream的变化到本地的master，因为自己开发在自己的分支
+
+   ~~~
+   git checkout master
+   git merge upstream/master
+   ~~~
+
+   
+
+4. 推送新的master到自己的GitHub（其他远程仓库）上
+
+   ~~~
+   git push origin master
+   ~~~
+
+   
+
+5. 用`git push origin `推送自己分支的修改
+
+   ~~~bash
+   $ git push origin bird-note
+   Total 0 (delta 0), reused 0 (delta 0)
+   remote:
+   remote: Create a pull request for 'bird-note' on GitHub by visiting:
+   remote:      https://github.com/sanhu88/SG-Malaysia-Cloud-Udacity/pull/new/bird-note
+   remote:
+   To github.com:sanhu88/SG-Malaysia-Cloud-Udacity.git
+    * [new branch]      bird-note -> bird-note
+   
+   ~~~
+
+   
+
+6. ~~~
+   git log --oneline --graph --decorate --all #查看log
+   ~~~
+
+7. 后续再压缩自己的分支的提交，然后给原作者自己的分支，让原作者决定是否合并
 
 ### 管理PR  Manage an active PR（pull request）
 

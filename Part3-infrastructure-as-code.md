@@ -1430,7 +1430,9 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
   * GetAtt 引用别的参数的值
   * yaml 文件的格式缩进的状况，保持tab一致空行 indented properly.YAML is a very picky format.
 
-* 21-10 create route tables
+* 21-10 create route tables ，get Elastic IP （Public IP）for NAT gateways,
+
+  * There is routing provided to all VPC is just as soon as you create them.
 
 #### Adding Subnets
 
