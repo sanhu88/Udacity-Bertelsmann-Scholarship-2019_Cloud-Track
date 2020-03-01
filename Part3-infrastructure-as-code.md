@@ -1589,17 +1589,49 @@ In the scenario above the `EIP` allocation will only happen after the `InternetG
 ## 21-5: Routing 
 
 * Video  21-11 ~ 21-13
+
 * 21-11 
   1. creating route tables,to define routing rules
   2. specifying those rules which are going to make whatever as a private is going to actually make it private and whatever expose like it's going to be made public
   3. 包含**RotueTable**， **Route** ，**RouteTableAssociation**，
-*  DefaultPublicRoute 有一个设置Dependson ：InternetGatewayAttachmnet ,确保IGW在VPC上是正常工作的
-*  /0 means a wildcard address or all addresses.
+  
+* DefaultPublicRoute 有一个设置Dependson ：InternetGatewayAttachmnet ,确保IGW在VPC上是正常工作的
+
+* /0 means a wildcard address or all addresses.
+
 * 21-12 SubnetRouteTableAssociation
+  
   1. public subnet 需要附加到 PublicRouteTable
   2. 还需要 PrivateRouteTable 和 PrivateRoute 的 1和2
   3. private route 的nNAT gateway 是 Nat gateway
   4. we have created an additional routing table. for future expansion
+  
+* 21-13
+
+  1. 随着资源的增加，更新时间变得更长
+  2. 标签是很重要的，否则你必须要记住这些id。it's important to have tags ，because otherwise you're gonna have to be memorizing these IDs.
+  3. The output section is going to collect all these little resources that we create it
+
+* 21-4 Outputs部分
+
+  1. 使用变量来代替还没创建的资源值（比如VPC的id只有创建好才知道），!Sub函数
+
+     ~~~bash
+     Name: !Sub ${EnviromentName}-VPCID
+     ....-PUB-RT( 代表public route)
+     ....-PRI-RT( 代表private route)
+     ....PUB-NETS(代表public subnets)
+     ~~~
+
+  2. !Join函数 拼接组合几个值，用逗号最为分隔符。
+
+     auto scaling and load balancers will require a list of resources,
+
+     ~~~bash
+     Value: !Join[",",[!Ref PublicSubnet1,!Ref PublicSybnet2]]
+     ~~~
+
+     
 
 #### lossary
 
@@ -1786,12 +1818,12 @@ PublicRouteTable:
 
 If your servers have no internet access it's probably because...
 
-- You created the internet gateway but forgot to attach it to your VPC
+- **You created the internet gateway but forgot to attach it to your VPC**
 - You placed your NAT Gateways inside private subnets with no routes to the outside world
 - You have a missing route in your routing table
 - You created a routing table but forgot to associate your subnet(s) with it.
 
-提交
+解答：Awesome. Agreed! Actually, all these choices are perfectly valid trouble-shooting points to remember when you are trying to understand why your EC2 instances do not have internet access.
 
 
 
