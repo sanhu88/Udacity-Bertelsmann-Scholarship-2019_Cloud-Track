@@ -1589,49 +1589,22 @@ In the scenario above the `EIP` allocation will only happen after the `InternetG
 ## 21-5: Routing 
 
 * Video  21-11 ~ 21-13
-
 * 21-11 
   1. creating route tables,to define routing rules
   2. specifying those rules which are going to make whatever as a private is going to actually make it private and whatever expose like it's going to be made public
   3. 包含**RotueTable**， **Route** ，**RouteTableAssociation**，
-  
 * DefaultPublicRoute 有一个设置Dependson ：InternetGatewayAttachmnet ,确保IGW在VPC上是正常工作的
-
 * /0 means a wildcard address or all addresses.
-
 * 21-12 SubnetRouteTableAssociation
-  
   1. public subnet 需要附加到 PublicRouteTable
   2. 还需要 PrivateRouteTable 和 PrivateRoute 的 1和2
   3. private route 的nNAT gateway 是 Nat gateway
   4. we have created an additional routing table. for future expansion
-  
 * 21-13
-
   1. 随着资源的增加，更新时间变得更长
   2. 标签是很重要的，否则你必须要记住这些id。it's important to have tags ，because otherwise you're gonna have to be memorizing these IDs.
   3. The output section is going to collect all these little resources that we create it
-
-* 21-4 Outputs部分
-
-  1. 使用变量来代替还没创建的资源值（比如VPC的id只有创建好才知道），!Sub函数
-
-     ~~~bash
-     Name: !Sub ${EnviromentName}-VPCID
-     ....-PUB-RT( 代表public route)
-     ....-PRI-RT( 代表private route)
-     ....PUB-NETS(代表public subnets)
-     ~~~
-
-  2. !Join函数 拼接组合几个值，用逗号最为分隔符。
-
-     auto scaling and load balancers will require a list of resources,
-
-     ~~~bash
-     Value: !Join[",",[!Ref PublicSubnet1,!Ref PublicSybnet2]]
-     ~~~
-
-     
+* 1. 
 
 #### lossary
 
@@ -1835,3 +1808,96 @@ If your servers have no internet access it's probably because...
 - [Route Table Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route-table.html)
 - [Route Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-route.html)
 - [Subnet Route Table Association Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-route-table-assoc.html)
+
+
+
+## 21-6 Outputs
+
+* 视频21-14~21-15
+* 21-14 Outputs部分
+
+1. 使用变量来代替还没创建的资源值（比如VPC的id只有创建好才知道），!Sub函数
+
+   ~~~bash
+   Name: !Sub ${EnviromentName}-VPCID
+   ....-PUB-RT( 代表public route)
+   ....-PRI-RT( 代表private route)
+   ....PUB-NETS(代表public subnets)
+   ~~~
+
+2. !Join函数 拼接组合几个值，用逗号最为分隔符。
+
+   auto scaling and load balancers will require a list of resources,
+
+   ~~~bash
+   Value: !Join[",",[!Ref PublicSubnet1,!Ref PublicSybnet2]]
+   ~~~
+
+
+
+#### Outputs
+
+------
+
+`Outputs` are optional but are very useful if there are output values you need to:
+
+- import into another stack
+- return in a response
+- view in AWS console
+
+To declare an `Output` use the following syntax:
+
+```
+Outputs:
+  Logical ID:
+    Description: Information about the value
+    Value: Value to return
+    Export:
+      Name: Value to export
+```
+
+The `Value` is required but the `Name` is optional. In the following example we are returning the id of our `VPC` as well as our Environment's Name:
+
+```
+VPC: 
+        Description: A reference to the created VPC
+        Value: !Ref VPC
+        Export:
+          Name: !Sub ${EnvironmentName}-VPCID
+```
+
+
+
+
+
+#### Join Function
+
+------
+
+You can use the `join` function to combine a group of `values`. The syntax requires you provide a `delimiter` and a list of values you want appended.
+
+`Join` function syntax:
+
+```
+Fn::Join: [ delimiter, [ comma-delimited list of values ] ]
+```
+
+In the following example we are using `!Join` to combine our subnets before returning their values:
+
+```
+PublicSubnets:
+        Description: A list of the public subnets
+        Value: !Join [ ",", [ !Ref PublicSubnet1, !Ref PublicSubnet2 ]]
+        Export:
+          Name: !Sub ${EnvironmentName}-PUB-NETS
+```
+
+
+
+#### Resources
+
+------
+
+- [Outputs Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html)
+- [Join Function](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html)
+- [Substitutes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html)
