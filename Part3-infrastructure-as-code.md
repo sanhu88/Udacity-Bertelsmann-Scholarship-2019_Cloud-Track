@@ -1430,7 +1430,7 @@ aws cloudformation create-stack --stack-name MyStack --template-body file://MyCl
   * GetAtt 引用别的参数的值
   * yaml 文件的格式缩进的状况，保持tab一致空行 indented properly.YAML is a very picky format.
 
-* 21-10 create route tables ，get Elastic IP （Public IP）for NAT gateways,
+* 21-10 ： create route tables ，get Elastic IP （Public IP）for NAT gateways,
 
   * **PublicRouteTables: 和 PrivateRouteTables** There is routing provided to all VPC is just as soon as you create them. we're going to create rules to allow traffic to flow in and out of our public subnets. And we also going to have rules for the traffic to flow outbound only from my private subnets ,
   * stack更新完成后，Nat gateway 下的对应nat gateway会获取公网IP（Elastic IP），用routing对这些IP进行测试
@@ -1588,10 +1588,18 @@ In the scenario above the `EIP` allocation will only happen after the `InternetG
 
 ## 21-5: Routing 
 
-* Video  21-11
-* 
-*  
-*  
+* Video  21-11 ~ 21-13
+* 21-11 
+  1. creating route tables,to define routing rules
+  2. specifying those rules which are going to make whatever as a private is going to actually make it private and whatever expose like it's going to be made public
+  3. 包含**RotueTable**， **Route** ，**RouteTableAssociation**，
+*  DefaultPublicRoute 有一个设置Dependson ：InternetGatewayAttachmnet ,确保IGW在VPC上是正常工作的
+*  /0 means a wildcard address or all addresses.
+* 21-12 SubnetRouteTableAssociation
+  1. public subnet 需要附加到 PublicRouteTable
+  2. 还需要 PrivateRouteTable 和 PrivateRoute 的 1和2
+  3. private route 的nNAT gateway 是 Nat gateway
+  4. we have created an additional routing table. for future expansion
 
 #### lossary
 

@@ -880,7 +880,7 @@ By the end of this lab, you will be able to:
    - Review the JSON for the policy you just created on the `Permissions` tab.
    - Click on the `Policy usage` tab to see if this policy is in use. Notice this policy is not attached to any resources yet.
 
-   ****
+   
 
    # 16. Networking & Elasticity
 
