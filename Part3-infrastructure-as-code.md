@@ -1816,7 +1816,9 @@ If your servers have no internet access it's probably because...
 * 视频21-14~21-15
 * 21-14 Outputs部分
 
-1. 使用变量来代替还没创建的资源值（比如VPC的id只有创建好才知道），!Sub函数
+1. 这些值都可以从其他的脚本中访问，相当于全局变量，AWS账户中唯一
+
+2. 使用变量来代替还没创建的资源值（比如VPC的id只有创建好才知道），!Sub函数
 
    ~~~bash
    Name: !Sub ${EnviromentName}-VPCID
@@ -1825,7 +1827,7 @@ If your servers have no internet access it's probably because...
    ....PUB-NETS(代表public subnets)
    ~~~
 
-2. !Join函数 拼接组合几个值，用逗号最为分隔符。
+3. !Join函数 拼接组合几个值，用逗号最为分隔符。
 
    auto scaling and load balancers will require a list of resources,
 
@@ -1833,7 +1835,24 @@ If your servers have no internet access it's probably because...
    Value: !Join[",",[!Ref PublicSubnet1,!Ref PublicSybnet2]]
    ~~~
 
+4. 21-15 更新
 
+   * 一般来说更新很快，因为有只有output输出，没有创造任何资源。We're just creating output，not creating any resources
+
+   * 错误提示，其他stack 已经存在同名的public nats，快速的方法是在JSON文件中给environment 改一个名字来解决。
+
+     ~~~json
+     {
+         ParameterKey:"EnviromentName",
+         PaeameterValue:"UdacityProjectDemo"
+     }
+     ~~~
+
+   * Join函数
+
+     ![image-20200302214211846](Part3-infrastructure-as-code.assets/image-20200302214211846.png)
+
+   * 
 
 #### Outputs
 
