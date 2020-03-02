@@ -1920,3 +1920,18 @@ PublicSubnets:
 - [Outputs Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html)
 - [Join Function](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html)
 - [Substitutes](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html)
+
+
+
+## Summary
+
+As this lesson comes to an end, now you should be able to ...
+
+- Describe the syntax of the CloudFormation code that builds the infrastructure
+- Build the following resources -
+  - Virtual Private Cloud and subnets
+  - Internet gateway and NAT gateway
+  - Route table
+- Export the stack output
+
+It is not uncommon to find private-only clouds with no outside connectivity. Having this knowledge will show that you understand both public facing and corporate-only cloud environments.
