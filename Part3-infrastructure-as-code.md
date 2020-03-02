@@ -1935,3 +1935,62 @@ As this lesson comes to an end, now you should be able to ...
 - Export the stack output
 
 It is not uncommon to find private-only clouds with no outside connectivity. Having this knowledge will show that you understand both public facing and corporate-only cloud environments.
+
+
+
+# Lesson 22 - Servers and Security Groups 
+
+Implement security groups and understand the concept of least-privilege as it applies to network traffic
+
+
+
+## 21-1 Lesson Objectives
+
+In the previous lesson, we built the necessary networking infrastructure for a web application. In this lesson, we will learn to build the next set of resources on top of the networking infrastructure. Upon completion of this lesson, you will be able to...
+
+- Specify firewall rules using security groups
+- Create autoscaling groups for the elasticity of servers
+- Code the launch configuration for the web application
+- Add the target groups and listeners
+- Update the stack with the load balancer
+- Learn to debug the security group
+
+### Supporting Material
+
+The supporting material that is referred to in the video demonstration is available in the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material) folder.
+
+## 21-2 Setting Up Our Environment
+
+* 新创建的yaml 文件中只有一个参数，就是EnvriomentName 用来引用之前在网络部分创建的各种资源。
+
+1. demoservers.yml
+
+   ~~~yaml
+   Description: >
+       Your Name / Udacity 2019
+   Parameters:
+     EnvironmentName:
+         Description: Single Parameter that we are passing with the env name.
+         Type: String
+   Resources:
+   ~~~
+
+   
+
+2. demoservers.json
+
+   ~~~json
+   [
+       {
+           "ParameterKey": "EnvironmentName",
+           "ParameterValue": "UdacityProject"
+       }
+   ]
+   ~~~
+
+   
+
+
+
+
+
