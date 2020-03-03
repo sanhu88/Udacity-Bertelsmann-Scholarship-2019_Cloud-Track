@@ -1979,6 +1979,8 @@ The supporting material that is referred to in the video demonstration is availa
 
 2. demoservers.json
 
+   
+
    ~~~json
    [
        {
@@ -1990,7 +1992,49 @@ The supporting material that is referred to in the video demonstration is availa
 
    
 
+   ## 
 
+## 21-3 Security Groups
+
+* 
+
+The following is the syntax required to create a `SecurityGroup`:
+
+```yaml
+Type: AWS::EC2::SecurityGroup
+Properties: 
+  GroupDescription: String
+  GroupName: String
+  SecurityGroupEgress: 
+    - Egress
+  SecurityGroupIngress: 
+    - Ingress
+  Tags: 
+    - Tag
+  VpcId: String
+```
+
+Although they are not required, the `SecurityGroupEgress` and `SecurityGroupIngress` （入口）property rules are the most critical to the `SecurityGroup` as it defines where the traffic will go. While `SecurityGroupEgress`(出口) defines outbound traffic, `SecurityGroupIngress` defines the inbound traffic.
+
+#### Ingress rules and egress rules
+
+------
+
+- Ingress rules are for inbound traffic, and egress rules are for outbound traffic.
+- Ingress rules restrict or allow traffic trying to reach our resources on specific ports.
+- Egress rules restrict or allow traffic originating from our server -- typically we are ok allowing all outbound traffic without restrictions as this doesn’t pose a risk for a security breach.
+
+习题：
+
+1. default Security Groups： Inbound: Deny All, Outbound: Allow all.
+
+Outbound is always allowed and Inbound is always denied unless specified. Keep in mind that this is when a resource, such as a Server, has a security group with defaults assigned to it. If a server doesn’t have a security group assigned to it at all, then it becomes isolated. Meaning that no traffic is allowed in or out.
+
+2. Security group entries in CloudFormation require: IP address or range / Start port / End port / Rule type(ingress or egress)
+
+
+
+21-4 Security Groups part 2
 
 
 
