@@ -1996,7 +1996,11 @@ The supporting material that is referred to in the video demonstration is availa
 
 ## 21-3 Security Groups
 
-* 
+* Security groups are associated with specific resources,not subnets
+
+  与特定资源有关，与子网无关
+
+* 入口和出口流量规则
 
 The following is the syntax required to create a `SecurityGroup`:
 
@@ -2034,7 +2038,43 @@ Outbound is always allowed and Inbound is always denied unless specified. Keep i
 
 
 
-21-4 Security Groups part 2
+## 21-4 Security Groups part 2
+
+* you don't want that for an inbound rule to just open all ports 入站不能打开所有，只能指定比如80 22
+* outbound traffic zero to all，able to access the Internet unrestricted 出站可以所有，不受限制访问别人
+* associated with any other resource 安全组还需要与其他资源关联
+* CIDR-ip 来控制范围
+* Jump box 跳板机
+  * IP为跳转
+  * 跳板机不用的时候，可以关闭
+  * 命名ssh key
+  * 应用安全组的限制规则
 
 
 
+#### Security Groups
+
+------
+
+- Security groups are specific to individual resources (EC2 servers, databases) and not to subnets.
+- [Documentation for security groups in CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group.html)
+
+#### Traffic is blocked by default
+
+------
+
+- In cloud, traffic is completely blocked, so you have to explicitly open ports to allow traffic in and out. This is a general networking concept.
+
+#### Limit inbound traffic for security
+
+------
+
+- For ingress rules, we want to limit inbound traffic, for security, to a single port or just a handful of ports required by the application we are running.
+- If it’s a public web server, for example, it will require `port 80` open to the world ( World = `0.0.0.0/0` )
+- Should you need the SSH port open, restrict this port only to your specific IP address.
+
+#### For outbound traffic, give full access
+
+------
+
+For egress rules, we want to give the resource full access to the internet, so we give egress access to all ports, from `0` all the way to `65535`.
