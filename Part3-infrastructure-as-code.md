@@ -2369,3 +2369,7 @@ Properties:
 - [TargetGroups Documentation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-targetgroup.html)
 - [Health Checks for Your TargetGroups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html)
 
+## 22-9 Updating the Stack with the Load Balancer
+
+* load balancer aws 提供的是超长的url，不提供IP，方便aws以后维护
+* The target group is the association between auto-scaling and the load balancer.目标组是自动伸缩和负载均衡器之间的关联。
