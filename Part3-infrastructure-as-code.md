@@ -1944,7 +1944,7 @@ Implement security groups and understand the concept of least-privilege as it ap
 
 
 
-## 21-1 Lesson Objectives
+## 22-1 Lesson Objectives
 
 In the previous lesson, we built the necessary networking infrastructure for a web application. In this lesson, we will learn to build the next set of resources on top of the networking infrastructure. Upon completion of this lesson, you will be able to...
 
@@ -1959,7 +1959,7 @@ In the previous lesson, we built the necessary networking infrastructure for a w
 
 The supporting material that is referred to in the video demonstration is available in the [Github repository](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/tree/master/supporting_material) folder.
 
-## 21-2 Setting Up Our Environment
+## 22-2 Setting Up Our Environment
 
 * 新创建的yaml 文件中只有一个参数，就是EnvriomentName 用来引用之前在网络部分创建的各种资源。
 
@@ -1994,7 +1994,7 @@ The supporting material that is referred to in the video demonstration is availa
 
    ## 
 
-## 21-3 Security Groups
+## 22-3 Security Groups
 
 * Security groups are associated with specific resources,not subnets
 
@@ -2038,7 +2038,7 @@ Outbound is always allowed and Inbound is always denied unless specified. Keep i
 
 
 
-## 21-4 Security Groups part 2
+## 22-4 Security Groups part 2
 
 * you don't want that for an inbound rule to just open all ports 入站不能打开所有，只能指定比如80 22
 * outbound traffic zero to all，able to access the Internet unrestricted 出站可以所有，不受限制访问别人
@@ -2081,7 +2081,7 @@ For egress rules, we want to give the resource full access to the internet, so w
 
 
 
-## 21-5 Autoscaling Group
+## 22-5 Autoscaling Group
 
 * auto scaling group create servers based on a criteria to decide when to Add or Remove Servers【标准，条件（criterion的复数）】
 *  When and what to do,auto scaling group known as the launch configuration
@@ -2163,7 +2163,7 @@ The Launch configuration will tell the scaling group what you want to launch, an
 
 A Security Policy would not apply here and a Load Balancer, while certainly valid, is not required for an auto-scaling group.
 
-## 21-6 Launch Configuration 启动配置
+## 22-6 Launch Configuration 启动配置
 
 * Amazon machine image (AMI )
 
@@ -2233,7 +2233,7 @@ WebAppLaunchConfig:
 
 To see all available instance types [click here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes).
 
-## 21-7 Debugging Launch Configuration
+## 22-7 Debugging Launch Configuration
 
 * unresolved resource dependencies,remove the property .
 * healthy or not more up to the load balancer
@@ -2252,11 +2252,12 @@ Destroy the server and let the auto-scaling group create a new, fresh server
 
 Awesome! For the purpose of business continuity, it's perfectly fine to quickly destroy the server and allow Auto-Scaling to take over and spin up a new one. That said, if it happens again, soon thereafter you may have a bigger problem at hand.
 
-## 21-8 Adding Target Groups and Listeners
+## 22-8 Adding Target Groups and Listeners
 
 * TargetGroup 是auto scaling的属性之一
 * HealthCheck : port/ path /protaocol /TimeoutSeconds /IntervalSeconds
 * Listener 80端口
+* 负载均衡 Type: AWS::ElasticLoadBalancingV2::LoadBalancer
 
 #### Relationship between Target Groups and Auto Scaling groups.
 
