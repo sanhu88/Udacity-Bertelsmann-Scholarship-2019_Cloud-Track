@@ -2044,7 +2044,7 @@ Outbound is always allowed and Inbound is always denied unless specified. Keep i
 * outbound traffic zero to all，able to access the Internet unrestricted 出站可以所有，不受限制访问别人
 * associated with any other resource 安全组还需要与其他资源关联
 * CIDR-ip 来控制范围
-* Jump box 跳板机
+* Jump box -a bastion host 堡垒机，跳板机
   * IP为跳转
   * 跳板机不用的时候，可以关闭
   * 命名ssh key
@@ -2078,3 +2078,158 @@ Outbound is always allowed and Inbound is always denied unless specified. Keep i
 ------
 
 For egress rules, we want to give the resource full access to the internet, so we give egress access to all ports, from `0` all the way to `65535`.
+
+
+
+## 21-5 Autoscaling Group
+
+* auto scaling group create servers based on a criteria to decide when to Add or Remove Servers【标准，条件（criterion的复数）】
+*  When and what to do,auto scaling group known as the launch configuration
+
+### A. What is an AWS UserData script?
+
+A UserData script is a series of commands that you use to properly configure your server to run your application.
+
+This is where you do things such as:
+
+- Fetch credentials
+- Set Environment Variables ( ENV=PROD, for example )
+- Download and Install libraries
+- Get your source files or binaries from a storage location, such as S3
+
+#### When should you use it?
+
+If you want to run your application in a plain out-of-the-box Linux or Window server, you'll use the UserData script to do all the necessary configurations. **You don't need it if you are using a Virtual Machine Image ( AMI ) that already has everything installed.**
+
+------
+
+### B. Verification and troubleshooting
+
+The best way to create and verify a UserData script is to run each command manually and verify everything works as expected. If you run yours and it fails, you should login to the server and check the logs that can be found here: `/var/log/cloud-init-output.log`. For Windows: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`
+
+#### Difference between UserData on Windows and Linux
+
+On Windows, you have the option of PowerShell:
+
+```
+<powershell>
+$file = $env:SystemRoot + "\Temp\" + (Get-Date).ToString("MM-dd-yy-hh-mm")
+New-Item $file -ItemType file
+</powershell>
+```
+
+Or more traditional Batch scripts:
+
+```
+<script>
+echo Current date and time >> %SystemRoot%\Temp\test.log
+echo %DATE% %TIME% >> %SystemRoot%\Temp\test.log
+</script>
+```
+
+For Linux, follow the included example.
+
+------
+
+### C. Auto Scaling Concepts
+
+#### 1. Scaling Policy
+
+A Scaling Policy is the criteria used to decide when to Add or Remove Servers from your Auto Scaling Group. Running the servers 24 hours a day costs money. So, It's best to have criteria to choose to turn those servers off when they are not needed and then turn them back on when there is demand.
+
+This is achieved using a Scaling Policy. For example, you could create a CloudWatch Alarm with a custom metric that counts the number of web visitors in the last 2 hours, if the number is less than 100, for example, perhaps a single server is enough. This will be a trigger to Scale Down if there is more than one server running at the time.
+
+#### 2. Launch Configuration
+
+Think of a Launch Configuration as a **template or a recipe**. You are instructing the Auto Scaling service HOW to run your web application. For example: My application requires 2GB RAM , 4 vCPUs, 10GB of Disk Space, The Java runtime version 8 Or NodeJS 10.0, for example. All this on top of a standard distribution of Linux or Windows Read more about [Launch Configuration](https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html).
+
+Once an Auto Scaling group knows how to launch new copies of your application, then the process of scaling up and down can take place.
+
+#### 3. Load Balancer
+
+While a load balancer is not exactly a part of Auto Scaling but it helps answer the question: "If I am running a web application in 20 different servers, how do I setup a single point of entry that guarantees an even workload distribution across all 20 servers?" The answer is: with a Load Balancer.
+
+A load balancer allows you to reduce your Auto Scaling down to 1 server at night, when very few people are using your Web Application and then Scale up to 10 or more servers during the day, when hundreds or thousands may be using it. The user doesn't experience any difference in availing the services due to auto-scaling.
+
+#### Further reading
+
+The [AWS Frequently Asked Questions](https://aws.amazon.com/autoscaling/faqs/) (FAQs) is a great resource to master the finer details of scaling servers
+
+习题：
+
+Which of these are elements of an autoscaling group?  Scaling Policy/ Launch Configuration
+
+The Launch configuration will tell the scaling group what you want to launch, and the scaling policies will tell it WHEN to execute the scaling, either up or down.
+
+A Security Policy would not apply here and a Load Balancer, while certainly valid, is not required for an auto-scaling group.
+
+## 21-6 Launch Configuration 启动配置
+
+* Amazon machine image (AMI )
+
+The following is the syntax used for `AutoScaling` `LaunchConfiguration`:
+
+```yaml
+Type: AWS::AutoScaling::LaunchConfiguration
+Properties: 
+  AssociatePublicIpAddress: Boolean
+  BlockDeviceMappings: 
+    - BlockDeviceMapping
+  ClassicLinkVPCId: String
+  ClassicLinkVPCSecurityGroups: 
+    - String
+  EbsOptimized: Boolean
+  IamInstanceProfile: String
+  ImageId: String
+  InstanceId: String
+  InstanceMonitoring: Boolean
+  InstanceType: String
+  KernelId: String
+  KeyName: String
+  LaunchConfigurationName: String
+  PlacementTenancy: String
+  RamDiskId: String
+  SecurityGroups: 
+    - String
+  SpotPrice: String
+  UserData: String
+```
+
+The `ImageId` and `Instance Type` are the only required properties for a `LaunchConfiguration`. However, there are many useful properties you will likely want to include.
+
+
+
+This is an updated WebAppLaunchConfig so that you don’t need external dependencies. Please note this UserData Script is meant to run on Ubuntu Linux.
+
+```yaml
+WebAppLaunchConfig:
+    Type: AWS::AutoScaling::LaunchConfiguration
+    Properties:
+      UserData:
+        Fn::Base64: !Sub |
+         #!/bin/bash
+        apt-get update -y
+        apt-get install apache2 -y
+        systemctl start apache2.service
+        cd /var/www/html
+        echo "Udacity Demo Web Server Up and Running!" > index.html
+
+      ImageId: ami-005bdb005fb00e791
+      IamInstanceProfile: !Ref ProfileWithRolesForOurApp
+      SecurityGroups:
+      - Ref: WebServerSecGroup
+      InstanceType: t3.small
+      BlockDeviceMappings:
+      - DeviceName: "/dev/sdk"
+        Ebs:
+          VolumeSize: '10'
+```
+
+**In the above example we have done the following:**
+
+- Specified 10gbs for our `VolumeSize`.
+- Referenced the previously defined `WebServerSecGroup` for our `SecurityGroup`
+- Set our `InstanceType` to `t3.medium` for our `EC2 Instance`
+
+To see all available instance types [click here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes).
+
