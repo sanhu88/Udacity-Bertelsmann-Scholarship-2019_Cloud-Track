@@ -2233,3 +2233,21 @@ WebAppLaunchConfig:
 
 To see all available instance types [click here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes).
 
+## 21-7 Debugging Launch Configuration
+
+* unresolved resource dependencies,remove the property .
+* healthy or not more up to the load balancer
+
+#### WebAppGroup
+
+- An Auto Scaling Group is in charge of providing servers for your application based on an Alarm/Criteria, such as number of concurrent users, CPU Usage or HTTP Requests
+- Since The Auto Scaling Group is not specific to your application, you need to provide a Launch Configuration which says which machine image to use and how much memory and disk space your application will need, among other things.
+- You can specify a Minimum and Maximum count of servers to use for Auto Scaling -- This is a great feature of cloud that can save you lots of money in unused infrastructure and it’s a key example of the elasticity of the cloud.
+
+习题：
+
+Should a server in your auto-scaling group fail, you would ：
+
+Destroy the server and let the auto-scaling group create a new, fresh server
+
+Awesome! For the purpose of business continuity, it's perfectly fine to quickly destroy the server and allow Auto-Scaling to take over and spin up a new one. That said, if it happens again, soon thereafter you may have a bigger problem at hand.
